@@ -32,8 +32,8 @@ def create_random_tree(max_depth, current_depth=0):
         return Node(value, children)
 
 class GeneticProgrammingOptimizer(torch.optim.Optimizer):
-    def __init__(self, params, gp_tree, learning_rate=0.01):
-        defaults = dict(lr=learning_rate)
+    def __init__(self, params, gp_tree, lr=0.01):
+        defaults = dict(lr=lr)
         super(GeneticProgrammingOptimizer, self).__init__(params, defaults)
         self.gp_tree = gp_tree
         for group in self.param_groups:
