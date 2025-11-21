@@ -5,7 +5,7 @@ from copy import deepcopy
 
 # Define the functions and terminals
 FUNCTIONS = ['add', 'sub', 'mul', 'pdiv', 'sqrt', 'square', 'neg']
-TERMINALS = ['param', 'grad', 'one', 'zero', 'momentum', 'learning_rate']
+TERMINALS = ['param', 'grad', 'one', 'zero', 'momentum', 'learning_rate', 'v']
 
 class Node:
     def __init__(self, value, children=None):
@@ -39,6 +39,7 @@ class GeneticProgrammingOptimizer(torch.optim.Optimizer):
         for group in self.param_groups:
             for p in group['params']:
                 self.state[p]['momentum'] = torch.zeros_like(p.data)
+                self.state[p]['v'] = torch.zeros_like(p.data)
 
     def step(self, closure=None):
         loss = None
@@ -53,20 +54,24 @@ class GeneticProgrammingOptimizer(torch.optim.Optimizer):
                 param = p.data
                 grad = p.grad.data
                 momentum = self.state[p]['momentum']
+                v = self.state[p]['v']
                 lr = group['lr']
 
                 # Evaluate the GP tree to get the update rule
-                update_value = self._evaluate_tree(self.gp_tree, param, grad, momentum, lr)
+                update_value = self._evaluate_tree(self.gp_tree, param, grad, momentum, lr, v)
 
                 # Update momentum
                 self.state[p]['momentum'] = 0.9 * momentum + 0.1 * grad
+
+                # Update v
+                self.state[p]['v'] = 0.999 * v + 0.001 * grad**2
 
                 # Apply the update
                 p.data.add_(-lr * update_value)
 
         return loss
 
-    def _evaluate_tree(self, node, param, grad, momentum, lr):
+    def _evaluate_tree(self, node, param, grad, momentum, lr, v):
         if node.value in TERMINALS:
             if node.value == 'param':
                 return param
@@ -80,8 +85,10 @@ class GeneticProgrammingOptimizer(torch.optim.Optimizer):
                 return momentum
             elif node.value == 'learning_rate':
                 return torch.full_like(param, lr)
+            elif node.value == 'v':
+                return v
         elif node.value in FUNCTIONS:
-            child_values = [self._evaluate_tree(child, param, grad, momentum, lr) for child in node.children]
+            child_values = [self._evaluate_tree(child, param, grad, momentum, lr, v) for child in node.children]
             if node.value == 'add':
                 return child_values[0] + child_values[1]
             elif node.value == 'sub':
@@ -116,7 +123,7 @@ def evaluate_fitness(population, X, y, input_dim):
 
         # Training loop
         try:
-            for epoch in range(100):
+            for epoch in range(500):
                 optimizer.zero_grad()
                 outputs = model(X_tensor)
                 loss = criterion(outputs, y_tensor)

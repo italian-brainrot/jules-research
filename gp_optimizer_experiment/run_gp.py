@@ -13,7 +13,7 @@ X = data['X']
 y = data['y']
 
 # Set GP parameters
-POPULATION_SIZE = 50
+POPULATION_SIZE = 20
 MAX_DEPTH = 4
 GENERATIONS = 10
 CROSSOVER_RATE = 0.7
@@ -32,11 +32,14 @@ for generation in range(GENERATIONS):
     # Select the best individuals
     selected_population = selection(population, fitnesses)
 
-    # Create the next generation
-    next_population = []
-    for i in range(0, POPULATION_SIZE, 2):
-        parent1 = selected_population[i]
-        parent2 = selected_population[i+1]
+    # Elitism: carry over the best individual
+    best_current_idx = np.argmin(fitnesses)
+    best_individual = population[best_current_idx]
+    next_population = [best_individual]
+
+    # Create the rest of the next generation
+    while len(next_population) < POPULATION_SIZE:
+        parent1, parent2 = np.random.choice(selected_population, 2, replace=False)
 
         if np.random.rand() < CROSSOVER_RATE:
             child1, child2 = crossover(parent1, parent2)
@@ -50,7 +53,7 @@ for generation in range(GENERATIONS):
 
         next_population.extend([child1, child2])
 
-    population = next_population
+    population = next_population[:POPULATION_SIZE]
 
 # Find the best individual
 fitnesses = evaluate_fitness(population, X, y, X.shape[1])
