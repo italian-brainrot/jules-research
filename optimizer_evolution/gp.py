@@ -64,19 +64,6 @@ class Individual:
     def to_pytorch(self):
         return self.expression.to_pytorch()
 
-def random_expression(primitives, terminals, max_depth, depth=0):
-    if depth >= max_depth or random.random() < 0.3:
-        return Var(random.choice(terminals))
-    else:
-        chosen_primitive = random.choice(primitives)
-        if chosen_primitive == 'lambda':
-            var_name = random.choice(['x', 'y', 'z']) # Simple variable names for now
-            return Lambda(Var(var_name), random_expression(primitives, terminals, max_depth, depth + 1))
-        else:
-            op = Var(chosen_primitive)
-            arg1 = random_expression(primitives, terminals, max_depth, depth + 1)
-            return App(op, arg1)
-
 def subtree_mutation(individual, primitives, terminals, max_depth):
     new_expr = copy.deepcopy(individual.expression)
     nodes = get_all_nodes(new_expr)
