@@ -21,7 +21,7 @@ X_test, y_test = torch.tensor(data["x_test"]), torch.tensor(data['y_test'])
 # y is (num_samples, ) int64 tensor
 
 dl_train = TensorDataLoader((X_train, y_train), batch_size=32, shuffle=True)
-for inputs, targets in dl_train:
+for X, y in dl_train:
     ...
 ```
 
