@@ -13,28 +13,27 @@ The convergence of the Conjugate Gradient (CG) algorithm can be accelerated by i
 
 ### Model and Dataset
 
-- **Model:** A simple Convolutional Neural Network (CNN) with two convolutional layers and two fully-connected layers.
-- **Dataset:** A subset of the MNIST dataset (6400 training images) to ensure the experiment completes within a reasonable time.
-- **Training:** Both models were trained for 1 epoch with a learning rate of 0.01.
+- **Model:** A simple Multi-Layer Perceptron (MLP) with one hidden layer.
+- **Dataset:** The `mnist1d` dataset, which is a 1D version of the MNIST dataset.
+- **Training:** Both models were trained for 1 epoch. The learning rate for each optimizer was tuned by selecting the best performing learning rate from `[0.001, 0.01, 0.1]`.
 
 ## Results
 
-The experiment was run, and the output was saved to `experiment_results.txt`. Here's a summary of the results:
+The experiment was run, and the output was saved to `experiment_results.txt`. Here's a summary of the results after learning rate tuning:
 
-| Optimizer | Test Loss | Test Accuracy |
-|---|---|---|
-| Standard CG | 2.3430 | 12% |
-| Eigen-CG | 2.3609 | 1% |
+| Optimizer | Best Learning Rate | Test Loss | Test Accuracy |
+|---|---|---|---|
+| Standard CG | 0.1 | 2.3064 | 9% |
+| Eigen-CG | 0.1 | 2.3075 | 9% |
 
-The standard Conjugate Gradient optimizer performed significantly better than the Eigen-Conjugate Gradient optimizer.
+After tuning the learning rate, both optimizers performed similarly, with the standard Conjugate Gradient optimizer achieving a slightly lower loss.
 
 ## Conclusion
 
-The hypothesis was not supported by the results of this experiment. The Eigen-Conjugate Gradient optimizer performed significantly worse than the standard CG optimizer. There are several potential reasons for this:
+The hypothesis was not supported by the results of this experiment. Even with learning rate tuning and a simpler dataset, the Eigen-Conjugate Gradient optimizer did not outperform the standard CG optimizer. The potential reasons for this are the same as in the original experiment:
 
 1.  **High Computational Cost:** The periodic eigenvector calculation is computationally expensive, which slows down the training process significantly.
 2.  **Inaccurate Eigenvector Estimation:** The eigenvectors are estimated on a single batch of data at each step where they are computed. This estimation might be too noisy to provide a useful direction for the optimizer.
 3.  **Projection Issues:** Projecting the search direction onto a low-dimensional subspace might be too restrictive, preventing the optimizer from exploring other important directions in the loss landscape.
-4.  **Lack of Hyperparameter Tuning:** The learning rate, number of eigenvectors, and update frequency were not tuned. It's possible that a different set of hyperparameters could lead to better performance.
 
 Further research could explore more efficient methods for estimating the top eigenvectors or using them in a less restrictive way to guide the search direction.
