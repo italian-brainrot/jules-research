@@ -5,6 +5,7 @@ from mnist1d.data import make_dataset, get_dataset_args
 import matplotlib.pyplot as plt
 import copy
 import os
+import optuna
 
 from optimizer import PPE
 
@@ -28,7 +29,7 @@ def create_model():
     )
 
 # --- 3. Training and Evaluation Loop ---
-def train_and_evaluate(optimizer, model, epochs=50):
+def train_and_evaluate(optimizer, model, epochs=50, verbose=True):
     criterion = nn.CrossEntropyLoss()
     val_losses = []
 
@@ -51,35 +52,67 @@ def train_and_evaluate(optimizer, model, epochs=50):
 
         val_loss = total_loss / len(dl_test.data[0])
         val_losses.append(val_loss)
-        print(f"Epoch {epoch+1}/{epochs}, Val Loss: {val_loss:.4f}")
+        if verbose:
+            print(f"Epoch {epoch+1}/{epochs}, Val Loss: {val_loss:.4f}")
 
     return val_losses
 
-# --- 4. Optimizer Comparison ---
+# --- 4. Hyperparameter Tuning with Optuna ---
+def objective(trial, optimizer_name, initial_model):
+    model = copy.deepcopy(initial_model)
+    lr = trial.suggest_float('lr', 1e-5, 1e-1, log=True)
+
+    if optimizer_name == 'Adam':
+        optimizer = torch.optim.Adam(model.parameters(), lr=lr)
+    elif optimizer_name == 'PPE':
+        base_optimizer = torch.optim.Adam(model.parameters(), lr=lr)
+        optimizer = PPE(model.parameters(), base_optimizer, history_size=10, degree=2, alpha=0.4)
+    else:
+        raise ValueError("Unknown optimizer")
+
+    # Use fewer epochs for tuning to speed up the process
+    val_losses = train_and_evaluate(optimizer, model, epochs=20, verbose=False)
+    return min(val_losses) # Return the best validation loss
+
+def tune_optimizer_lr(optimizer_name, initial_model, n_trials=20):
+    study = optuna.create_study(direction='minimize')
+    study.optimize(lambda trial: objective(trial, optimizer_name, initial_model), n_trials=n_trials)
+    print(f"Best LR for {optimizer_name}: {study.best_params['lr']:.6f}")
+    return study.best_params['lr']
+
+
+# --- 5. Optimizer Comparison ---
 if __name__ == "__main__":
     # Ensure fair comparison by starting with the same initial weights
     initial_model = create_model()
 
-    # --- Adam Optimizer ---
-    print("--- Training with Adam ---")
+    # --- Tune Learning Rates ---
+    print("--- Tuning Adam Learning Rate ---")
+    best_lr_adam = tune_optimizer_lr('Adam', initial_model)
+
+    print("\n--- Tuning PPE(Adam) Learning Rate ---")
+    best_lr_ppe = tune_optimizer_lr('PPE', initial_model)
+
+
+    # --- Train with Best Learning Rates ---
+    print("\n--- Training with Adam (Tuned LR) ---")
     model_adam = copy.deepcopy(initial_model)
-    optimizer_adam = torch.optim.Adam(model_adam.parameters(), lr=1e-3)
+    optimizer_adam = torch.optim.Adam(model_adam.parameters(), lr=best_lr_adam)
     losses_adam = train_and_evaluate(optimizer_adam, model_adam)
 
-    # --- PPE(Adam) Optimizer ---
-    print("\n--- Training with PPE(Adam) ---")
+    print("\n--- Training with PPE(Adam) (Tuned LR) ---")
     model_ppe = copy.deepcopy(initial_model)
-    base_optimizer_ppe = torch.optim.Adam(model_ppe.parameters(), lr=1e-3)
+    base_optimizer_ppe = torch.optim.Adam(model_ppe.parameters(), lr=best_lr_ppe)
     optimizer_ppe = PPE(model_ppe.parameters(), base_optimizer_ppe, history_size=10, degree=2, alpha=0.4)
     losses_ppe = train_and_evaluate(optimizer_ppe, model_ppe)
 
-    # --- 5. Plotting Results ---
+    # --- 6. Plotting Results ---
     plt.figure(figsize=(10, 6))
-    plt.plot(losses_adam, label='Adam')
-    plt.plot(losses_ppe, label='PPE(Adam)')
+    plt.plot(losses_adam, label=f'Adam (LR={best_lr_adam:.4f})')
+    plt.plot(losses_ppe, label=f'PPE(Adam) (LR={best_lr_ppe:.4f})')
     plt.xlabel('Epochs')
     plt.ylabel('Validation Loss')
-    plt.title('Adam vs. PPE(Adam) Optimizer Performance')
+    plt.title('Tuned Adam vs. Tuned PPE(Adam) Optimizer Performance')
     plt.legend()
     plt.grid(True)
 
