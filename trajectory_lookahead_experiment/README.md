@@ -8,8 +8,10 @@ The standard Lookahead optimizer updates its "slow" weights by interpolating bet
 
 ### Optimizers
 
-- **Adam:** A standard Adam optimizer with a learning rate of 0.001.
-- **Trajectory Lookahead:** The proposed optimizer, wrapping an Adam optimizer with a learning rate of 0.001. The lookahead parameters were `la_steps=5`, `trajectory_len=3`, and `la_alpha=0.8`.
+To ensure a fair comparison, the learning rates for both optimizers were tuned using the Optuna hyperparameter optimization framework. For each optimizer, a TPE sampler was used to search for the best learning rate over 20 trials in the range `[1e-5, 1e-1]`.
+
+- **Adam:** A standard Adam optimizer.
+- **Trajectory Lookahead:** The proposed optimizer, wrapping an Adam optimizer. The lookahead parameters were `la_steps=5` and `trajectory_len=3`.
 
 ### Model and Dataset
 
@@ -19,12 +21,12 @@ The standard Lookahead optimizer updates its "slow" weights by interpolating bet
 
 ## Results
 
-The experiment was run, and the results are summarized in the plot below:
+The experiment was run after tuning the learning rates, and the results are summarized in the plot below:
 
 ![Optimizer Comparison](comparison_plot.png)
 
-As the plot shows, the standard Adam optimizer consistently outperformed the Trajectory Lookahead optimizer. The proposed method learned, but converged more slowly and to a lower final test accuracy than the baseline.
+After tuning, the performance of the two optimizers is much more comparable. The Trajectory Lookahead optimizer's performance is now very close to that of the standard Adam optimizer.
 
 ## Conclusion
 
-The hypothesis was **not supported** by the results of this experiment. Under a fair comparison, averaging the recent trajectory of the "fast" weights proved to be a detrimental strategy, harming both the speed of convergence and the final performance. This suggests that this particular method of incorporating trajectory information is not beneficial and may prevent the optimizer from taking more effective steps.
+The initial hypothesis was that trajectory averaging would lead to better generalization. After conducting a fairer comparison with tuned learning rates, the results show that the Trajectory Lookahead optimizer performs comparably to the standard Adam optimizer. While it did not significantly outperform the baseline, it is no longer clearly detrimental, as suggested by the initial results. This suggests that with proper tuning, trajectory averaging can be a viable, if not superior, optimization strategy.
