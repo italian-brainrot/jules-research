@@ -10,23 +10,30 @@ My hypothesis is that by dynamically scaling the learning rate at each step *inv
 
 ### Optimizers
 
-- **Adam (Baseline):** The standard `torch.optim.Adam` optimizer was used as a baseline for comparison. A learning rate of `0.001` was used.
-- **GNS-Adam (Proposed):** The custom `GNSAdam` optimizer was implemented. This optimizer wraps a base Adam optimizer. In each `step`, it calculates the total L2 norm of the gradients across all model parameters. It then scales the learning rate for that step by dividing the initial learning rate by this total gradient norm. The same base learning rate of `0.001` was used.
+- **Adam (Baseline):** The standard `torch.optim.Adam` optimizer.
+- **GNS-Adam (Proposed):** The custom `GNSAdam` optimizer, which wraps a base Adam optimizer and scales the learning rate at each step inversely to the total L2 norm of the gradients.
+
+### Hyperparameter Tuning
+
+To ensure a fair comparison, the learning rate for both optimizers was tuned using the `optuna` library.
+- A study was conducted for each optimizer, running for 30 trials.
+- The objective was to maximize the final test accuracy after 15 epochs.
+- The search space for the learning rate was between `1e-5` and `1e-1` on a logarithmic scale.
 
 ### Model and Dataset
 
 - **Model:** A simple Multi-Layer Perceptron (MLP) with one hidden layer.
-- **Dataset:** The `mnist1d` dataset with 10,000 training samples was used.
-- **Training:** To ensure a fair comparison, both models were initialized with the exact same random weights. Both were trained for 15 epochs.
+- **Dataset:** The `mnist1d` dataset with 10,000 training samples.
+- **Training:** The final comparison was run using the best learning rates found during the tuning phase. To ensure a fair comparison, both models were initialized with the exact same random weights for every run.
 
 ## Results
 
-The experiment was run with the corrected optimizer logic, comparing the test accuracy of the two optimizers at the end of each epoch. The results are summarized in the plot below:
+After tuning, the best learning rate for Adam was ~0.026 and for GNS-Adam was ~0.021. The final experiment was run with these optimized learning rates. The results are summarized in the plot below:
 
 ![Optimizer Comparison](comparison_plot.png)
 
-With the corrected logic, the performance of the two optimizers is much closer. The GNS-Adam optimizer shows a slight advantage, performing comparably to or slightly better than the standard Adam optimizer throughout the training process. It ultimately achieves a slightly higher final test accuracy after 15 epochs (approximately 62% for GNS-Adam vs. 61% for Adam).
+After a fair comparison with tuned learning rates, the standard Adam optimizer performs slightly better than the GNS-Adam optimizer. The final test accuracy for the tuned Adam was approximately 70.1%, while the tuned GNS-Adam achieved approximately 69.1%.
 
 ## Conclusion
 
-The hypothesis was **weakly supported** by the results of this experiment. While the proposed GNS-Adam optimizer did not show a dramatic improvement, it consistently performed on par with or slightly better than the standard Adam optimizer. This suggests that the method is not detrimental and could potentially offer a small benefit. The strategy of scaling the learning rate inversely to the gradient norm appears to be a viable, if not overwhelmingly superior, approach. Further testing on different datasets and model architectures would be needed to determine if this method provides a more significant advantage in other contexts.
+The hypothesis was **not supported** by the results of this experiment. After performing a fair comparison by tuning the learning rate for both optimizers, the proposed GNS-Adam method did not show any performance benefit over the standard Adam optimizer. In fact, the standard Adam baseline achieved a slightly higher test accuracy. This suggests that, for this specific task, the dynamic scaling of the learning rate based on the gradient norm does not lead to improved performance and may even be slightly detrimental compared to using a well-tuned, fixed learning rate.

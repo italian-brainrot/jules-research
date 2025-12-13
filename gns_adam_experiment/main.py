@@ -5,49 +5,77 @@ from light_dataloader import TensorDataLoader
 from mnist1d.data import make_dataset, get_dataset_args
 import matplotlib.pyplot as plt
 import copy
+import optuna
 
 from .model import MLP
 from .optimizer import GNSAdam
 
-def run_experiment(optimizer_class, model, train_loader, test_loader, epochs, **optimizer_kwargs):
+def run_experiment(optimizer_class, model, train_loader, test_loader, epochs, verbose=True, **optimizer_kwargs):
     """Runs a training and evaluation experiment for a given optimizer."""
+    # A fresh copy of the model is needed for each run to ensure fair comparison
+    model_instance = copy.deepcopy(model)
     criterion = nn.CrossEntropyLoss()
-    optimizer = optimizer_class(model.parameters(), **optimizer_kwargs)
+
+    # Special handling for GNSAdam which wraps another optimizer
+    if optimizer_class == GNSAdam:
+        base_optimizer_class = optimizer_kwargs.pop('base_optimizer', optim.Adam)
+        optimizer_kwargs['base_optimizer'] = base_optimizer_class
+        optimizer = optimizer_class(model_instance.parameters(), **optimizer_kwargs)
+    else:
+        optimizer = optimizer_class(model_instance.parameters(), **optimizer_kwargs)
 
     test_accuracies = []
 
     for epoch in range(epochs):
-        # Training loop
-        model.train()
+        model_instance.train()
         for inputs, targets in train_loader:
             optimizer.zero_grad()
-            outputs = model(inputs.float())
+            outputs = model_instance(inputs.float())
             loss = criterion(outputs, targets.long())
             loss.backward()
             optimizer.step()
 
-        # Evaluation loop
-        model.eval()
+        model_instance.eval()
         correct = 0
         total = 0
         with torch.no_grad():
             for inputs, targets in test_loader:
-                outputs = model(inputs.float())
+                outputs = model_instance(inputs.float())
                 _, predicted = torch.max(outputs.data, 1)
                 total += targets.size(0)
                 correct += (predicted == targets).sum().item()
 
         accuracy = 100 * correct / total
         test_accuracies.append(accuracy)
-        print(f"Epoch {epoch+1}/{epochs}, Optimizer: {optimizer_class.__name__}, Test Accuracy: {accuracy:.2f}%")
+        if verbose:
+            print(f"Epoch {epoch+1}/{epochs}, Optimizer: {optimizer_class.__name__}, Test Accuracy: {accuracy:.2f}%")
 
     return test_accuracies
+
+def objective(trial, optimizer_class, model_prototype, train_loader, test_loader, epochs, **optimizer_kwargs_static):
+    """Optuna objective function for hyperparameter tuning."""
+    lr = trial.suggest_float("lr", 1e-5, 1e-1, log=True)
+
+    optimizer_kwargs = optimizer_kwargs_static.copy()
+    optimizer_kwargs['lr'] = lr
+
+    # Run experiment without verbose logging for cleaner tuning output
+    accuracies = run_experiment(
+        optimizer_class,
+        model_prototype,
+        train_loader,
+        test_loader,
+        epochs,
+        verbose=False,
+        **optimizer_kwargs
+    )
+    return accuracies[-1]
 
 def main():
     # --- Hyperparameters ---
     EPOCHS = 15
-    LEARNING_RATE = 0.001
     BATCH_SIZE = 128
+    N_TRIALS = 30  # Number of Optuna trials for tuning
 
     # --- Dataset ---
     defaults = get_dataset_args()
@@ -61,27 +89,45 @@ def main():
     dl_test = TensorDataLoader((X_test, y_test), batch_size=BATCH_SIZE, shuffle=False)
 
     # --- Model Initialization ---
-    # Ensure both models start with the exact same weights for a fair comparison
-    model_adam = MLP()
-    model_gns = MLP()
-    model_gns.load_state_dict(copy.deepcopy(model_adam.state_dict()))
+    # Create a single model prototype to ensure all trials start with the same initial weights
+    model_prototype = MLP()
 
-    # --- Run Experiments ---
-    print("--- Starting Adam Experiment ---")
+    # --- Optuna Study for Adam ---
+    print("--- Tuning Adam ---")
+    study_adam = optuna.create_study(direction="maximize")
+    study_adam.optimize(
+        lambda trial: objective(trial, optim.Adam, model_prototype, dl_train, dl_test, EPOCHS),
+        n_trials=N_TRIALS
+    )
+    best_lr_adam = study_adam.best_params["lr"]
+    print(f"Best LR for Adam: {best_lr_adam}")
+
+    # --- Optuna Study for GNS-Adam ---
+    print("\n--- Tuning GNS-Adam ---")
+    study_gns = optuna.create_study(direction="maximize")
+    study_gns.optimize(
+        lambda trial: objective(trial, GNSAdam, model_prototype, dl_train, dl_test, EPOCHS, base_optimizer=optim.Adam),
+        n_trials=N_TRIALS
+    )
+    best_lr_gns = study_gns.best_params["lr"]
+    print(f"Best LR for GNS-Adam: {best_lr_gns}")
+
+    # --- Run Final Experiments with Best Hyperparameters ---
+    print("\n--- Running Final Comparison with Tuned Learning Rates ---")
     adam_history = run_experiment(
-        optim.Adam, model_adam, dl_train, dl_test, EPOCHS, lr=LEARNING_RATE
+        optim.Adam, model_prototype, dl_train, dl_test, EPOCHS, lr=best_lr_adam
     )
 
     print("\n--- Starting GNS-Adam Experiment ---")
     gns_adam_history = run_experiment(
-        GNSAdam, model_gns, dl_train, dl_test, EPOCHS, base_optimizer=optim.Adam, lr=LEARNING_RATE
+        GNSAdam, model_prototype, dl_train, dl_test, EPOCHS, base_optimizer=optim.Adam, lr=best_lr_gns
     )
 
     # --- Plot Results ---
     plt.figure(figsize=(10, 6))
-    plt.plot(adam_history, label="Adam", marker='o')
-    plt.plot(gns_adam_history, label="GNS-Adam", marker='x')
-    plt.title("Optimizer Comparison: Test Accuracy")
+    plt.plot(adam_history, label=f"Adam (lr={best_lr_adam:.4f})", marker='o')
+    plt.plot(gns_adam_history, label=f"GNS-Adam (lr={best_lr_gns:.4f})", marker='x')
+    plt.title("Tuned Optimizer Comparison: Test Accuracy")
     plt.xlabel("Epoch")
     plt.ylabel("Test Accuracy (%)")
     plt.legend()
