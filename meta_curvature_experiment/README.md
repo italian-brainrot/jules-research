@@ -13,24 +13,25 @@ An optimizer that adapts its learning rate based on the local curvature of the l
 3.  **Learning Rate Adaptation:** The learning rate of the base optimizer is updated at a fixed frequency (`update_freq`) according to the rule:
     `new_lr = initial_lr / (1 + alpha * trace_H)`
     where `trace_H` is the estimated Hessian trace, and `alpha` is a scaling hyperparameter.
-4.  **Comparison Setup:** The `MetaCurvatureLR(Adam)` optimizer was compared against a standard `Adam` optimizer. Both optimizers were used to train an identical MLP model on the `mnist1d` dataset. To ensure a fair comparison, both models were initialized with the same random weights, and the initial learning rate for both was set to `1e-3`.
+4.  **Comparison Setup:** The `MetaCurvatureLR(Adam)` optimizer was compared against a standard `Adam` optimizer. Both optimizers were used to train an identical MLP model on the `mnist1d` dataset.
+5.  **Hyperparameter Tuning:** To ensure a fair comparison, the learning rate for both optimizers was tuned using Optuna over 20 trials. The objective was to minimize the validation loss after 5 epochs. The best learning rates found were then used for the final comparison over 15 epochs.
 
 ## Results
 
-The experiment showed that the `MetaCurvatureLR(Adam)` optimizer performed significantly worse than the baseline Adam optimizer. The training and test losses were consistently higher, and the convergence was much slower.
+After tuning the learning rates, the experiment showed that the `MetaCurvatureLR(Adam)` optimizer still performed worse than the baseline Adam optimizer, although the difference was less pronounced than in the initial, untuned comparison. The standard Adam optimizer converged to a lower test loss than the meta-optimizer.
 
-![Loss Comparison Plot](loss_comparison.png)
+![Loss Comparison Plot after Tuning](loss_comparison_tuned.png)
 
-As seen in the plot, the standard Adam optimizer achieves a steadily decreasing loss, while the `MetaCurvatureLR` optimizer struggles to make progress and maintains a high loss throughout the training process.
+As seen in the plot, the standard Adam optimizer with a tuned learning rate achieves a lower final test loss compared to the `MetaCurvatureLR` optimizer with its tuned learning rate.
 
 ## Conclusion
 
-The initial hypothesis was not supported by the experimental results. The proposed method of adapting the learning rate based on the Hessian trace proved to be ineffective and detrimental to the training process.
+The hypothesis was not supported by the experimental results, even after a fairer comparison with tuned learning rates. The proposed method of adapting the learning rate based on the Hessian trace proved to be ineffective.
 
 Several factors could contribute to this failure:
 
-1.  **Noisy Curvature Estimates:** The Hessian trace estimate from Hutchinson's method can be very noisy, especially with a low number of samples (in this experiment, `n_hutchinson_samples=1`). This noise could lead to erratic and suboptimal learning rate adjustments.
-2.  **Oversimplified Update Rule:** The learning rate update formula is simple and may not correctly capture the complex relationship between curvature and the optimal step size. The hyperparameters (`alpha`, `update_freq`) were also not tuned, and their initial values may have been poor.
-3.  **Implementation Details:** The process of calculating higher-order derivatives for the Hessian trace estimation is computationally intensive and can be unstable. While the code ran, PyTorch issued a warning about potential memory leaks when using `loss.backward(create_graph=True)`, which was necessary for this approach.
+1.  **Noisy Curvature Estimates:** The Hessian trace estimate from Hutchinson's method can be very noisy, which could lead to erratic and suboptimal learning rate adjustments.
+2.  **Oversimplified Update Rule:** The learning rate update formula is simple and may not correctly capture the complex relationship between curvature and the optimal step size.
+3.  **Implementation Details:** The process of calculating higher-order derivatives for the Hessian trace estimation is computationally intensive and can be unstable.
 
-In summary, while the idea of adapting the learning rate to the loss landscape's curvature is appealing, this particular implementation was unsuccessful. Future work could explore more robust estimation techniques or more sophisticated learning rate adaptation rules.
+In summary, while the idea of adapting the learning rate to the loss landscape's curvature is appealing, this particular implementation was unsuccessful.
