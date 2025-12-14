@@ -68,7 +68,8 @@ def benchmark():
     }
 
     gp_solver_node = load_gp_solver()
-    print(f"Loaded GP Solver: x_k+1 = {gp_solver_node}")
+    # The GP solver is an additive update
+    print(f"Loaded GP Solver: x_k+1 = x_k + {gp_solver_node}")
 
     for n in matrix_sizes:
         # Generate a test problem
@@ -100,7 +101,11 @@ def benchmark():
         x_gp = np.zeros_like(b)
         start_time = time.time()
         for _ in range(25): # Same number of iterations as in fitness function
-             x_gp = gp_solver_iteration(gp_solver_node, A, b, x_gp)
+             update = gp_solver_iteration(gp_solver_node, A, b, x_gp)
+             # Handle potential instability
+             if np.isnan(update).any() or np.isinf(update).any():
+                 break
+             x_gp = x_gp + update
         gp_time = time.time() - start_time
         results['gp']['times'].append(gp_time)
         residual_gp = np.linalg.norm(A_sqrt @ x_gp - b) / np.linalg.norm(b)

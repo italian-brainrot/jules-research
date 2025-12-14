@@ -133,28 +133,35 @@ def tournament_selection(population, fitnesses):
 
 def generate_problem(n=10):
     A = np.random.rand(n, n)
-    A = np.dot(A, A.T) # ensure SPD
+    A = np.dot(A, A.T)  # ensure SPD
     b = np.random.rand(n)
-    # Calculate A^{-1/2}b for fitness evaluation
     eigvals, eigvecs = np.linalg.eigh(A)
     sqrt_eigvals = np.sqrt(eigvals)
-    A_sqrt_inv = eigvecs @ np.diag(1.0 / sqrt_eigvals) @ eigvecs.T
-    x_true = A_sqrt_inv @ b
-    return A, b, x_true
+    A_sqrt = eigvecs @ np.diag(sqrt_eigvals) @ eigvecs.T
+    return A, b, A_sqrt
 
 def fitness(individual, num_problems=5):
     total_error = 0
     for _ in range(num_problems):
-        A, b, x_true = generate_problem()
+        A, b, A_sqrt = generate_problem()
         x = np.zeros_like(b)
         try:
             for _ in range(MAX_ITERATIONS):
-                x = evaluate(individual, A, b, x)
+                # The GP evolves the UPDATE step, making it an additive update
+                update = evaluate(individual, A, b, x)
+                if np.isnan(update).any() or np.isinf(update).any():
+                    total_error += 1e6
+                    break
+                x = x + update
                 if np.isnan(x).any() or np.isinf(x).any():
                     total_error += 1e6
                     break
 
-            error = np.linalg.norm(x - x_true)
+            # Fitness is the final relative residual norm of the original problem
+            norm_b = np.linalg.norm(b)
+            if norm_b < 1e-10: # Avoid division by zero for near-zero vector
+                norm_b = 1.0
+            error = np.linalg.norm(A_sqrt @ x - b) / norm_b
             if np.isnan(error) or np.isinf(error):
                 error = 1e6
             total_error += error
@@ -166,37 +173,42 @@ def fitness(individual, num_problems=5):
 def main():
     population = [random_tree(MAX_DEPTH) for _ in range(POPULATION_SIZE)]
 
+    best_overall_solver = None
+    best_overall_fitness = -np.inf
+
     for gen in range(MAX_GENERATIONS):
         fitnesses = [fitness(ind) for ind in population]
 
-        best_fitness_idx = np.argmax(fitnesses)
-        best_individual = population[best_fitness_idx]
-        print(f"Generation {gen}: Best Fitness = {fitnesses[best_fitness_idx]}, Solver: x_k+1 = {best_individual}")
+        current_best_idx = np.argmax(fitnesses)
+        if fitnesses[current_best_idx] > best_overall_fitness:
+            best_overall_fitness = fitnesses[current_best_idx]
+            best_overall_solver = copy_tree(population[current_best_idx])
+
+        print(f"Generation {gen}: Best Fitness = {best_overall_fitness:.4f}, Solver: x_k+1 = x_k + {best_overall_solver}")
 
         selected_population = tournament_selection(population, fitnesses)
 
-        next_population = []
-        for i in range(0, POPULATION_SIZE, 2):
-            parent1 = selected_population[i]
-            parent2 = selected_population[i+1]
-            if random.random() < CROSSOVER_RATE:
-                child1, child2 = crossover(parent1, parent2)
-            else:
-                child1, child2 = parent1, parent2
+        # Elitism: the best solver survives to the next generation
+        next_population = [best_overall_solver]
 
-            next_population.append(mutate(child1))
-            next_population.append(mutate(child2))
+        # Fill the rest of the population
+        while len(next_population) < POPULATION_SIZE:
+            p1, p2 = random.sample(selected_population, 2)
+            if random.random() < CROSSOVER_RATE:
+                c1, c2 = crossover(p1, p2)
+            else:
+                c1, c2 = p1, p2
+
+            next_population.append(mutate(c1))
+            if len(next_population) < POPULATION_SIZE:
+                next_population.append(mutate(c2))
 
         population = next_population
 
-    fitnesses = [fitness(ind) for ind in population]
-    best_fitness_idx = np.argmax(fitnesses)
-    best_solver = population[best_fitness_idx]
-
-    print(f"\nBest solver found: x_k+1 = {best_solver}")
+    print(f"\nBest solver found: x_k+1 = x_k + {best_overall_solver}")
 
     with open('gp_sqrt_solver_experiment/best_solver.pkl', 'wb') as f:
-        pickle.dump(best_solver, f)
+        pickle.dump(best_overall_solver, f)
     print("Best solver saved to gp_sqrt_solver_experiment/best_solver.pkl")
 
 if __name__ == "__main__":

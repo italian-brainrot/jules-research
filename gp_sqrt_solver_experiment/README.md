@@ -3,38 +3,35 @@
 
 This experiment aimed to discover a matrix-free and decomposition-free iterative solver for the linear system $A^{1/2}x = b$, where $A$ is a symmetric positive-definite (SPD) matrix, using genetic programming (GP).
 
-## Methodology
+## Methodology (Attempt 3)
 
-A tree-based genetic programming system was developed to evolve mathematical expressions representing iterative updates of the form $x_{k+1} = f(A, b, x_k)$. The components of the GP system were:
+After a code review revealed an inconsistency between the documented fitness metric and the implementation, a third and final experiment was run. The methodology is identical to Attempt 2, but with the fitness function in the code corrected to use the **relative residual norm**, ensuring the experiment is consistent with its documentation.
 
-- **Terminals:** `x` (the current iterate), `b` (the right-hand side vector).
-- **Operators:** `+`, `-`, `*` (element-wise), and `A*` (matrix-vector product with A).
-- **Fitness Function:** The fitness of a candidate solver was evaluated based on the final residual norm $\|x_{true} - x_N\|$, where $x_{true} = A^{-1/2}b$ and $N=25$ is the number of iterations. The fitness was averaged over several randomly generated SPD matrices.
-- **Evolution:** A population of solvers was evolved over 20 generations using tournament selection, crossover, and mutation.
+- **Update Rule Structure:** `x_{k+1} = x_k + f(A, b, x_k)`.
+- **Fitness Function:** The fitness metric is the final **relative residual norm** `||A^{1/2}x_N - b|| / ||b||`. This was corrected from the absolute norm used in the previous attempt.
+- **Elitism:** The best-performing solver from each generation advances to the next.
 
-The best-evolved solver from the GP training phase was then benchmarked against two standard methods:
-1. **Eigendecomposition:** A direct method that computes $A^{-1/2}$ via the eigendecomposition of A.
-2. **Conjugate Gradient (CG):** An iterative method applied to the transformed system $Ax = A^{1/2}b$.
+The corrected GP system was re-run to evolve a new solver, which was benchmarked against the same baseline methods.
 
-The comparison was performed on random SPD matrices of increasing size, from 10x10 to 200x200.
+## Evolved Solver (Attempt 3)
 
-## Evolved Solver
+The best solver discovered by the corrected genetic programming algorithm was:
+`x_k+1 = x_k + A*(x)`
 
-The best solver discovered by the genetic programming algorithm was:
-`x_k+1 = (x - ((b + x) * (x - (A*((x * b)) * x))))`
+## Results (Attempt 3)
 
-## Results
-
-The performance of the solvers was measured in terms of execution time and final relative residual norm, $\|A^{1/2}x - b\| / \|b\|$.
+The performance of the new solver was measured and compared.
 
 ![Solver Comparison](solver_comparison.png)
 
 ### Analysis
 
-- **Accuracy:** The GP-evolved solver failed to converge to the correct solution. Its residual norm remained at 1.0, indicating it made no progress from the initial guess of $x_0=0$. In contrast, both eigendecomposition and Conjugate Gradient achieved high accuracy, with residuals on the order of $10^{-14}$ and $10^{-3}$ to $10^{-9}$, respectively.
+- **Accuracy:** Despite the significant improvements to the GP framework, the newly evolved solver **still failed to converge**. Its residual norm remained at 1.0 for all problem sizes, indicating that it made no progress from the initial guess of `x_0=0`. The baseline methods performed as expected, achieving high accuracy.
 
-- **Execution Time:** The GP solver was very fast, but its speed is irrelevant due to its complete lack of accuracy. The eigendecomposition method was the fastest for small matrices, while CG became more competitive as the matrix size increased.
+- **Execution Time:** The GP solver remained computationally cheap, but its failure to converge makes its speed irrelevant.
 
 ## Conclusion
 
-The experiment was unsuccessful in finding a viable solver for $A^{1/2}x = b$ through genetic programming. The evolved expressions, while syntactically valid, did not represent convergent iterative methods. This suggests that the search space of simple mathematical expressions is not well-suited for discovering complex numerical algorithms like this, or that the fitness landscape is too difficult for a simple GP system to navigate effectively. The strong performance of established methods like CG highlights the difficulty of discovering such sophisticated algorithms automatically.
+The second, more refined attempt to discover a solver for $A^{1/2}x = b$ using genetic programming was also unsuccessful. The modifications to the GP system—forcing an additive update structure, using a more appropriate fitness metric, and implementing elitism—were not sufficient to overcome the fundamental difficulty of the problem.
+
+This reinforces the initial conclusion: the automatic discovery of sophisticated, stable numerical algorithms is an exceptionally challenging task. The search space is vast, and the fitness landscape is likely fraught with non-convergent solutions that are difficult for a simple evolutionary algorithm to navigate away from. Established methods like Conjugate Gradient are the product of deep mathematical insight, which is not easily replicated by a brute-force symbolic search.
