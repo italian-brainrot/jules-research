@@ -15,35 +15,20 @@ def inv_sqrt_svd(A):
     U, s, Vh = svd(A)
     return U @ np.diag(1.0 / np.sqrt(s)) @ Vh
 
-def inv_sqrt_taylor(A, num_terms=20):
+def inv_sqrt_newton(A, num_iter=20):
     """
-    Computes the inverse square root of a symmetric matrix using a Taylor series expansion.
+    Computes the inverse square root of a symmetric matrix using the Newton-Raphson method.
     """
     I = np.eye(A.shape[0])
 
-    vals = np.linalg.eigvalsh(A)
-    lambda_min, lambda_max = vals[0], vals[-1]
+    lambda_max = np.linalg.eigvalsh(A)[-1]
 
-    if np.allclose(lambda_min, 1.0) and np.allclose(lambda_max, 1.0):
-        return I
+    X = I / np.sqrt(lambda_max)
 
-    c = (lambda_max + lambda_min) / 2
-    d = (lambda_max - lambda_min) / 2
+    for _ in range(num_iter):
+        X = 0.5 * X @ (3 * I - A @ X @ X)
 
-    if np.isclose(d, 0):
-        return I / np.sqrt(c)
-
-    B = (A - c * I) / d
-    B_prime = -(d/c) * B
-
-    inv_sqrt_B_prime = I
-    term = I
-    for i in range(1, num_terms):
-        term = term @ B_prime * (2 * i - 1) / (2 * i)
-        inv_sqrt_B_prime += term
-
-    return inv_sqrt_B_prime / np.sqrt(c)
-
+    return X
 
 def generate_spd_matrix(n):
     """Generates a symmetric positive-definite matrix of size n x n."""
@@ -53,14 +38,14 @@ def generate_spd_matrix(n):
 def benchmark():
     """Benchmarks the implemented algorithms."""
     matrix_sizes = [10, 20, 50, 100, 200, 500]
-    num_terms_list = [5, 10, 20, 40]
+    num_iter_list = [5, 10, 20]
 
     results = {
         'eig': {'times': [], 'errors': []},
         'svd': {'times': [], 'errors': []},
     }
-    for num_terms in num_terms_list:
-        results[f'taylor_{num_terms}'] = {'times': [], 'errors': []}
+    for num_iter in num_iter_list:
+        results[f'newton_{num_iter}'] = {'times': [], 'errors': []}
 
     for n in matrix_sizes:
         print(f"Benchmarking for matrix size: {n}x{n}")
@@ -81,23 +66,21 @@ def benchmark():
         results['svd']['times'].append(end_time - start_time)
         results['svd']['errors'].append(np.linalg.norm(inv_sqrt_A_svd @ inv_sqrt_A_svd - A_inv))
 
-        # Benchmark taylor
-        for num_terms in num_terms_list:
+        # Benchmark newton
+        for num_iter in num_iter_list:
             start_time = time.time()
-            inv_sqrt_A_taylor = inv_sqrt_taylor(A, num_terms=num_terms)
+            inv_sqrt_A_newton = inv_sqrt_newton(A, num_iter=num_iter)
             end_time = time.time()
-            results[f'taylor_{num_terms}']['times'].append(end_time - start_time)
-            results[f'taylor_{num_terms}']['errors'].append(np.linalg.norm(inv_sqrt_A_taylor @ inv_sqrt_A_taylor - A_inv))
+            results[f'newton_{num_iter}']['times'].append(end_time - start_time)
+            results[f'newton_{num_iter}']['errors'].append(np.linalg.norm(inv_sqrt_A_newton @ inv_sqrt_A_newton - A_inv))
 
     return matrix_sizes, results
 
 def plot_results(matrix_sizes, results):
     """Plots the benchmarking results."""
 
-    # Create a directory to save the plots
     script_dir = os.path.dirname(os.path.abspath(__file__))
 
-    # Plot execution times
     plt.figure(figsize=(10, 6))
     for method, data in results.items():
         plt.plot(matrix_sizes, data['times'], marker='o', label=method)
@@ -108,7 +91,6 @@ def plot_results(matrix_sizes, results):
     plt.grid(True)
     plt.savefig(os.path.join(script_dir, "execution_times.png"))
 
-    # Plot reconstruction errors (log scale)
     plt.figure(figsize=(10, 6))
     for method, data in results.items():
         plt.plot(matrix_sizes, data['errors'], marker='o', label=method)
