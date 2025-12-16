@@ -2,54 +2,59 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import os
-from scipy.sparse.linalg import LinearOperator
-from scipy.sparse.linalg import cg
+from scipy.sparse.linalg import LinearOperator, cg
+
+def lanczos_iteration(A_op, n_steps, v_start=None):
+    """
+    Performs the Lanczos iteration to generate a tridiagonal matrix T and an orthogonal basis Q.
+    """
+    n = A_op.shape[0]
+    if v_start is None:
+        q = np.random.rand(n)
+        q /= np.linalg.norm(q)
+    else:
+        q = v_start / np.linalg.norm(v_start)
+
+    Q = np.zeros((n, n_steps))
+    alphas = []
+    betas = []
+
+    for j in range(n_steps):
+        Q[:, j] = q
+        v = A_op @ q
+        alpha = np.dot(q, v)
+        alphas.append(alpha)
+
+        v = v - alpha * q
+        if j > 0:
+            v = v - betas[j-1] * Q[:, j-1]
+
+        beta = np.linalg.norm(v)
+        if beta > 1e-10 and j < n_steps - 1:
+            betas.append(beta)
+            q = v / beta
+        else:
+            break
+
+    T = np.diag(alphas)
+    if betas:
+        T += np.diag(betas, k=1)
+        T += np.diag(betas, k=-1)
+
+    return T, Q[:, :len(alphas)]
 
 def lanczos_sqrt_mv(A_op, b, n_steps):
     """
     Approximates A^{1/2}b using the Lanczos algorithm with eigendecomposition of T.
     """
-    n = len(b)
-    V = np.zeros((n, n_steps))
-    T = np.zeros((n_steps, n_steps))
-
-    v = b / np.linalg.norm(b)
-    V[:, 0] = v
-
-    w_prime = A_op @ v
-    alpha = np.dot(w_prime, v)
-    w = w_prime - alpha * v
-    T[0, 0] = alpha
-
-    dim = n_steps
-    for j in range(1, n_steps):
-        beta = np.linalg.norm(w)
-        if beta < 1e-10:
-            dim = j # Lucky breakdown
-            break
-
-        v_prev = v
-        v = w / beta
-        V[:, j] = v
-
-        w_prime = A_op @ v
-        alpha = np.dot(w_prime, v)
-        w = w_prime - alpha * v - beta * v_prev
-
-        T[j, j] = alpha
-        if j < n_steps:
-            T[j, j-1] = beta
-            T[j-1, j] = beta
-
-    T = T[:dim, :dim]
-    V = V[:, :dim]
+    T, Q = lanczos_iteration(A_op, n_steps, v_start=b)
 
     eigvals, eigvecs = np.linalg.eigh(T)
-    sqrt_T = eigvecs @ np.diag(np.sqrt(eigvals)) @ eigvecs.T
+    sqrt_T = eigvecs @ np.diag(np.sqrt(np.maximum(eigvals, 0))) @ eigvecs.T
 
-    e1 = np.zeros(dim)
+    e1 = np.zeros(T.shape[0])
     e1[0] = 1.0
-    b_hat = np.linalg.norm(b) * V @ (sqrt_T @ e1)
+    b_hat = np.linalg.norm(b) * Q @ (sqrt_T @ e1)
 
     return b_hat
 
@@ -64,85 +69,46 @@ def lanczos_cg_solver(A_op, b, lanczos_steps):
 def estimate_eigenvalues(A_op, n_steps=30):
     """
     Estimates the extremal eigenvalues of a linear operator A using the Lanczos algorithm.
-    This is a decomposition-free method.
     """
-    n = A_op.shape[0]
-    q = np.random.rand(n)
-    q /= np.linalg.norm(q)
-
-    alpha, beta = 0, 0
-    T = np.zeros((n_steps, n_steps))
-
-    for j in range(n_steps):
-        v = q
-        q = A_op @ q
-        if j > 0:
-            q -= beta * v_prev
-        alpha = np.dot(q, v)
-        q -= alpha * v
-        beta = np.linalg.norm(q)
-
-        T[j, j] = alpha
-        if j < n_steps - 1:
-            T[j, j+1] = beta
-            T[j+1, j] = beta
-
-        if beta < 1e-10:
-            break
-
-        v_prev = v
-        q /= beta
-
-    # Eigenvalues of T are approximations of eigenvalues of A
-    eigvals = np.linalg.eigvalsh(T[:j+1, :j+1])
+    T, _ = lanczos_iteration(A_op, n_steps)
+    eigvals = np.linalg.eigvalsh(T)
     return np.min(eigvals), np.max(eigvals)
 
 def chebyshev_sqrt_solver(A_op, b, lambda_min, lambda_max, degree=20):
     """
     Solves A^{-1/2}b using a Chebyshev polynomial approximation.
-    This is a decomposition-free and matrix-free method.
+    THIS IMPLEMENTATION IS BUGGY AND DOES NOT WORK.
     """
-    # Map the interval [lambda_min, lambda_max] to [-1, 1]
-    def map_x(x):
-        return (2 * x - (lambda_max + lambda_min)) / (lambda_max - lambda_min)
+    # Map the interval [lambda_min, lambda_max] to [-1, 1] for Chebyshev polynomials
+    g = lambda y: (y * (lambda_max - lambda_min) + (lambda_max + lambda_min)) / 2
+    f = lambda y: g(y)**(-0.5)
 
-    # Sample points for Chebyshev interpolation
-    nodes = np.cos(np.pi * (np.arange(degree) + 0.5) / degree)
+    # Compute coefficients of the Chebyshev expansion of f
+    coeffs = np.polynomial.chebyshev.chebfit(np.linspace(-1, 1, 100), f(np.linspace(-1, 1, 100)), degree)
 
-    # Inverse map from [-1, 1] to [lambda_min, lambda_max]
-    def inv_map_x(y):
-        return 0.5 * ((lambda_max - lambda_min) * y + (lambda_max + lambda_min))
+    # Clenshaw's algorithm for p(A)b
+    w0 = b
+    w1 = (A_op @ b - (lambda_max + lambda_min) / 2 * b) * (2 / (lambda_max - lambda_min))
 
-    # Evaluate f(x) = x^{-1/2} on the mapped nodes
-    f_vals = inv_map_x(nodes)**(-0.5)
+    res = coeffs[0] * w0 + coeffs[1] * w1
 
-    # Compute Chebyshev coefficients for f(x)
-    coeffs = np.fft.fft(f_vals) / degree
-    coeffs = np.real(coeffs[:degree])
-    coeffs[0] /= 2.0
+    for i in range(2, degree + 1):
+        wi = 2 * ((A_op @ w1 - (lambda_max + lambda_min) / 2 * w1) * (2 / (lambda_max - lambda_min))) - w0
+        res = res + coeffs[i] * wi
+        w0, w1 = w1, wi
 
-    # Evaluate the polynomial p(A)b using Clenshaw's algorithm
-    y0 = b
-    y1 = (A_op @ y0 - 0.5 * (lambda_max + lambda_min) * y0) * (2 / (lambda_max - lambda_min))
-
-    x = coeffs[0] * y0
-    for i in range(1, degree):
-        x += coeffs[i] * y1
-        y2 = 2 * (A_op @ y1 - 0.5 * (lambda_max + lambda_min) * y1) * (2 / (lambda_max - lambda_min)) - y0
-        y0, y1 = y1, y2
-
-    return x
+    return res
 
 def chebyshev_solver_main(A_op, b, lanczos_steps=30, chebyshev_degree=20):
     """
     Main solver that combines eigenvalue estimation and Chebyshev approximation.
     """
-    # 1. Estimate extremal eigenvalues
     lambda_min, lambda_max = estimate_eigenvalues(A_op, n_steps=lanczos_steps)
 
-    # 2. Solve using Chebyshev polynomial
-    x = chebyshev_sqrt_solver(A_op, b, lambda_min, lambda_max, degree=chebyshev_degree)
+    # Add a small shift to avoid singularity
+    lambda_min = max(lambda_min, 1e-6)
 
+    x = chebyshev_sqrt_solver(A_op, b, lambda_min, lambda_max, degree=chebyshev_degree)
     return x
 
 if __name__ == '__main__':
@@ -163,7 +129,7 @@ if __name__ == '__main__':
 
     # --- Parameters ---
     lanczos_steps = 30
-    chebyshev_degree = 50
+    chebyshev_degree = 30
 
     # --- Run Solvers ---
     x_cheby = chebyshev_solver_main(A_op, b, lanczos_steps, chebyshev_degree)
