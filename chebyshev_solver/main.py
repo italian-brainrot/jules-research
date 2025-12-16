@@ -3,6 +3,63 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 from scipy.sparse.linalg import LinearOperator
+from scipy.sparse.linalg import cg
+
+def lanczos_sqrt_mv(A_op, b, n_steps):
+    """
+    Approximates A^{1/2}b using the Lanczos algorithm with eigendecomposition of T.
+    """
+    n = len(b)
+    V = np.zeros((n, n_steps))
+    T = np.zeros((n_steps, n_steps))
+
+    v = b / np.linalg.norm(b)
+    V[:, 0] = v
+
+    w_prime = A_op @ v
+    alpha = np.dot(w_prime, v)
+    w = w_prime - alpha * v
+    T[0, 0] = alpha
+
+    dim = n_steps
+    for j in range(1, n_steps):
+        beta = np.linalg.norm(w)
+        if beta < 1e-10:
+            dim = j # Lucky breakdown
+            break
+
+        v_prev = v
+        v = w / beta
+        V[:, j] = v
+
+        w_prime = A_op @ v
+        alpha = np.dot(w_prime, v)
+        w = w_prime - alpha * v - beta * v_prev
+
+        T[j, j] = alpha
+        if j < n_steps:
+            T[j, j-1] = beta
+            T[j-1, j] = beta
+
+    T = T[:dim, :dim]
+    V = V[:, :dim]
+
+    eigvals, eigvecs = np.linalg.eigh(T)
+    sqrt_T = eigvecs @ np.diag(np.sqrt(eigvals)) @ eigvecs.T
+
+    e1 = np.zeros(dim)
+    e1[0] = 1.0
+    b_hat = np.linalg.norm(b) * V @ (sqrt_T @ e1)
+
+    return b_hat
+
+def lanczos_cg_solver(A_op, b, lanczos_steps):
+    """
+    Solves Ax = A^{1/2}b using Lanczos approximation and CG.
+    """
+    b_hat = lanczos_sqrt_mv(A_op, b, n_steps=lanczos_steps)
+    x, info = cg(A_op, b_hat)
+    return x
 
 def estimate_eigenvalues(A_op, n_steps=30):
     """
@@ -108,25 +165,27 @@ if __name__ == '__main__':
     lanczos_steps = 30
     chebyshev_degree = 50
 
-    # --- Run Solver ---
+    # --- Run Solvers ---
     x_cheby = chebyshev_solver_main(A_op, b, lanczos_steps, chebyshev_degree)
+    x_cg = lanczos_cg_solver(A_op, b, lanczos_steps)
 
-    # --- Baseline ---
-    # For comparison, compute the true solution using decomposition
+    # --- Baseline (True Solution) ---
     from scipy.linalg import sqrtm
     A_sqrt_inv = np.linalg.inv(sqrtm(A))
     x_true = A_sqrt_inv @ b
 
     # --- Error Calculation ---
-    error = np.linalg.norm(x_cheby - x_true) / np.linalg.norm(x_true)
-    print(f"Relative error of Chebyshev solver: {error:.6f}")
+    error_cheby = np.linalg.norm(x_cheby - x_true) / np.linalg.norm(x_true)
+    error_cg = np.linalg.norm(x_cg - x_true) / np.linalg.norm(x_true)
+    print(f"Relative error of Chebyshev solver: {error_cheby:.6f}")
+    print(f"Relative error of Lanczos-CG solver: {error_cg:.6f}")
 
     # --- Plotting ---
-    # We will plot the solution vectors for a visual comparison
     plt.figure(figsize=(10, 6))
     plt.plot(x_true, label='True Solution', linestyle='--')
-    plt.plot(x_cheby, label='Chebyshev Approx.', alpha=0.7)
-    plt.title('Comparison of True vs. Chebyshev Solution')
+    plt.plot(x_cheby, label=f'Chebyshev (err={error_cheby:.4f})', alpha=0.8)
+    plt.plot(x_cg, label=f'Lanczos-CG (err={error_cg:.4f})', alpha=0.6)
+    plt.title('Comparison of Solver Solutions')
     plt.xlabel('Vector Component Index')
     plt.ylabel('Value')
     plt.legend()
