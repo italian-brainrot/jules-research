@@ -1,90 +1,81 @@
 import torch
 from torch.optim.optimizer import Optimizer
-from collections import deque
+import collections
 
 class GPE(Optimizer):
-    """
-    Gradient Polynomial Extrapolation (GPE) Optimizer.
-
-    This optimizer wraps a base optimizer and uses polynomial extrapolation on the
-    gradient history to potentially accelerate convergence.
-    """
-    def __init__(self, params, base_optimizer, history_size=10, degree=2, alpha=0.5):
-        """
-        Initializes the GPE optimizer.
-
-        Args:
-            params: Iterable of parameters to optimize or dicts defining parameter groups.
-            base_optimizer: The base optimizer (e.g., Adam, SGD).
-            history_size (int): The number of past gradients to use for extrapolation.
-            degree (int): The degree of the polynomial to fit.
-            alpha (float): The interpolation factor between the current gradient
-                           and the extrapolated gradient. 0.0 means only the current
-                           gradient is used, 1.0 means only the extrapolation is used.
-        """
-        if not 0.0 <= alpha <= 1.0:
-            raise ValueError(f"Invalid alpha: {alpha}")
-        if not history_size >= degree + 1:
-            raise ValueError("History size must be at least degree + 1")
-
-        defaults = dict(history_size=history_size, degree=degree, alpha=alpha)
-        super(GPE, self).__init__(params, defaults)
+    def __init__(self, base_optimizer, history_size=10, degree=2):
+        if not 0 <= degree <= history_size - 1:
+            raise ValueError("Degree must be between 0 and history_size - 1.")
 
         self.base_optimizer = base_optimizer
+        self.history_size = history_size
+        self.degree = degree
         self.param_groups = self.base_optimizer.param_groups
+        self.state = collections.defaultdict(lambda: collections.deque(maxlen=self.history_size))
+        self.defaults = base_optimizer.defaults
 
-        for group in self.param_groups:
-            group.setdefault('history_size', history_size)
-            group.setdefault('degree', degree)
-            group.setdefault('alpha', alpha)
-            for p in group['params']:
-                self.state[p]['grad_history'] = deque(maxlen=group['history_size'])
-
-    @torch.no_grad()
     def step(self, closure=None):
-        """
-        Performs a single optimization step.
+        loss = None
+        if closure is not None:
+            loss = closure()
 
-        Args:
-            closure (callable, optional): A closure that re-evaluates the model
-                                          and returns the loss.
-        """
         for group in self.param_groups:
-            degree = group['degree']
-            alpha = group['alpha']
-            history_size = group['history_size']
-
             for p in group['params']:
                 if p.grad is None:
                     continue
 
+                grad = p.grad.data
                 state = self.state[p]
-                grad_history = state['grad_history']
 
-                grad_history.append(p.grad.data.clone())
+                # Store a clone of the gradient
+                state.append(grad.clone())
 
-                if len(grad_history) == history_size:
-                    # 1. Prepare data for polynomial fitting
-                    y = torch.stack(list(grad_history))
-                    y_flat = y.view(history_size, -1)
+                if len(state) == self.history_size:
+                    # History is full, perform extrapolation
+                    history = torch.stack(list(state))
 
-                    x = torch.arange(history_size, device=y.device, dtype=y.dtype)
+                    # Timestamps for fitting
+                    t = torch.arange(self.history_size, device=history.device, dtype=history.dtype)
 
-                    # 2. Fit polynomial coefficients using least squares
-                    V = torch.vander(x, N=degree + 1)
-                    try:
-                        coeffs = torch.linalg.lstsq(V, y_flat).solution
-                    except torch.linalg.LinAlgError:
-                        continue
+                    # Fit polynomial and extrapolate
+                    # We need to do this for each element of the gradient tensor
+                    # Reshape to (history_size, num_elements)
+                    history_flat = history.view(self.history_size, -1)
 
-                    # 3. Extrapolate to the next time step
-                    x_next = torch.tensor(history_size, device=y.device, dtype=y.dtype)
-                    x_next_powers = x_next.pow(torch.arange(degree, -1, -1, device=y.device, dtype=y.dtype))
+                    coeffs = torch.zeros(history_flat.shape[1], self.degree + 1, device=history.device, dtype=history.dtype)
 
-                    extrapolated_flat = x_next_powers @ coeffs
-                    extrapolated_grad = extrapolated_flat.view_as(p.grad.data)
+                    # Use torch.linalg.lstsq for efficient batched polyfit
+                    # Vandermonde matrix for timestamps
+                    vander_t = torch.vander(t, N=self.degree + 1)
 
-                    # 4. Apply the update as a weighted average to the gradient
-                    p.grad.data.add_(extrapolated_grad - p.grad.data, alpha=alpha)
+                    # Solve for coefficients for all gradient elements at once
+                    # coeffs shape: (degree+1, num_elements)
+                    coeffs = torch.linalg.lstsq(vander_t, history_flat).solution
 
-        return self.base_optimizer.step(closure)
+                    # Extrapolate to the next time step (t = history_size)
+                    next_t_powers = torch.pow(torch.tensor(self.history_size, device=history.device, dtype=history.dtype), torch.arange(self.degree, -1, -1, device=history.device, dtype=history.dtype))
+
+                    # Calculate extrapolated gradient
+                    # (num_elements, degree+1) @ (degree+1,) -> (num_elements,)
+                    extrapolated_grad_flat = torch.matmul(coeffs.T, next_t_powers)
+
+                    # Reshape back to original gradient shape
+                    extrapolated_grad = extrapolated_grad_flat.view_as(grad)
+
+                    # Replace the current gradient with the extrapolated one
+                    p.grad.data = extrapolated_grad
+
+        self.base_optimizer.step()
+        return loss
+
+    def zero_grad(self, set_to_none: bool = False):
+        self.base_optimizer.zero_grad(set_to_none=set_to_none)
+
+    def add_param_group(self, param_group):
+        self.base_optimizer.add_param_group(param_group)
+
+    def load_state_dict(self, state_dict):
+        self.base_optimizer.load_state_dict(state_dict)
+
+    def state_dict(self):
+        return self.base_optimizer.state_dict()

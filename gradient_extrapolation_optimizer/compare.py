@@ -1,124 +1,177 @@
 import torch
 import torch.nn as nn
-from light_dataloader import TensorDataLoader
-from mnist1d.data import make_dataset, get_dataset_args
-import matplotlib.pyplot as plt
-import copy
-import os
+import torch.optim as optim
+import mnist1d
+from light_dataloader import TensorDataLoader as DataLoader
 import optuna
+import matplotlib.pyplot as plt
+import numpy as np
+import os
 
 from optimizer import GPE
 
-# --- 1. Dataset Setup ---
-defaults = get_dataset_args()
-defaults.num_samples = 10000
-data = make_dataset(defaults)
+# --- Model Definition ---
+class MLP(nn.Module):
+    def __init__(self, input_size=40, hidden_size=128, output_size=10):
+        super(MLP, self).__init__()
+        self.fc1 = nn.Linear(input_size, hidden_size)
+        self.relu = nn.ReLU()
+        self.fc2 = nn.Linear(hidden_size, output_size)
 
-X_train, y_train = torch.tensor(data['x'], dtype=torch.float32), torch.tensor(data['y'], dtype=torch.long)
-X_test, y_test = torch.tensor(data["x_test"], dtype=torch.float32), torch.tensor(data['y_test'], dtype=torch.long)
+    def forward(self, x):
+        x = self.fc1(x)
+        x = self.relu(x)
+        x = self.fc2(x)
+        return x
 
-dl_train = TensorDataLoader((X_train, y_train), batch_size=256, shuffle=True)
-dl_test = TensorDataLoader((X_test, y_test), batch_size=1024)
+# --- Data Loading ---
+def get_data():
+    args = mnist1d.data.get_dataset_args()
+    data = mnist1d.data.get_dataset(args)
+    # Convert to float32
+    data['x'] = data['x'].astype(np.float32)
+    data['x_test'] = data['x_test'].astype(np.float32)
+    data['y'] = data['y'].astype(np.int64)
+    data['y_test'] = data['y_test'].astype(np.int64)
 
-# --- 2. Model Definition ---
-def create_model():
-    return nn.Sequential(
-        nn.Linear(X_train.shape[1], 128),
-        nn.ReLU(),
-        nn.Linear(128, 10)
+    # Create TensorDataLoaders
+    train_loader = DataLoader(
+        (torch.from_numpy(data['x']), torch.from_numpy(data['y'])),
+        batch_size=128,
+        shuffle=True
     )
+    val_loader = DataLoader(
+        (torch.from_numpy(data['x_test']), torch.from_numpy(data['y_test'])),
+        batch_size=128,
+        shuffle=False
+    )
+    return train_loader, val_loader
 
-# --- 3. Training and Evaluation Loop ---
-def train_and_evaluate(optimizer, model, epochs=50):
+# --- Training and Evaluation ---
+def train_model(model, optimizer, train_loader, criterion, device):
+    model.train()
+    total_loss = 0
+    for x_batch, y_batch in train_loader:
+        x_batch, y_batch = x_batch.to(device), y_batch.to(device)
+
+        optimizer.zero_grad()
+        outputs = model(x_batch)
+        loss = criterion(outputs, y_batch)
+        loss.backward()
+        optimizer.step()
+
+        total_loss += loss.item()
+    return total_loss / len(train_loader)
+
+def evaluate_model(model, val_loader, criterion, device):
+    model.eval()
+    total_loss = 0
+    with torch.no_grad():
+        for x_batch, y_batch in val_loader:
+            x_batch, y_batch = x_batch.to(device), y_batch.to(device)
+            outputs = model(x_batch)
+            loss = criterion(outputs, y_batch)
+            total_loss += loss.item()
+    return total_loss / len(val_loader)
+
+# --- Optuna Objective ---
+def objective(trial, optimizer_name, device, train_loader, val_loader):
+    model = MLP().to(device)
     criterion = nn.CrossEntropyLoss()
-    val_losses = []
 
-    for epoch in range(epochs):
-        model.train()
-        for inputs, targets in dl_train:
-            optimizer.zero_grad()
-            outputs = model(inputs)
-            loss = criterion(outputs, targets)
-            loss.backward()
-            optimizer.step()
-
-        model.eval()
-        total_loss = 0
-        with torch.no_grad():
-            for inputs, targets in dl_test:
-                outputs = model(inputs)
-                loss = criterion(outputs, targets)
-                total_loss += loss.item() * inputs.size(0)
-
-        val_loss = total_loss / len(dl_test.data[0])
-        val_losses.append(val_loss)
-        # Suppress printing during tuning
-        if 'TUNE' not in os.environ:
-            print(f"Epoch {epoch+1}/{epochs}, Val Loss: {val_loss:.4f}")
-
-    return val_losses
-
-# --- 4. Optuna Objective Function ---
-def objective(trial, optimizer_name, initial_model):
-    model = copy.deepcopy(initial_model)
     lr = trial.suggest_float('lr', 1e-5, 1e-1, log=True)
 
-    if optimizer_name == 'Adam':
-        optimizer = torch.optim.Adam(model.parameters(), lr=lr)
-    elif optimizer_name == 'GPE(Adam)':
-        base_optimizer = torch.optim.Adam(model.parameters(), lr=lr)
-        optimizer = GPE(model.parameters(), base_optimizer, history_size=10, degree=2, alpha=0.4)
-    else:
-        raise ValueError("Unknown optimizer")
+    if optimizer_name == 'GPE':
+        history_size = trial.suggest_int('history_size', 5, 15)
+        # Ensure degree is valid
+        max_degree = history_size - 1
+        degree = trial.suggest_int('degree', 1, max_degree)
+        base_optimizer = optim.Adam(model.parameters(), lr=lr)
+        optimizer = GPE(base_optimizer, history_size=history_size, degree=degree)
+    else: # Adam
+        optimizer = optim.Adam(model.parameters(), lr=lr)
 
-    # Use fewer epochs for tuning to save time
-    val_losses = train_and_evaluate(optimizer, model, epochs=20)
-    return min(val_losses) # Return the best validation loss
+    epochs = 15 # Reduced epochs for faster tuning
+    for epoch in range(epochs):
+        train_loss = train_model(model, optimizer, train_loader, criterion, device)
+        val_loss = evaluate_model(model, val_loader, criterion, device)
 
-# --- 5. Optimizer Comparison ---
-if __name__ == "__main__":
-    # Ensure fair comparison by starting with the same initial weights
-    initial_model = create_model()
+    trial.report(val_loss, epoch)
+    if trial.should_prune():
+        raise optuna.exceptions.TrialPruned()
 
-    # --- Hyperparameter Tuning ---
-    os.environ['TUNE'] = '1' # Set flag to suppress printing
-    print("--- Tuning Adam ---")
-    study_adam = optuna.create_study(direction='minimize')
-    study_adam.optimize(lambda trial: objective(trial, 'Adam', initial_model), n_trials=20)
-    best_lr_adam = study_adam.best_params['lr']
-    print(f"Best LR for Adam: {best_lr_adam:.6f}")
+    return val_loss
 
-    print("\n--- Tuning GPE(Adam) ---")
+# --- Main Comparison ---
+def main():
+    device = torch.device("cpu")
+    train_loader, val_loader = get_data()
+
+    # --- Tune GPE(Adam) ---
     study_gpe = optuna.create_study(direction='minimize')
-    study_gpe.optimize(lambda trial: objective(trial, 'GPE(Adam)', initial_model), n_trials=20)
-    best_lr_gpe = study_gpe.best_params['lr']
-    print(f"Best LR for GPE(Adam): {best_lr_gpe:.6f}")
-    del os.environ['TUNE'] # Unset flag
+    study_gpe.optimize(lambda t: objective(t, 'GPE', device, train_loader, val_loader), n_trials=30)
+    best_params_gpe = study_gpe.best_params
+    print(f"Best GPE params: {best_params_gpe}")
 
-    # --- Final Comparison with Optimal LRs ---
-    print("\n--- Training with Adam (Optimal LR) ---")
-    model_adam = copy.deepcopy(initial_model)
-    optimizer_adam = torch.optim.Adam(model_adam.parameters(), lr=best_lr_adam)
-    losses_adam = train_and_evaluate(optimizer_adam, model_adam)
+    # --- Tune Adam ---
+    study_adam = optuna.create_study(direction='minimize')
+    study_adam.optimize(lambda t: objective(t, 'Adam', device, train_loader, val_loader), n_trials=30)
+    best_params_adam = study_adam.best_params
+    print(f"Best Adam params: {best_params_adam}")
 
-    print("\n--- Training with GPE(Adam) (Optimal LR) ---")
-    model_gpe = copy.deepcopy(initial_model)
-    base_optimizer_gpe = torch.optim.Adam(model_gpe.parameters(), lr=best_lr_gpe)
-    optimizer_gpe = GPE(model_gpe.parameters(), base_optimizer_gpe, history_size=10, degree=2, alpha=0.4)
-    losses_gpe = train_and_evaluate(optimizer_gpe, model_gpe)
+    # --- Run Final Comparison ---
+    epochs = 50
 
-    # --- 6. Plotting Results ---
-    plt.figure(figsize=(10, 6))
-    plt.plot(losses_adam, label=f'Adam (LR={best_lr_adam:.4f})')
-    plt.plot(losses_gpe, label=f'GPE(Adam) (LR={best_lr_gpe:.4f})')
+    # GPE Model
+    model_gpe = MLP().to(device)
+    base_optimizer_gpe = optim.Adam(model_gpe.parameters(), lr=best_params_gpe['lr'])
+    optimizer_gpe = GPE(base_optimizer_gpe,
+                        history_size=best_params_gpe['history_size'],
+                        degree=best_params_gpe['degree'])
+
+    # Adam Model
+    model_adam = MLP().to(device)
+    model_adam.load_state_dict(model_gpe.state_dict()) # Use same initial weights
+    optimizer_adam = optim.Adam(model_adam.parameters(), lr=best_params_adam['lr'])
+
+    criterion = nn.CrossEntropyLoss()
+
+    history_gpe = {'train_loss': [], 'val_loss': []}
+    history_adam = {'train_loss': [], 'val_loss': []}
+
+    for epoch in range(epochs):
+        # Train and evaluate GPE
+        train_loss_gpe = train_model(model_gpe, optimizer_gpe, train_loader, criterion, device)
+        val_loss_gpe = evaluate_model(model_gpe, val_loader, criterion, device)
+        history_gpe['train_loss'].append(train_loss_gpe)
+        history_gpe['val_loss'].append(val_loss_gpe)
+
+        # Train and evaluate Adam
+        train_loss_adam = train_model(model_adam, optimizer_adam, train_loader, criterion, device)
+        val_loss_adam = evaluate_model(model_adam, val_loader, criterion, device)
+        history_adam['train_loss'].append(train_loss_adam)
+        history_adam['val_loss'].append(val_loss_adam)
+
+        print(f"Epoch {epoch+1}/{epochs} | "
+              f"GPE Val Loss: {val_loss_gpe:.4f} | "
+              f"Adam Val Loss: {val_loss_adam:.4f}")
+
+    # --- Plot Results ---
+    plt.figure(figsize=(12, 6))
+    plt.plot(history_gpe['val_loss'], label='GPE(Adam) Validation Loss')
+    plt.plot(history_adam['val_loss'], label='Adam Validation Loss', linestyle='--')
     plt.xlabel('Epochs')
-    plt.ylabel('Validation Loss')
-    plt.title('Adam vs. GPE(Adam) Optimizer Performance (Tuned)')
+    plt.ylabel('Loss')
+    plt.title('GPE(Adam) vs Adam Validation Loss')
     plt.legend()
     plt.grid(True)
 
-    # Save the plot in the same directory as the script
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    plt.savefig(os.path.join(script_dir, 'comparison_plot.png'))
+    # Ensure the directory exists
+    output_dir = os.path.dirname(os.path.abspath(__file__))
+    os.makedirs(output_dir, exist_ok=True)
+    plt.savefig(os.path.join(output_dir, 'comparison.png'))
+    print(f"Plot saved to {os.path.join(output_dir, 'comparison.png')}")
 
-    print("\nComparison plot saved to 'comparison_plot.png'")
+
+if __name__ == '__main__':
+    main()

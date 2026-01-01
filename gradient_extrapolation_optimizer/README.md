@@ -1,34 +1,38 @@
-# Gradient Polynomial Extrapolation (GPE) Optimizer Experiment
+# Gradient Polynomial Extrapolation (GPE) Optimizer
 
-This experiment investigates a novel optimizer called Gradient Polynomial Extrapolation (GPE), which aims to accelerate convergence by fitting a polynomial to the recent trajectory of each parameter's gradient and extrapolating a future gradient.
+This experiment investigates a novel optimizer called Gradient Polynomial Extrapolation (GPE).
 
 ## Hypothesis
 
-The core hypothesis is that the trajectory of gradients is more stable and predictable than the trajectory of the parameters themselves. By extrapolating the gradient, we can "denoise" the updates and provide a better-informed update direction to a base optimizer (like Adam), leading to faster and more stable convergence.
+Standard momentum-based optimizers, like Adam, use an exponential moving average of past gradients to determine the update direction. The hypothesis of this experiment is that we can achieve a more accurate prediction of the future gradient trajectory by fitting a low-degree polynomial to the recent history of gradients for each parameter and extrapolating one step into the future. This "lookahead" gradient could potentially lead to faster and more stable convergence if the gradient's path is locally smooth and predictable.
 
 ## Methodology
 
-1.  **Optimizer Implementation**: A PyTorch optimizer named `GPE` was implemented in `optimizer.py`. This optimizer wraps a base optimizer (e.g., `torch.optim.Adam`) and maintains a history of gradients. In each step, it fits a 2nd-degree polynomial to the last 10 gradients for each parameter, extrapolates the next gradient, and then uses a weighted average of the current and extrapolated gradients (`alpha=0.4`) to update the model.
+1.  **GPE Optimizer:** An optimizer wrapper, `GPE`, was implemented. It wraps a base optimizer (in this case, `torch.optim.Adam`). For each parameter, it stores a history of the last `k` gradients. At each step, it fits a polynomial of degree `d` to this history and uses the polynomial to extrapolate the gradient for the next time step. This extrapolated gradient is then passed to the base optimizer.
 
-2.  **Comparison Setup**: The `compare.py` script was created to benchmark the performance of `GPE(Adam)` against the standard `Adam` optimizer.
-    *   **Dataset**: The `mnist1d` dataset was used, with 10,000 training samples.
-    *   **Model**: A simple Multi-Layer Perceptron (MLP) with one hidden layer of 128 neurons and a ReLU activation function.
-    *   **Fairness**: To ensure a fair comparison, both optimizers started with the exact same initial model weights. Crucially, the learning rate, a key hyperparameter, was tuned for each optimizer independently using Optuna.
+2.  **Dataset and Model:** The experiment was conducted on the `mnist1d` dataset, a standard benchmark within this repository. A simple Multi-Layer Perceptron (MLP) was used as the model.
 
-3.  **Learning Rate Tuning**:
-    *   An objective function was created to train the model for 20 epochs and return the best validation loss.
-    *   Optuna was used to run 20 trials for both Adam and GPE(Adam) to find the learning rate that minimized the validation loss.
+3.  **Fair Comparison:** To ensure a fair comparison between GPE(Adam) and the standard Adam optimizer, we used the `optuna` library to perform hyperparameter tuning for both.
+    *   For **Adam**, we tuned the learning rate.
+    *   For **GPE(Adam)**, we tuned the learning rate, the gradient history size (`history_size`), and the polynomial degree (`degree`).
 
-4.  **Execution**: After finding the optimal learning rates, the script trained the model for 50 epochs with both optimizers using their respective best learning rates and recorded the validation loss at each epoch.
+    Both studies were run for 30 trials. The best-performing set of hyperparameters for each optimizer was then used for a final 50-epoch training run to generate the comparison results. The models were initialized with the same random weights for the final comparison.
 
 ## Results
 
-After learning rate tuning, the optimal learning rate for Adam was found to be ~0.034 and for GPE(Adam) was ~0.072. The final comparison using these learning rates showed that both optimizers achieved a similar validation loss, with Adam performing slightly better. The performance is visualized in the plot below:
+After the hyperparameter tuning, the best configurations were found to be:
 
-![Comparison Plot](comparison_plot.png)
+*   **Best GPE(Adam) params:** `{'lr': 0.00647, 'history_size': 9, 'degree': 1}`
+*   **Best Adam params:** `{'lr': 0.00402}`
 
-As seen in the plot, the performance of the `GPE(Adam)` optimizer is still very similar to the standard `Adam` optimizer, even after both have been tuned.
+Interestingly, the best-performing GPE model used a polynomial degree of 1, which corresponds to simple linear extrapolation.
+
+The final comparison using these optimal parameters is shown below:
+
+![Comparison Plot](./comparison.png)
+
+As the plot shows, the standard Adam optimizer consistently achieved a lower validation loss than the GPE(Adam) optimizer throughout the training process. The GPE optimizer, while following a similar convergence path, was less effective and exhibited slightly more instability in its validation loss.
 
 ## Conclusion
 
-The initial hypothesis that extrapolating gradients would lead to faster or more stable convergence is not supported by the results, even after a more rigorous, fair comparison involving learning rate tuning. The `GPE` optimizer performed nearly identically to the standard Adam baseline. The added computational overhead of GPE, combined with its lack of performance benefit, makes it a less efficient choice.
+The hypothesis was **not supported** by the results of this experiment. Extrapolating the gradient trajectory using a polynomial fit did not provide a performance benefit over the standard momentum-based approach used by Adam. In fact, it performed slightly worse on the `mnist1d` dataset. This suggests that either the gradient trajectories are too noisy for simple polynomial extrapolation to be effective, or the computational overhead and potential for extrapolation error outweigh any benefits.
