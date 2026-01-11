@@ -37,14 +37,10 @@ class SimpleMLP(nn.Module):
         x = self.fc3(x)
         return x
 
-def get_hessian_norm_approximation(model, criterion, inputs, targets):
+def get_hessian_norm_approximation(loss, model):
     """
     Computes an approximation of the Frobenius norm of the Hessian using Hutchinson's method.
     """
-    model.zero_grad()
-    outputs = model(inputs)
-    loss = criterion(outputs, targets)
-
     params = [p for p in model.parameters() if p.requires_grad]
     grads = torch.autograd.grad(loss, params, create_graph=True)
 
@@ -53,7 +49,9 @@ def get_hessian_norm_approximation(model, criterion, inputs, targets):
 
     # Compute Hessian-vector product
     grad_v_prod = sum((g * v_i).sum() for g, v_i in zip(grads, v))
-    h_v = torch.autograd.grad(grad_v_prod, params, retain_graph=False)
+    # The create_graph=True is essential here to allow the gradient of the penalty
+    # to flow back to the model parameters during the final loss.backward() call.
+    h_v = torch.autograd.grad(grad_v_prod, params, create_graph=True)
 
     # Approximate squared Frobenius norm: E[||Hv||^2]
     hessian_norm_sq = sum((h_v_i**2).sum() for h_v_i in h_v)
@@ -73,11 +71,14 @@ def train(model, train_loader, test_loader, lr, epochs, regularization_strength=
         for inputs, targets in train_loader:
             optimizer.zero_grad()
             outputs = model(inputs)
-            loss = criterion(outputs, targets)
+            cross_entropy_loss = criterion(outputs, targets)
 
             if regularization_strength > 0:
-                hessian_norm_sq = get_hessian_norm_approximation(model, criterion, inputs, targets)
-                loss += regularization_strength * hessian_norm_sq
+                # Pass the loss tensor directly to avoid recomputing it
+                hessian_norm_sq = get_hessian_norm_approximation(cross_entropy_loss, model)
+                loss = cross_entropy_loss + regularization_strength * hessian_norm_sq
+            else:
+                loss = cross_entropy_loss
 
             loss.backward()
             optimizer.step()
