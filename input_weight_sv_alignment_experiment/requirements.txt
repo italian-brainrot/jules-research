@@ -1,0 +1,6 @@
+torch
+optuna
+matplotlib
+numpy
+light_dataloader
+mnist1d
