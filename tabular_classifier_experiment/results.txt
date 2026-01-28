@@ -1,0 +1,4 @@
+Best MLP Accuracy: 0.8195000290870667
+Best MLP Params: {'hidden_dim': 251, 'n_layers': 4, 'lr': 0.0023144556870510528}
+Best PrototypeClassifier Accuracy: 0.6990000009536743
+Best PrototypeClassifier Params: {'n_prototypes': 41, 'lr': 0.00902474546993587}
