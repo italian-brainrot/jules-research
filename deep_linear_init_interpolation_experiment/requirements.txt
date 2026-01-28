@@ -1,0 +1,8 @@
+optuna
+plotly
+kaleido
+mnist1d
+light_dataloader
+torch
+numpy
+scipy
