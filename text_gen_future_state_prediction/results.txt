@@ -1,0 +1,14 @@
+Baseline Best Val Loss: 2.1186
+Experiment Best Val Loss: 2.0912
+
+Baseline Generation:
+
+A sick make you must not the patricians of your blood to them to the common
+The heart, to the senatters of you
+
+Experiment Generation:
+
+A sick make it, and
+Your knees to them, not arms, must help. Alack,
+You are transported by calamity
+Thither wh
