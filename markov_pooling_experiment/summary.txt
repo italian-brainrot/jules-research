@@ -1,0 +1,4 @@
+GAP: Best LR=0.009715, Final Acc=0.9550
+AttnP: Best LR=0.003314, Final Acc=0.9610
+MSP: Best LR=0.009552, Final Acc=0.9660
+MSPE: Best LR=0.004447, Final Acc=0.9590
