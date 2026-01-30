@@ -1,0 +1,86 @@
+[I 2026-01-29 19:39:44,993] A new study created in memory with name: no-name-0ade989b-b383-40ed-a4cd-9f77b0bca44a
+[I 2026-01-29 19:39:53,636] Trial 0 finished with value: 52.7 and parameters: {'hidden_dim': 76, 'num_layers': 3, 'lr': 0.00014213572104738347, 'weight_decay': 1.421707825883055e-06, 'batch_size': 64}. Best is trial 0 with value: 52.7.
+[I 2026-01-29 19:39:58,684] Trial 1 finished with value: 70.2 and parameters: {'hidden_dim': 195, 'num_layers': 2, 'lr': 0.004308505714129484, 'weight_decay': 0.0005069106192671708, 'batch_size': 64}. Best is trial 1 with value: 70.2.
+[I 2026-01-29 19:40:03,634] Trial 2 finished with value: 64.8 and parameters: {'hidden_dim': 166, 'num_layers': 4, 'lr': 0.0007602300510925762, 'weight_decay': 4.882983674582267e-05, 'batch_size': 128}. Best is trial 1 with value: 70.2.
+[I 2026-01-29 19:40:05,478] Trial 3 finished with value: 52.0 and parameters: {'hidden_dim': 150, 'num_layers': 1, 'lr': 0.00040474061770899073, 'weight_decay': 0.00042107228343327054, 'batch_size': 256}. Best is trial 1 with value: 70.2.
+[I 2026-01-29 19:40:08,471] Trial 4 finished with value: 61.4 and parameters: {'hidden_dim': 72, 'num_layers': 2, 'lr': 0.0005387642019449426, 'weight_decay': 0.00018442183466626448, 'batch_size': 128}. Best is trial 1 with value: 70.2.
+[I 2026-01-29 19:40:10,271] Trial 5 finished with value: 56.0 and parameters: {'hidden_dim': 37, 'num_layers': 1, 'lr': 0.0016729240324910878, 'weight_decay': 2.4977492771048248e-05, 'batch_size': 256}. Best is trial 1 with value: 70.2.
+[I 2026-01-29 19:40:13,621] Trial 6 finished with value: 69.8 and parameters: {'hidden_dim': 237, 'num_layers': 3, 'lr': 0.0036108735881139934, 'weight_decay': 3.497507532112078e-06, 'batch_size': 256}. Best is trial 1 with value: 70.2.
+[I 2026-01-29 19:40:22,019] Trial 7 finished with value: 72.8 and parameters: {'hidden_dim': 243, 'num_layers': 4, 'lr': 0.004644110249294628, 'weight_decay': 6.752083417070227e-05, 'batch_size': 64}. Best is trial 7 with value: 72.8.
+[I 2026-01-29 19:40:24,308] Trial 8 finished with value: 60.0 and parameters: {'hidden_dim': 59, 'num_layers': 2, 'lr': 0.0013245548041072406, 'weight_decay': 0.00012778554101110766, 'batch_size': 256}. Best is trial 7 with value: 72.8.
+[I 2026-01-29 19:40:26,373] Trial 9 finished with value: 62.5 and parameters: {'hidden_dim': 193, 'num_layers': 1, 'lr': 0.0013203242111856045, 'weight_decay': 1.4931487024401046e-06, 'batch_size': 256}. Best is trial 7 with value: 72.8.
+[I 2026-01-29 19:40:26,374] A new study created in memory with name: no-name-36b7a621-a9f1-4ec0-8642-8559d1e04c5a
+[I 2026-01-29 19:40:30,977] Trial 0 finished with value: 62.7 and parameters: {'hidden_dim': 83, 'num_layers': 1, 'lr': 0.0021799354769462993, 'weight_decay': 1.8744149154531751e-06, 'batch_size': 64}. Best is trial 0 with value: 62.7.
+[I 2026-01-29 19:40:37,224] Trial 1 finished with value: 67.9 and parameters: {'hidden_dim': 157, 'num_layers': 2, 'lr': 0.003694870337450926, 'weight_decay': 1.628168087020054e-05, 'batch_size': 64}. Best is trial 1 with value: 67.9.
+[I 2026-01-29 19:40:46,659] Trial 2 finished with value: 64.3 and parameters: {'hidden_dim': 142, 'num_layers': 1, 'lr': 0.0015013061335192618, 'weight_decay': 1.0379573398161961e-05, 'batch_size': 256}. Best is trial 1 with value: 67.9.
+[I 2026-01-29 19:40:53,565] Trial 3 finished with value: 68.9 and parameters: {'hidden_dim': 236, 'num_layers': 4, 'lr': 0.0033059693710841384, 'weight_decay': 2.132889506825731e-06, 'batch_size': 128}. Best is trial 3 with value: 68.9.
+[I 2026-01-29 19:40:58,663] Trial 4 finished with value: 52.6 and parameters: {'hidden_dim': 88, 'num_layers': 3, 'lr': 0.0001681654954127206, 'weight_decay': 0.00011597092711736296, 'batch_size': 128}. Best is trial 3 with value: 68.9.
+[I 2026-01-29 19:41:04,974] Trial 5 finished with value: 63.3 and parameters: {'hidden_dim': 159, 'num_layers': 4, 'lr': 0.0007178949222394374, 'weight_decay': 1.9323912778382187e-06, 'batch_size': 128}. Best is trial 3 with value: 68.9.
+[I 2026-01-29 19:41:08,732] Trial 6 finished with value: 56.7 and parameters: {'hidden_dim': 123, 'num_layers': 1, 'lr': 0.0003275515526015313, 'weight_decay': 0.0004023826591237971, 'batch_size': 128}. Best is trial 3 with value: 68.9.
+[I 2026-01-29 19:41:19,494] Trial 7 finished with value: 67.8 and parameters: {'hidden_dim': 147, 'num_layers': 3, 'lr': 0.002976960646164437, 'weight_decay': 0.0002013273012502412, 'batch_size': 256}. Best is trial 3 with value: 68.9.
+[I 2026-01-29 19:41:26,226] Trial 8 finished with value: 64.7 and parameters: {'hidden_dim': 242, 'num_layers': 2, 'lr': 0.0002567713420734464, 'weight_decay': 1.0491086189581005e-06, 'batch_size': 64}. Best is trial 3 with value: 68.9.
+[I 2026-01-29 19:41:36,612] Trial 9 finished with value: 66.2 and parameters: {'hidden_dim': 224, 'num_layers': 1, 'lr': 0.005333481922777574, 'weight_decay': 2.1579307472578924e-05, 'batch_size': 256}. Best is trial 3 with value: 68.9.
+[I 2026-01-29 19:41:36,614] A new study created in memory with name: no-name-bad02b37-f1d8-408b-952f-f671eacfd258
+[I 2026-01-29 19:41:41,406] Trial 0 finished with value: 40.1 and parameters: {'hidden_dim': 147, 'num_layers': 2, 'lr': 0.004487568067194362, 'weight_decay': 9.142636903732956e-06, 'batch_size': 128}. Best is trial 0 with value: 40.1.
+[I 2026-01-29 19:41:45,340] Trial 1 finished with value: 33.4 and parameters: {'hidden_dim': 196, 'num_layers': 1, 'lr': 0.0005247705951894193, 'weight_decay': 0.00015550724987491401, 'batch_size': 128}. Best is trial 0 with value: 40.1.
+[I 2026-01-29 19:41:55,654] Trial 2 finished with value: 41.0 and parameters: {'hidden_dim': 136, 'num_layers': 3, 'lr': 0.008014134192429198, 'weight_decay': 1.621555429189251e-05, 'batch_size': 256}. Best is trial 2 with value: 41.0.
+[I 2026-01-29 19:42:05,624] Trial 3 finished with value: 35.9 and parameters: {'hidden_dim': 210, 'num_layers': 2, 'lr': 0.0003770704066596617, 'weight_decay': 7.445025987950362e-06, 'batch_size': 256}. Best is trial 2 with value: 41.0.
+[I 2026-01-29 19:42:15,746] Trial 4 finished with value: 22.0 and parameters: {'hidden_dim': 47, 'num_layers': 1, 'lr': 0.0003648673466565011, 'weight_decay': 0.0005954356991066213, 'batch_size': 256}. Best is trial 2 with value: 41.0.
+[I 2026-01-29 19:42:24,212] Trial 5 finished with value: 44.3 and parameters: {'hidden_dim': 108, 'num_layers': 4, 'lr': 0.0023966074564475202, 'weight_decay': 0.0009596324144542695, 'batch_size': 64}. Best is trial 5 with value: 44.3.
+[I 2026-01-29 19:42:34,344] Trial 6 finished with value: 31.2 and parameters: {'hidden_dim': 124, 'num_layers': 1, 'lr': 0.0009670050447935804, 'weight_decay': 0.00018116470776039292, 'batch_size': 256}. Best is trial 5 with value: 44.3.
+[I 2026-01-29 19:42:44,443] Trial 7 finished with value: 32.6 and parameters: {'hidden_dim': 116, 'num_layers': 3, 'lr': 0.0008345324224345484, 'weight_decay': 1.1353637466280488e-06, 'batch_size': 256}. Best is trial 5 with value: 44.3.
+[I 2026-01-29 19:42:48,900] Trial 8 finished with value: 31.6 and parameters: {'hidden_dim': 87, 'num_layers': 1, 'lr': 0.0006062260906293456, 'weight_decay': 1.690862317614951e-06, 'batch_size': 64}. Best is trial 5 with value: 44.3.
+[I 2026-01-29 19:42:59,049] Trial 9 finished with value: 33.7 and parameters: {'hidden_dim': 225, 'num_layers': 2, 'lr': 0.0006459411092779561, 'weight_decay': 5.363565814305736e-06, 'batch_size': 256}. Best is trial 5 with value: 44.3.
+[I 2026-01-29 19:42:59,050] A new study created in memory with name: no-name-9f9f46fe-b61e-4f8e-9a26-359bd2d3a124
+[I 2026-01-29 19:43:00,922] Trial 0 finished with value: 55.1 and parameters: {'hidden_dim': 39, 'num_layers': 1, 'lr': 0.001557796584706583, 'weight_decay': 0.00013562198806283977, 'batch_size': 256}. Best is trial 0 with value: 55.1.
+[I 2026-01-29 19:43:02,787] Trial 1 finished with value: 63.7 and parameters: {'hidden_dim': 207, 'num_layers': 1, 'lr': 0.0033822199155140726, 'weight_decay': 0.00021406094540649213, 'batch_size': 256}. Best is trial 1 with value: 63.7.
+[I 2026-01-29 19:43:06,341] Trial 2 finished with value: 63.3 and parameters: {'hidden_dim': 83, 'num_layers': 1, 'lr': 0.002471422428369949, 'weight_decay': 0.00033744300696927616, 'batch_size': 64}. Best is trial 1 with value: 63.7.
+[I 2026-01-29 19:43:08,773] Trial 3 finished with value: 58.7 and parameters: {'hidden_dim': 51, 'num_layers': 3, 'lr': 0.0010858641018857693, 'weight_decay': 0.00031256890917363215, 'batch_size': 256}. Best is trial 1 with value: 63.7.
+[I 2026-01-29 19:43:11,988] Trial 4 finished with value: 67.6 and parameters: {'hidden_dim': 171, 'num_layers': 4, 'lr': 0.00224482227595417, 'weight_decay': 1.0756808361455246e-06, 'batch_size': 256}. Best is trial 4 with value: 67.6.
+[I 2026-01-29 19:43:15,053] Trial 5 finished with value: 67.0 and parameters: {'hidden_dim': 110, 'num_layers': 4, 'lr': 0.0025760309181456706, 'weight_decay': 1.6700294389761474e-06, 'batch_size': 256}. Best is trial 4 with value: 67.6.
+[I 2026-01-29 19:43:21,400] Trial 6 finished with value: 66.2 and parameters: {'hidden_dim': 57, 'num_layers': 2, 'lr': 0.009538055763948361, 'weight_decay': 0.00027959420474574497, 'batch_size': 128}. Best is trial 4 with value: 67.6.
+[I 2026-01-29 19:43:25,985] Trial 7 finished with value: 68.4 and parameters: {'hidden_dim': 90, 'num_layers': 2, 'lr': 0.0029039523179221443, 'weight_decay': 6.92448190292959e-05, 'batch_size': 64}. Best is trial 7 with value: 68.4.
+[I 2026-01-29 19:43:29,314] Trial 8 finished with value: 62.6 and parameters: {'hidden_dim': 177, 'num_layers': 2, 'lr': 0.0003523969092836793, 'weight_decay': 7.834436827690993e-06, 'batch_size': 128}. Best is trial 7 with value: 68.4.
+[I 2026-01-29 19:43:32,977] Trial 9 finished with value: 64.2 and parameters: {'hidden_dim': 88, 'num_layers': 1, 'lr': 0.0031623106821605028, 'weight_decay': 2.1562392345045715e-05, 'batch_size': 64}. Best is trial 7 with value: 68.4.
+[I 2026-01-29 19:43:32,978] A new study created in memory with name: no-name-00567edb-14bc-4813-ab07-6c2651e18d88
+[I 2026-01-29 19:43:42,970] Trial 0 finished with value: 66.8 and parameters: {'hidden_dim': 122, 'num_layers': 2, 'lr': 0.009582993037880705, 'weight_decay': 7.026105130697185e-06, 'batch_size': 256}. Best is trial 0 with value: 66.8.
+[I 2026-01-29 19:43:53,980] Trial 1 finished with value: 63.1 and parameters: {'hidden_dim': 234, 'num_layers': 4, 'lr': 0.00016947284950403284, 'weight_decay': 0.0006859708826859106, 'batch_size': 256}. Best is trial 0 with value: 66.8.
+[I 2026-01-29 19:44:05,015] Trial 2 finished with value: 64.5 and parameters: {'hidden_dim': 208, 'num_layers': 4, 'lr': 0.0004110622863702569, 'weight_decay': 5.736267247379527e-06, 'batch_size': 256}. Best is trial 0 with value: 66.8.
+[I 2026-01-29 19:44:10,442] Trial 3 finished with value: 62.8 and parameters: {'hidden_dim': 118, 'num_layers': 3, 'lr': 0.0003899325825158201, 'weight_decay': 2.075988395904707e-05, 'batch_size': 128}. Best is trial 0 with value: 66.8.
+[I 2026-01-29 19:44:17,690] Trial 4 finished with value: 62.7 and parameters: {'hidden_dim': 79, 'num_layers': 3, 'lr': 0.0002561611530131104, 'weight_decay': 0.00013494603744469634, 'batch_size': 64}. Best is trial 0 with value: 66.8.
+[I 2026-01-29 19:44:24,853] Trial 5 finished with value: 66.3 and parameters: {'hidden_dim': 127, 'num_layers': 3, 'lr': 0.008914342585815414, 'weight_decay': 2.316749706324024e-06, 'batch_size': 64}. Best is trial 0 with value: 66.8.
+[I 2026-01-29 19:44:29,946] Trial 6 finished with value: 68.3 and parameters: {'hidden_dim': 229, 'num_layers': 2, 'lr': 0.0007240334940980848, 'weight_decay': 2.2000277130903017e-05, 'batch_size': 128}. Best is trial 6 with value: 68.3.
+[I 2026-01-29 19:44:34,314] Trial 7 finished with value: 65.4 and parameters: {'hidden_dim': 106, 'num_layers': 1, 'lr': 0.006515889283587725, 'weight_decay': 2.9029541170172603e-06, 'batch_size': 128}. Best is trial 6 with value: 68.3.
+[I 2026-01-29 19:44:45,179] Trial 8 finished with value: 69.9 and parameters: {'hidden_dim': 156, 'num_layers': 4, 'lr': 0.005763139977077741, 'weight_decay': 0.000333931887699412, 'batch_size': 256}. Best is trial 8 with value: 69.9.
+[I 2026-01-29 19:44:51,946] Trial 9 finished with value: 61.1 and parameters: {'hidden_dim': 194, 'num_layers': 4, 'lr': 0.00012119107212285485, 'weight_decay': 3.658774507502905e-05, 'batch_size': 128}. Best is trial 8 with value: 69.9.
+[I 2026-01-29 19:44:51,947] A new study created in memory with name: no-name-ec0e6fb2-fd2d-4131-8fe7-c900a92522e2
+[I 2026-01-29 19:45:03,119] Trial 0 finished with value: 42.6 and parameters: {'hidden_dim': 228, 'num_layers': 4, 'lr': 0.007481524817523878, 'weight_decay': 8.322165109942643e-05, 'batch_size': 256}. Best is trial 0 with value: 42.6.
+[I 2026-01-29 19:45:09,290] Trial 1 finished with value: 36.6 and parameters: {'hidden_dim': 146, 'num_layers': 4, 'lr': 0.0014667702120913584, 'weight_decay': 4.195828726732894e-05, 'batch_size': 128}. Best is trial 0 with value: 42.6.
+[I 2026-01-29 19:45:19,670] Trial 2 finished with value: 41.4 and parameters: {'hidden_dim': 150, 'num_layers': 3, 'lr': 0.007282531480677604, 'weight_decay': 4.052687691063576e-06, 'batch_size': 256}. Best is trial 0 with value: 42.6.
+[I 2026-01-29 19:45:27,379] Trial 3 finished with value: 41.9 and parameters: {'hidden_dim': 77, 'num_layers': 4, 'lr': 0.0035213866276902995, 'weight_decay': 0.00011492287911501858, 'batch_size': 64}. Best is trial 0 with value: 42.6.
+[I 2026-01-29 19:45:33,346] Trial 4 finished with value: 32.9 and parameters: {'hidden_dim': 213, 'num_layers': 3, 'lr': 0.00011132751465330362, 'weight_decay': 0.00013249256741079636, 'batch_size': 128}. Best is trial 0 with value: 42.6.
+[I 2026-01-29 19:45:38,281] Trial 5 finished with value: 23.0 and parameters: {'hidden_dim': 37, 'num_layers': 3, 'lr': 0.0001174630440479641, 'weight_decay': 0.00013276215033115497, 'batch_size': 128}. Best is trial 0 with value: 42.6.
+[I 2026-01-29 19:45:42,846] Trial 6 finished with value: 31.2 and parameters: {'hidden_dim': 57, 'num_layers': 1, 'lr': 0.0011140724523347268, 'weight_decay': 1.1366342346788907e-06, 'batch_size': 64}. Best is trial 0 with value: 42.6.
+[I 2026-01-29 19:45:52,280] Trial 7 finished with value: 36.2 and parameters: {'hidden_dim': 242, 'num_layers': 1, 'lr': 0.004891259961568529, 'weight_decay': 1.1672445669137787e-05, 'batch_size': 256}. Best is trial 0 with value: 42.6.
+[I 2026-01-29 19:45:57,707] Trial 8 finished with value: 41.8 and parameters: {'hidden_dim': 61, 'num_layers': 4, 'lr': 0.005520863543541023, 'weight_decay': 1.9708159753839705e-06, 'batch_size': 128}. Best is trial 0 with value: 42.6.
+[I 2026-01-29 19:46:03,749] Trial 9 finished with value: 34.0 and parameters: {'hidden_dim': 237, 'num_layers': 3, 'lr': 0.00024889589505981013, 'weight_decay': 1.0502453936832825e-05, 'batch_size': 128}. Best is trial 0 with value: 42.6.
+Running experiment: Baseline_Original
+Best accuracy for Baseline_Original: 72.80%
+Running experiment: DBRT_Original
+Best accuracy for DBRT_Original: 68.90%
+Running experiment: DBRT_Only_Original
+Best accuracy for DBRT_Only_Original: 44.30%
+Running experiment: Baseline_Distorted
+Best accuracy for Baseline_Distorted: 68.40%
+Running experiment: DBRT_Distorted
+Best accuracy for DBRT_Distorted: 69.90%
+Running experiment: DBRT_Only_Distorted
+Best accuracy for DBRT_Only_Distorted: 42.60%
+
+Summary of Results:
+Baseline_Original: 72.80%
+DBRT_Original: 68.90%
+DBRT_Only_Original: 44.30%
+Baseline_Distorted: 68.40%
+DBRT_Distorted: 69.90%
+DBRT_Only_Distorted: 42.60%

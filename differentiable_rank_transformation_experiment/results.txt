@@ -1,0 +1,6 @@
+Baseline_Original: 72.80%
+DBRT_Original: 68.90%
+DBRT_Only_Original: 44.30%
+Baseline_Distorted: 68.40%
+DBRT_Distorted: 69.90%
+DBRT_Only_Distorted: 42.60%
