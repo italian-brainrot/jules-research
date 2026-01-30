@@ -1,0 +1,4 @@
+Final Results Summary:
+baseline  : 0.3500 | Best Params: {'lr': 0.003941637460807009, 'weight_decay': 0.0005300772256826289}
+ls        : 0.3667 | Best Params: {'lr': 0.00888887248296619, 'weight_decay': 0.0008317152849748349, 'epsilon': 0.10834150065765512}
+apls      : 0.3500 | Best Params: {'lr': 0.0014266251361813496, 'weight_decay': 0.0005067587208299616, 'epsilon': 0.2922758147838955, 'temp': 0.92941711242394, 'momentum': 0.9489453011201285}
