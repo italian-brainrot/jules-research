@@ -1,0 +1,4 @@
+Model,Original Accuracy,Shifted Accuracy
+Linear,0.3190,0.2218
+MLP,0.6190,0.3690
+HOCNet,0.7660,0.7660
