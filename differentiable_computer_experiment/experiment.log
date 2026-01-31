@@ -1,0 +1,60 @@
+[I 2026-01-31 17:50:42,252] A new study created in memory with name: no-name-9ea3c9b9-228a-41a1-9ee0-9b3959bd156c
+[I 2026-01-31 17:50:43,990] Trial 0 finished with value: 0.31 and parameters: {'lr': 0.0005378662852759733}. Best is trial 0 with value: 0.31.
+[I 2026-01-31 17:50:44,183] Trial 1 finished with value: 0.19375 and parameters: {'lr': 0.0001314460502400154}. Best is trial 0 with value: 0.31.
+[I 2026-01-31 17:50:44,375] Trial 2 finished with value: 0.47875 and parameters: {'lr': 0.004397659526259498}. Best is trial 2 with value: 0.47875.
+[I 2026-01-31 17:50:44,566] Trial 3 finished with value: 0.48125 and parameters: {'lr': 0.004116741461100543}. Best is trial 3 with value: 0.48125.
+[I 2026-01-31 17:50:44,759] Trial 4 finished with value: 0.46 and parameters: {'lr': 0.002633587633234449}. Best is trial 3 with value: 0.48125.
+[I 2026-01-31 17:50:47,055] A new study created in memory with name: no-name-95af514a-7f30-4f2e-a027-b61804383171
+[I 2026-01-31 17:50:48,654] Trial 0 finished with value: 0.35875 and parameters: {'lr': 0.002735211720410351}. Best is trial 0 with value: 0.35875.
+[I 2026-01-31 17:50:50,579] Trial 1 finished with value: 0.14875 and parameters: {'lr': 0.00014893882456950823}. Best is trial 0 with value: 0.35875.
+[I 2026-01-31 17:50:52,305] Trial 2 finished with value: 0.415 and parameters: {'lr': 0.00393091378407428}. Best is trial 2 with value: 0.415.
+[I 2026-01-31 17:50:53,857] Trial 3 finished with value: 0.41375 and parameters: {'lr': 0.0036490862542880712}. Best is trial 2 with value: 0.415.
+[I 2026-01-31 17:50:55,665] Trial 4 finished with value: 0.145 and parameters: {'lr': 0.00015495405367352104}. Best is trial 2 with value: 0.415.
+[I 2026-01-31 17:51:09,559] A new study created in memory with name: no-name-9c74ddd7-2a38-4c5f-8823-3e0d93c4b8f5
+[I 2026-01-31 17:51:26,358] Trial 0 finished with value: 0.4175 and parameters: {'lr': 0.00305514801893011}. Best is trial 0 with value: 0.4175.
+[I 2026-01-31 17:51:43,238] Trial 1 finished with value: 0.43875 and parameters: {'lr': 0.005474154519995899}. Best is trial 1 with value: 0.43875.
+[I 2026-01-31 17:52:03,495] Trial 2 finished with value: 0.1775 and parameters: {'lr': 0.00027874264670599107}. Best is trial 1 with value: 0.43875.
+[I 2026-01-31 17:52:23,256] Trial 3 finished with value: 0.32875 and parameters: {'lr': 0.0015357067692661139}. Best is trial 1 with value: 0.43875.
+[I 2026-01-31 17:52:40,461] Trial 4 finished with value: 0.26625 and parameters: {'lr': 0.0010533599166985222}. Best is trial 1 with value: 0.43875.
+[I 2026-01-31 17:55:34,824] A new study created in memory with name: no-name-5c7e2350-d389-46af-9aa8-575be4f2b0c6
+[I 2026-01-31 17:56:06,046] Trial 0 finished with value: 0.30625 and parameters: {'lr': 0.001341589123713931}. Best is trial 0 with value: 0.30625.
+[I 2026-01-31 17:56:30,239] Trial 1 finished with value: 0.19125 and parameters: {'lr': 0.00020579686385207161}. Best is trial 0 with value: 0.30625.
+[I 2026-01-31 17:56:55,506] Trial 2 finished with value: 0.3775 and parameters: {'lr': 0.002548614072235624}. Best is trial 2 with value: 0.3775.
+[I 2026-01-31 17:57:21,346] Trial 3 finished with value: 0.2725 and parameters: {'lr': 0.0007166616235706577}. Best is trial 2 with value: 0.3775.
+[I 2026-01-31 17:57:46,560] Trial 4 finished with value: 0.19125 and parameters: {'lr': 0.00021235026794326757}. Best is trial 2 with value: 0.3775.
+Tuning MLP...
+Best LR for MLP: 0.004116741461100543
+Epoch 0, Loss: 1.8221716070175171
+Epoch 5, Loss: 0.9035088407993317
+Epoch 10, Loss: 0.6152572929859161
+Epoch 15, Loss: 0.35536826014518735
+Epoch 20, Loss: 0.17020527124404908
+Epoch 25, Loss: 0.06798322841525078
+MLP Accuracy: 0.6075
+Tuning GRU...
+Best LR for GRU: 0.00393091378407428
+Epoch 0, Loss: 2.0897414231300355
+Epoch 5, Loss: 1.2503809881210328
+Epoch 10, Loss: 0.9238986098766326
+Epoch 15, Loss: 0.5584345924854278
+Epoch 20, Loss: 0.3947133532166481
+Epoch 25, Loss: 0.3069424816966057
+GRU Accuracy: 0.8125
+Tuning NTM...
+Best LR for NTM: 0.005474154519995899
+Epoch 0, Loss: 2.0059601402282716
+Epoch 5, Loss: 1.1700264716148376
+Epoch 10, Loss: 0.5920095598697662
+Epoch 15, Loss: 0.36025428473949433
+Epoch 20, Loss: 0.25711268484592437
+Epoch 25, Loss: 0.21316566377878188
+NTM Accuracy: 0.83375
+Tuning DMS_NTM...
+Best LR for DMS_NTM: 0.002548614072235624
+Epoch 0, Loss: 2.095754852294922
+Epoch 5, Loss: 1.3425448441505432
+Epoch 10, Loss: 1.1452296423912047
+Epoch 15, Loss: 0.9170377087593079
+Epoch 20, Loss: 0.6649486076831818
+Epoch 25, Loss: 0.47319348514080045
+DMS_NTM Accuracy: 0.80875
