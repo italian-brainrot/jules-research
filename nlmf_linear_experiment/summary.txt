@@ -1,0 +1,20 @@
+Model: dense
+Parameters: 5110
+Best LR: 0.025313874138112882
+Final Accuracy: 70.65%
+--------------------
+Model: lowrank
+Parameters: 2110
+Best LR: 0.010805652027205181
+Final Accuracy: 59.55%
+--------------------
+Model: nlmf
+Parameters: 1208
+Best LR: 0.0689378850277082
+Final Accuracy: 46.35%
+--------------------
+Model: kronecker
+Parameters: 320
+Best LR: 0.09643058463471085
+Final Accuracy: 53.00%
+--------------------
