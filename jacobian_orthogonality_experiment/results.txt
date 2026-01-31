@@ -1,0 +1,19 @@
+--- Baseline ---
+Best Test Acc: 0.7131
+Final Test Acc: 0.7106
+Config: {'name': 'Baseline', 'use_jfnr': False, 'use_cjor': False, 'lr': 0.004832358714728195}
+
+--- JFNR ---
+Best Test Acc: 0.7106
+Final Test Acc: 0.7106
+Config: {'name': 'JFNR', 'use_jfnr': True, 'use_cjor': False, 'lr': 0.004745587277033979, 'lambda_jfnr': 0.0002592516780746714}
+
+--- CJOR ---
+Best Test Acc: 0.7063
+Final Test Acc: 0.7019
+Config: {'name': 'CJOR', 'use_jfnr': False, 'use_cjor': True, 'lr': 0.004313119796776876, 'lambda_cjor': 0.0010644292929854653}
+
+--- CJOR+JFNR ---
+Best Test Acc: 0.7256
+Final Test Acc: 0.7150
+Config: {'name': 'CJOR+JFNR', 'use_jfnr': True, 'use_cjor': True, 'lr': 0.004966909213328921, 'lambda_jfnr': 6.756570511525578e-05, 'lambda_cjor': 0.00080954475800696}
