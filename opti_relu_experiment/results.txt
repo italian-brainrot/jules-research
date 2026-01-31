@@ -1,0 +1,6 @@
+Linear: 0.2875
+OptiReLU: 0.5775
+MLP: 0.5700
+RandomFeatures: 0.3600
+OptiReLU Final Neurons: 50
+Best OptiReLU Lambda: 0.013750700753678262
