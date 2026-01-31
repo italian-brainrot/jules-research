@@ -1,0 +1,72 @@
+[I 2026-01-31 08:33:40,115] A new study created in memory with name: no-name-4f4b104e-0a41-40f3-92fe-1a5f6ddf6edc
+[I 2026-01-31 08:33:51,069] Trial 0 finished with value: 0.642 and parameters: {'lr': 0.0004343645410821038}. Best is trial 0 with value: 0.642.
+[I 2026-01-31 08:33:59,190] Trial 1 finished with value: 0.511 and parameters: {'lr': 0.00021401383041888216}. Best is trial 0 with value: 0.642.
+[I 2026-01-31 08:34:06,859] Trial 2 finished with value: 0.8765 and parameters: {'lr': 0.0024951802577794775}. Best is trial 2 with value: 0.8765.
+[I 2026-01-31 08:34:14,445] Trial 3 finished with value: 0.9495 and parameters: {'lr': 0.004336304384031161}. Best is trial 3 with value: 0.9495.
+[I 2026-01-31 08:34:22,047] Trial 4 finished with value: 0.7765 and parameters: {'lr': 0.0011480234428677735}. Best is trial 3 with value: 0.9495.
+[I 2026-01-31 08:34:29,654] Trial 5 finished with value: 0.8805 and parameters: {'lr': 0.0019717637223397545}. Best is trial 3 with value: 0.9495.
+[I 2026-01-31 08:34:37,311] Trial 6 finished with value: 0.9175 and parameters: {'lr': 0.0032009041946411683}. Best is trial 3 with value: 0.9495.
+[I 2026-01-31 08:34:45,044] Trial 7 finished with value: 0.9575 and parameters: {'lr': 0.005690921008142397}. Best is trial 7 with value: 0.9575.
+[I 2026-01-31 08:35:07,796] A new study created in memory with name: no-name-cd053b06-c94f-4c18-b24f-c0122c116cac
+[I 2026-01-31 08:35:15,811] Trial 0 finished with value: 0.742 and parameters: {'lr': 0.0012418132037415523}. Best is trial 0 with value: 0.742.
+[I 2026-01-31 08:35:24,024] Trial 1 finished with value: 0.709 and parameters: {'lr': 0.0015543674779428724}. Best is trial 0 with value: 0.742.
+[I 2026-01-31 08:35:32,300] Trial 2 finished with value: 0.898 and parameters: {'lr': 0.005897356127750522}. Best is trial 2 with value: 0.898.
+[I 2026-01-31 08:35:40,450] Trial 3 finished with value: 0.5435 and parameters: {'lr': 0.0006336779491189281}. Best is trial 2 with value: 0.898.
+[I 2026-01-31 08:35:48,345] Trial 4 finished with value: 0.4905 and parameters: {'lr': 0.00035519187058845764}. Best is trial 2 with value: 0.898.
+[I 2026-01-31 08:35:59,472] Trial 5 finished with value: 0.767 and parameters: {'lr': 0.0018711666624012886}. Best is trial 2 with value: 0.898.
+[I 2026-01-31 08:36:07,320] Trial 6 finished with value: 0.809 and parameters: {'lr': 0.002592412524711975}. Best is trial 2 with value: 0.898.
+[I 2026-01-31 08:36:15,199] Trial 7 finished with value: 0.554 and parameters: {'lr': 0.0005635113861756832}. Best is trial 2 with value: 0.898.
+[I 2026-01-31 08:36:35,516] A new study created in memory with name: no-name-46db3de3-e3db-4986-aa2d-a95842f4d9f3
+[I 2026-01-31 08:36:44,347] Trial 0 finished with value: 0.4225 and parameters: {'lr': 0.0002446908030009773}. Best is trial 0 with value: 0.4225.
+[I 2026-01-31 08:36:52,889] Trial 1 finished with value: 0.8535 and parameters: {'lr': 0.005106365889301489}. Best is trial 1 with value: 0.8535.
+[I 2026-01-31 08:37:01,309] Trial 2 finished with value: 0.413 and parameters: {'lr': 0.0001786591692558529}. Best is trial 1 with value: 0.8535.
+[I 2026-01-31 08:37:09,756] Trial 3 finished with value: 0.335 and parameters: {'lr': 0.0001328009006262975}. Best is trial 1 with value: 0.8535.
+[I 2026-01-31 08:37:18,256] Trial 4 finished with value: 0.529 and parameters: {'lr': 0.0004970651057185856}. Best is trial 1 with value: 0.8535.
+[I 2026-01-31 08:37:26,815] Trial 5 finished with value: 0.864 and parameters: {'lr': 0.009708071151417058}. Best is trial 5 with value: 0.864.
+[I 2026-01-31 08:37:35,487] Trial 6 finished with value: 0.7995 and parameters: {'lr': 0.004014933873397734}. Best is trial 5 with value: 0.864.
+[I 2026-01-31 08:37:44,332] Trial 7 finished with value: 0.7835 and parameters: {'lr': 0.0035367073066320818}. Best is trial 5 with value: 0.864.
+[I 2026-01-31 08:38:12,902] A new study created in memory with name: no-name-d416d7b8-825b-4aba-bf17-5ff29a84f973
+[I 2026-01-31 08:38:23,317] Trial 0 finished with value: 0.958 and parameters: {'lr': 0.008754513885159012}. Best is trial 0 with value: 0.958.
+[I 2026-01-31 08:38:33,752] Trial 1 finished with value: 0.9475 and parameters: {'lr': 0.007286597316965289}. Best is trial 0 with value: 0.958.
+[I 2026-01-31 08:38:44,124] Trial 2 finished with value: 0.6075 and parameters: {'lr': 0.0006127525249088113}. Best is trial 0 with value: 0.958.
+[I 2026-01-31 08:38:54,512] Trial 3 finished with value: 0.576 and parameters: {'lr': 0.0004893853844471387}. Best is trial 0 with value: 0.958.
+[I 2026-01-31 08:39:05,628] Trial 4 finished with value: 0.5365 and parameters: {'lr': 0.00032457566699913633}. Best is trial 0 with value: 0.958.
+[I 2026-01-31 08:39:16,074] Trial 5 finished with value: 0.659 and parameters: {'lr': 0.0004901973519437377}. Best is trial 0 with value: 0.958.
+[I 2026-01-31 08:39:26,510] Trial 6 finished with value: 0.4395 and parameters: {'lr': 0.00028413294489571146}. Best is trial 0 with value: 0.958.
+[I 2026-01-31 08:39:36,824] Trial 7 finished with value: 0.748 and parameters: {'lr': 0.0011862765921193232}. Best is trial 0 with value: 0.958.
+[I 2026-01-31 08:40:08,371] A new study created in memory with name: no-name-31d3e43e-4238-431a-a4f9-8a0a8be66c9e
+[I 2026-01-31 08:40:32,709] Trial 0 finished with value: 0.9385 and parameters: {'lr': 0.004617069946128057}. Best is trial 0 with value: 0.9385.
+[I 2026-01-31 08:40:56,779] Trial 1 finished with value: 0.747 and parameters: {'lr': 0.0009064679071407799}. Best is trial 0 with value: 0.9385.
+[I 2026-01-31 08:41:20,988] Trial 2 finished with value: 0.5315 and parameters: {'lr': 0.00041339728559544066}. Best is trial 0 with value: 0.9385.
+[I 2026-01-31 08:41:45,416] Trial 3 finished with value: 0.572 and parameters: {'lr': 0.00042709428092869875}. Best is trial 0 with value: 0.9385.
+[I 2026-01-31 08:42:08,579] Trial 4 finished with value: 0.5805 and parameters: {'lr': 0.0003716317603683123}. Best is trial 0 with value: 0.9385.
+[I 2026-01-31 08:42:33,260] Trial 5 finished with value: 0.956 and parameters: {'lr': 0.00867361075643103}. Best is trial 5 with value: 0.956.
+[I 2026-01-31 08:42:55,976] Trial 6 finished with value: 0.5325 and parameters: {'lr': 0.00033480986410514983}. Best is trial 5 with value: 0.956.
+[I 2026-01-31 08:43:18,312] Trial 7 finished with value: 0.376 and parameters: {'lr': 0.0001264390298746017}. Best is trial 5 with value: 0.956.
+--- Optimizing max ---
+Best LR for max: 0.005691
+Final evaluation for max...
+Result for max: 0.9575 +- 0.0095
+--- Optimizing avg ---
+Best LR for avg: 0.005897
+Final evaluation for avg...
+Result for avg: 0.9420 +- 0.0050
+--- Optimizing median ---
+Best LR for median: 0.009708
+Final evaluation for median...
+Result for median: 0.9110 +- 0.0130
+--- Optimizing lp ---
+Best LR for lp: 0.008755
+Final evaluation for lp...
+Result for lp: 0.9510 +- 0.0005
+--- Optimizing quantile ---
+Best LR for quantile: 0.008674
+Final evaluation for quantile...
+Result for quantile: 0.9612 +- 0.0003
+
+Summary:
+max: 0.9575 +- 0.0095 (LR: 0.005691)
+avg: 0.9420 +- 0.0050 (LR: 0.005897)
+median: 0.9110 +- 0.0130 (LR: 0.009708)
+lp: 0.9510 +- 0.0005 (LR: 0.008755)
+quantile: 0.9612 +- 0.0003 (LR: 0.008674)
