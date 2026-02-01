@@ -1,0 +1,18 @@
+Method: ce
+Best Params: {'lr': 0.008837930284521036}
+Final Test Accuracy: 0.7530
+Accuracy (Random Dropout 20%): 0.7010
+Accuracy (Contiguous Dropout 20%): 0.6895
+--------------------
+Method: whitening
+Best Params: {'lr': 0.00590836492237919, 'lambda': 3.3062560772895817, 'sigma': 0.0}
+Final Test Accuracy: 0.7575
+Accuracy (Random Dropout 20%): 0.7135
+Accuracy (Contiguous Dropout 20%): 0.6985
+--------------------
+Method: tcr
+Best Params: {'lr': 0.009660935597370707, 'lambda': 0.07818529804611223, 'sigma': 15.160577324136813}
+Final Test Accuracy: 0.7505
+Accuracy (Random Dropout 20%): 0.6990
+Accuracy (Contiguous Dropout 20%): 0.6925
+--------------------
