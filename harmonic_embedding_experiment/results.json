@@ -1,0 +1,25 @@
+{
+    "standard": {
+        "best_acc": 0.45875,
+        "best_params": {
+            "lr": 0.007307657143399402
+        },
+        "params": 86538
+    },
+    "factorized": {
+        "best_acc": 0.445,
+        "best_params": {
+            "lr": 0.0030506388259411497,
+            "factor_K": 43
+        },
+        "params": 83914
+    },
+    "hpe": {
+        "best_acc": 0.48875,
+        "best_params": {
+            "lr": 0.003835845216896081,
+            "hpe_K": 13
+        },
+        "params": 80138
+    }
+}

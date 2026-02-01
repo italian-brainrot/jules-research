@@ -1,0 +1,33 @@
+[I 2026-02-01 13:59:16,553] A new study created in memory with name: no-name-00f39376-02fb-4bce-a2c9-ce7a96f2e2bd
+[I 2026-02-01 13:59:40,512] Trial 0 finished with value: 0.42625 and parameters: {'lr': 0.0025946581362151274}. Best is trial 0 with value: 0.42625.
+[I 2026-02-01 14:00:02,457] Trial 1 finished with value: 0.3725 and parameters: {'lr': 0.0015276025030391764}. Best is trial 0 with value: 0.42625.
+[I 2026-02-01 14:00:25,778] Trial 2 finished with value: 0.40125 and parameters: {'lr': 0.001280014803397554}. Best is trial 0 with value: 0.42625.
+[I 2026-02-01 14:00:50,792] Trial 3 finished with value: 0.40125 and parameters: {'lr': 0.0025279660809851908}. Best is trial 0 with value: 0.42625.
+[I 2026-02-01 14:01:16,617] Trial 4 finished with value: 0.405 and parameters: {'lr': 0.002610969590391404}. Best is trial 0 with value: 0.42625.
+[I 2026-02-01 14:01:39,745] Trial 5 finished with value: 0.41125 and parameters: {'lr': 0.002297760998763639}. Best is trial 0 with value: 0.42625.
+[I 2026-02-01 14:02:02,396] Trial 6 finished with value: 0.45875 and parameters: {'lr': 0.007307657143399402}. Best is trial 6 with value: 0.45875.
+[I 2026-02-01 14:02:25,200] Trial 7 finished with value: 0.3875 and parameters: {'lr': 0.0021807634894390983}. Best is trial 6 with value: 0.45875.
+[I 2026-02-01 14:02:25,200] A new study created in memory with name: no-name-1d327ea0-88ff-47ea-aa95-54ae75430307
+[I 2026-02-01 14:02:47,996] Trial 0 finished with value: 0.365 and parameters: {'lr': 0.0015207614843317713, 'factor_K': 46}. Best is trial 0 with value: 0.365.
+[I 2026-02-01 14:03:10,123] Trial 1 finished with value: 0.2775 and parameters: {'lr': 0.001399729433717728, 'factor_K': 11}. Best is trial 0 with value: 0.365.
+[I 2026-02-01 14:03:33,973] Trial 2 finished with value: 0.445 and parameters: {'lr': 0.0030506388259411497, 'factor_K': 43}. Best is trial 2 with value: 0.445.
+[I 2026-02-01 14:04:04,064] Trial 3 finished with value: 0.3675 and parameters: {'lr': 0.0013293103394054068, 'factor_K': 35}. Best is trial 2 with value: 0.445.
+[I 2026-02-01 14:04:28,978] Trial 4 finished with value: 0.42875 and parameters: {'lr': 0.008283347615038173, 'factor_K': 19}. Best is trial 2 with value: 0.445.
+[I 2026-02-01 14:04:53,645] Trial 5 finished with value: 0.295 and parameters: {'lr': 0.001464584874602311, 'factor_K': 19}. Best is trial 2 with value: 0.445.
+[I 2026-02-01 14:05:19,191] Trial 6 finished with value: 0.24125 and parameters: {'lr': 0.0014007371402007147, 'factor_K': 12}. Best is trial 2 with value: 0.445.
+[I 2026-02-01 14:05:47,675] Trial 7 finished with value: 0.3725 and parameters: {'lr': 0.001584882641702246, 'factor_K': 36}. Best is trial 2 with value: 0.445.
+[I 2026-02-01 14:05:47,676] A new study created in memory with name: no-name-dc0c3757-8bec-49ca-ac15-797c436b9739
+[I 2026-02-01 14:06:17,581] Trial 0 finished with value: 0.37 and parameters: {'lr': 0.0010987252615993733, 'hpe_K': 12}. Best is trial 0 with value: 0.37.
+[I 2026-02-01 14:06:42,152] Trial 1 finished with value: 0.435 and parameters: {'lr': 0.003281860042238141, 'hpe_K': 7}. Best is trial 1 with value: 0.435.
+[I 2026-02-01 14:07:14,992] Trial 2 finished with value: 0.48875 and parameters: {'lr': 0.003835845216896081, 'hpe_K': 13}. Best is trial 2 with value: 0.48875.
+[I 2026-02-01 14:07:43,043] Trial 3 finished with value: 0.4325 and parameters: {'lr': 0.0021991326015197575, 'hpe_K': 10}. Best is trial 2 with value: 0.48875.
+[I 2026-02-01 14:08:10,014] Trial 4 finished with value: 0.40375 and parameters: {'lr': 0.001926784918292337, 'hpe_K': 10}. Best is trial 2 with value: 0.48875.
+[I 2026-02-01 14:08:35,206] Trial 5 finished with value: 0.4475 and parameters: {'lr': 0.0024558070783871435, 'hpe_K': 9}. Best is trial 2 with value: 0.48875.
+[I 2026-02-01 14:09:00,142] Trial 6 finished with value: 0.35625 and parameters: {'lr': 0.001253153743014259, 'hpe_K': 8}. Best is trial 2 with value: 0.48875.
+[I 2026-02-01 14:09:23,783] Trial 7 finished with value: 0.26125 and parameters: {'lr': 0.0016539751646931745, 'hpe_K': 4}. Best is trial 2 with value: 0.48875.
+Optimizing standard...
+Best standard acc: 0.45875 (params: 86538)
+Optimizing factorized...
+Best factorized acc: 0.445 (params: 83914)
+Optimizing hpe...
+Best hpe acc: 0.48875 (params: 80138)
