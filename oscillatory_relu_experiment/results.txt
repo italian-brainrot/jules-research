@@ -1,0 +1,4 @@
+relu: Mean Acc = 0.7615, Std = 0.0144, Best LR = 0.0056264217733765646
+leaky_relu: Mean Acc = 0.7608, Std = 0.0083, Best LR = 0.007922858628753464
+snake: Mean Acc = 0.7518, Std = 0.0114, Best LR = 0.003433508583699363
+orelu: Mean Acc = 0.7589, Std = 0.0047, Best LR = 0.006972387519897428
