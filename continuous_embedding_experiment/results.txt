@@ -1,0 +1,20 @@
+Method: raw
+Best Params: {'lr': 0.004677919826216337}
+Final Test Accuracy: 0.7550
+--------------------
+Method: fourier
+Best Params: {'lr': 0.002084775354391275, 'sigma': 0.11441674670428945}
+Final Test Accuracy: 0.6945
+--------------------
+Method: line
+Best Params: {'lr': 0.008979274636787408}
+Final Test Accuracy: 0.5745
+--------------------
+Method: dace
+Best Params: {'lr': 0.0022028921036745665, 'gamma': 0.3388768505219631}
+Final Test Accuracy: 0.7115
+--------------------
+Method: mcce
+Best Params: {'lr': 0.0025372873953817604, 'gamma': 0.18249041927680124, 'smoothness_weight': 0.00033138895534324224}
+Final Test Accuracy: 0.7290
+--------------------
