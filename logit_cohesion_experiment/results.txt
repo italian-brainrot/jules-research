@@ -1,0 +1,12 @@
+Method: ce
+Best Params: {'lr': 0.0046966198435796445}
+Final Test Accuracy: 0.7585
+--------------------
+Method: ls
+Best Params: {'lr': 0.005151877025516352, 'epsilon': 0.2242932751527211}
+Final Test Accuracy: 0.7560
+--------------------
+Method: lcl
+Best Params: {'lr': 0.004236649326267459, 'lambda': 0.017460068844962637}
+Final Test Accuracy: 0.7715
+--------------------
