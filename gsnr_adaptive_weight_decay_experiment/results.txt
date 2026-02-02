@@ -1,0 +1,4 @@
+AdamW Best Params: {'lr': 0.005104777246563235, 'weight_decay': 0.012619589119526155}
+AdamW Test Acc: 0.6540
+GAWD Best Params: {'lr': 0.007234186101869167, 'weight_decay': 0.008242058564378792, 'gamma': 4.669717451137921}
+GAWD Test Acc: 0.6730
