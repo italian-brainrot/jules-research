@@ -1,0 +1,5 @@
+Adam: 0.6880
+SGSC: 0.6737
+Best SGSC Gamma: 0.0494
+Best SGSC LR: 0.004503
+Best Adam LR: 0.007618
