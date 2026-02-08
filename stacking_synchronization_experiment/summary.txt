@@ -1,0 +1,25 @@
+Summary (averaged across all datasets and model sets):
+                      accuracy       auc  log_loss
+method   sync  avg
+Bagging  False N/A    0.973796  0.997558  0.117656
+         True  N/A    0.975066  0.997274  0.118251
+Stacking False False  0.972998  0.995931  0.074119
+               True   0.970471  0.996025  0.075443
+         True  False  0.973042  0.996163  0.075253
+               True   0.974997  0.996213  0.075140
+
+Detailed summary by model set:
+                                accuracy       auc  log_loss
+model_set method   sync  avg
+diverse   Bagging  False N/A    0.976296  0.998013  0.102254
+                   True  N/A    0.978140  0.997835  0.101727
+          Stacking False False  0.973943  0.997027  0.062858
+                         True   0.973804  0.997193  0.062266
+                   True  False  0.978858  0.996939  0.062907
+                         True   0.978997  0.996994  0.063212
+trees     Bagging  False N/A    0.971295  0.997103  0.133058
+                   True  N/A    0.971991  0.996712  0.134776
+          Stacking False False  0.972054  0.994834  0.085380
+                         True   0.967139  0.994858  0.088621
+                   True  False  0.967225  0.995387  0.087598
+                         True   0.970998  0.995433  0.087069
