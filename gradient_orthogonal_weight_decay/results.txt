@@ -1,0 +1,4 @@
+AdamW Best Accuracy: 0.7720
+AdamW Best Params: {'lr': 0.0039024871716401115, 'weight_decay': 1.3146576272216045e-05}
+GOWD Best Accuracy: 0.7770
+GOWD Best Params: {'lr': 0.0037908906529552895, 'weight_decay': 1.8678523516543795e-05}
