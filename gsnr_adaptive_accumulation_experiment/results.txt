@@ -1,0 +1,4 @@
+Best Baseline LR: 0.005889630594513982
+Best GAGA Params: {'lr': 0.0030688824019322355, 'tau': 0.09841737723356707}
+Test Acc Baseline: 0.663
+Test Acc GAGA: 0.662

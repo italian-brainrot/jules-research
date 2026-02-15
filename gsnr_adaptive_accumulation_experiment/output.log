@@ -1,0 +1,115 @@
+[I 2026-02-15 07:22:26,446] A new study created in memory with name: no-name-76593a4d-cb57-4f85-be4c-88ccdbac019e
+[I 2026-02-15 07:22:29,878] Trial 0 finished with value: 0.63 and parameters: {'lr': 0.0018074836070668542}. Best is trial 0 with value: 0.63.
+[I 2026-02-15 07:22:31,671] Trial 1 finished with value: 0.42625 and parameters: {'lr': 0.0001400634500295571}. Best is trial 0 with value: 0.63.
+[I 2026-02-15 07:22:33,281] Trial 2 finished with value: 0.56 and parameters: {'lr': 0.00037630028453590556}. Best is trial 0 with value: 0.63.
+[I 2026-02-15 07:22:35,040] Trial 3 finished with value: 0.62375 and parameters: {'lr': 0.001489394858951965}. Best is trial 0 with value: 0.63.
+[I 2026-02-15 07:22:37,227] Trial 4 finished with value: 0.6375 and parameters: {'lr': 0.008794197769175149}. Best is trial 4 with value: 0.6375.
+[I 2026-02-15 07:22:39,196] Trial 5 finished with value: 0.625 and parameters: {'lr': 0.0025495240905621533}. Best is trial 4 with value: 0.6375.
+[I 2026-02-15 07:22:41,473] Trial 6 finished with value: 0.4925 and parameters: {'lr': 0.00020326699027840468}. Best is trial 4 with value: 0.6375.
+[I 2026-02-15 07:22:43,414] Trial 7 finished with value: 0.6225 and parameters: {'lr': 0.002199308081150782}. Best is trial 4 with value: 0.6375.
+[I 2026-02-15 07:22:45,182] Trial 8 finished with value: 0.5875 and parameters: {'lr': 0.0005088075001702994}. Best is trial 4 with value: 0.6375.
+[I 2026-02-15 07:22:46,996] Trial 9 finished with value: 0.3675 and parameters: {'lr': 0.00010440061740516435}. Best is trial 4 with value: 0.6375.
+[I 2026-02-15 07:22:49,173] Trial 10 finished with value: 0.63375 and parameters: {'lr': 0.008183374842281923}. Best is trial 4 with value: 0.6375.
+[I 2026-02-15 07:22:51,309] Trial 11 finished with value: 0.615 and parameters: {'lr': 0.008943562737773213}. Best is trial 4 with value: 0.6375.
+[I 2026-02-15 07:22:53,138] Trial 12 finished with value: 0.60375 and parameters: {'lr': 0.009098399261488886}. Best is trial 4 with value: 0.6375.
+[I 2026-02-15 07:22:55,201] Trial 13 finished with value: 0.65 and parameters: {'lr': 0.004096264555685013}. Best is trial 13 with value: 0.65.
+[I 2026-02-15 07:22:58,265] Trial 14 finished with value: 0.63625 and parameters: {'lr': 0.0037070834986118206}. Best is trial 13 with value: 0.65.
+[I 2026-02-15 07:23:00,112] Trial 15 finished with value: 0.61375 and parameters: {'lr': 0.004487949465761432}. Best is trial 13 with value: 0.65.
+[I 2026-02-15 07:23:01,928] Trial 16 finished with value: 0.62375 and parameters: {'lr': 0.004887535251444556}. Best is trial 13 with value: 0.65.
+[I 2026-02-15 07:23:03,736] Trial 17 finished with value: 0.59875 and parameters: {'lr': 0.0006274475278549051}. Best is trial 13 with value: 0.65.
+[I 2026-02-15 07:23:05,697] Trial 18 finished with value: 0.62375 and parameters: {'lr': 0.0010727131961773373}. Best is trial 13 with value: 0.65.
+[I 2026-02-15 07:23:07,454] Trial 19 finished with value: 0.65875 and parameters: {'lr': 0.005889630594513982}. Best is trial 19 with value: 0.65875.
+[I 2026-02-15 07:23:07,455] A new study created in memory with name: no-name-2d58d695-bfac-451f-9309-9bb66677c51d
+[I 2026-02-15 07:23:21,055] Trial 0 finished with value: 0.62625 and parameters: {'lr': 0.001604608629667311, 'tau': 0.06064001064545912}. Best is trial 0 with value: 0.62625.
+[I 2026-02-15 07:23:35,157] Trial 1 finished with value: 0.59875 and parameters: {'lr': 0.0006861627766982506, 'tau': 0.8540506266208396}. Best is trial 0 with value: 0.62625.
+[I 2026-02-15 07:23:47,310] Trial 2 finished with value: 0.64 and parameters: {'lr': 0.0030421808304067883, 'tau': 0.14512752076623872}. Best is trial 2 with value: 0.64.
+[I 2026-02-15 07:23:59,368] Trial 3 finished with value: 0.61875 and parameters: {'lr': 0.009681013893046661, 'tau': 0.039362538250469946}. Best is trial 2 with value: 0.64.
+[I 2026-02-15 07:24:11,558] Trial 4 finished with value: 0.56875 and parameters: {'lr': 0.00039141233022981344, 'tau': 0.010163846331630467}. Best is trial 2 with value: 0.64.
+[I 2026-02-15 07:24:24,949] Trial 5 finished with value: 0.625 and parameters: {'lr': 0.0017743465203238443, 'tau': 0.620078650394887}. Best is trial 2 with value: 0.64.
+[I 2026-02-15 07:24:38,208] Trial 6 finished with value: 0.63625 and parameters: {'lr': 0.005236710131758791, 'tau': 0.22802625441219582}. Best is trial 2 with value: 0.64.
+[I 2026-02-15 07:24:50,124] Trial 7 finished with value: 0.575 and parameters: {'lr': 0.0004620061594106122, 'tau': 0.2862439791267939}. Best is trial 2 with value: 0.64.
+[I 2026-02-15 07:25:01,992] Trial 8 finished with value: 0.37125 and parameters: {'lr': 0.00010585879548638691, 'tau': 0.014202369335790145}. Best is trial 2 with value: 0.64.
+[I 2026-02-15 07:25:12,745] Trial 9 finished with value: 0.64125 and parameters: {'lr': 0.006190675890521983, 'tau': 0.077976084218809}. Best is trial 9 with value: 0.64125.
+[I 2026-02-15 07:25:24,051] Trial 10 finished with value: 0.63625 and parameters: {'lr': 0.00786690861358716, 'tau': 0.03392483385001189}. Best is trial 9 with value: 0.64125.
+[I 2026-02-15 07:25:41,842] Trial 11 finished with value: 0.635 and parameters: {'lr': 0.0033794037920638286, 'tau': 0.13794627724297964}. Best is trial 9 with value: 0.64125.
+[I 2026-02-15 07:25:55,938] Trial 12 finished with value: 0.6625 and parameters: {'lr': 0.0030688824019322355, 'tau': 0.09841737723356707}. Best is trial 12 with value: 0.6625.
+[I 2026-02-15 07:26:09,664] Trial 13 finished with value: 0.64875 and parameters: {'lr': 0.0036422088593681128, 'tau': 0.08178741583935971}. Best is trial 12 with value: 0.6625.
+[I 2026-02-15 07:26:23,689] Trial 14 finished with value: 0.64125 and parameters: {'lr': 0.0015976316141625086, 'tau': 0.02454855588688634}. Best is trial 12 with value: 0.6625.
+[I 2026-02-15 07:26:34,752] Trial 15 finished with value: 0.65875 and parameters: {'lr': 0.0032696175196889913, 'tau': 0.33502973574183154}. Best is trial 12 with value: 0.6625.
+[I 2026-02-15 07:26:45,941] Trial 16 finished with value: 0.62625 and parameters: {'lr': 0.0009459786706803576, 'tau': 0.41245842616770634}. Best is trial 12 with value: 0.6625.
+[I 2026-02-15 07:26:57,002] Trial 17 finished with value: 0.65125 and parameters: {'lr': 0.002486281715570302, 'tau': 0.1958371993826104}. Best is trial 12 with value: 0.6625.
+[I 2026-02-15 07:27:09,359] Trial 18 finished with value: 0.49125 and parameters: {'lr': 0.00020479658046708494, 'tau': 0.38174134568592927}. Best is trial 12 with value: 0.6625.
+[I 2026-02-15 07:27:20,207] Trial 19 finished with value: 0.65625 and parameters: {'lr': 0.004272615155160566, 'tau': 0.1256380111766964}. Best is trial 12 with value: 0.6625.
+File already exists. Skipping download.
+Successfully loaded data from gsnr_adaptive_accumulation_experiment/mnist1d_data.pkl
+Optimizing Baseline...
+Best Baseline LR: 0.005889630594513982
+Optimizing GAGA...
+Best GAGA Params: {'lr': 0.0030688824019322355, 'tau': 0.09841737723356707}
+
+Final Training Baseline...
+Epoch 1, Samples: 3200, Val Acc: 0.3513
+Epoch 2, Samples: 6400, Val Acc: 0.4550
+Epoch 3, Samples: 9600, Val Acc: 0.5475
+Epoch 4, Samples: 12800, Val Acc: 0.5425
+Epoch 5, Samples: 16000, Val Acc: 0.6275
+Epoch 6, Samples: 19200, Val Acc: 0.5925
+Epoch 7, Samples: 22400, Val Acc: 0.6262
+Epoch 8, Samples: 25600, Val Acc: 0.6300
+Epoch 9, Samples: 28800, Val Acc: 0.6162
+Epoch 10, Samples: 32000, Val Acc: 0.6587
+Epoch 11, Samples: 35200, Val Acc: 0.6650
+Epoch 12, Samples: 38400, Val Acc: 0.6300
+Epoch 13, Samples: 41600, Val Acc: 0.6525
+Epoch 14, Samples: 44800, Val Acc: 0.6512
+Epoch 15, Samples: 48000, Val Acc: 0.6488
+Epoch 16, Samples: 51200, Val Acc: 0.6687
+Epoch 17, Samples: 54400, Val Acc: 0.6500
+Epoch 18, Samples: 57600, Val Acc: 0.6462
+Epoch 19, Samples: 60800, Val Acc: 0.6637
+Epoch 20, Samples: 64000, Val Acc: 0.6375
+Epoch 21, Samples: 67200, Val Acc: 0.6488
+Epoch 22, Samples: 70400, Val Acc: 0.6600
+Epoch 23, Samples: 73600, Val Acc: 0.6412
+Epoch 24, Samples: 76800, Val Acc: 0.6700
+Epoch 25, Samples: 80000, Val Acc: 0.5988
+Epoch 26, Samples: 83200, Val Acc: 0.6362
+Epoch 27, Samples: 86400, Val Acc: 0.6587
+Epoch 28, Samples: 89600, Val Acc: 0.6813
+Epoch 29, Samples: 92800, Val Acc: 0.6737
+Epoch 30, Samples: 96000, Val Acc: 0.6863
+
+Final Training GAGA...
+Epoch 1, Samples: 3200, Val Acc: 0.3762
+Epoch 2, Samples: 6400, Val Acc: 0.4850
+Epoch 3, Samples: 9600, Val Acc: 0.4900
+Epoch 4, Samples: 12800, Val Acc: 0.5475
+Epoch 5, Samples: 16000, Val Acc: 0.5850
+Epoch 6, Samples: 19200, Val Acc: 0.5725
+Epoch 7, Samples: 22400, Val Acc: 0.6188
+Epoch 8, Samples: 25600, Val Acc: 0.6200
+Epoch 9, Samples: 28800, Val Acc: 0.6400
+Epoch 10, Samples: 32000, Val Acc: 0.6312
+Epoch 11, Samples: 35200, Val Acc: 0.6388
+Epoch 12, Samples: 38400, Val Acc: 0.6312
+Epoch 13, Samples: 41600, Val Acc: 0.6538
+Epoch 14, Samples: 44800, Val Acc: 0.6625
+Epoch 15, Samples: 48000, Val Acc: 0.6737
+Epoch 16, Samples: 51200, Val Acc: 0.6600
+Epoch 17, Samples: 54400, Val Acc: 0.6088
+Epoch 18, Samples: 57600, Val Acc: 0.6350
+Epoch 19, Samples: 60800, Val Acc: 0.6587
+Epoch 20, Samples: 64000, Val Acc: 0.6687
+Epoch 21, Samples: 67200, Val Acc: 0.6462
+Epoch 22, Samples: 70400, Val Acc: 0.6837
+Epoch 23, Samples: 73600, Val Acc: 0.6863
+Epoch 24, Samples: 76800, Val Acc: 0.6825
+Epoch 25, Samples: 80000, Val Acc: 0.6800
+Epoch 26, Samples: 83200, Val Acc: 0.6825
+Epoch 27, Samples: 86400, Val Acc: 0.6850
+Epoch 28, Samples: 89600, Val Acc: 0.6837
+Epoch 29, Samples: 92800, Val Acc: 0.6813
+Epoch 30, Samples: 96000, Val Acc: 0.6825
+
+Final Test Acc Baseline: 0.6630
+Final Test Acc GAGA: 0.6620
