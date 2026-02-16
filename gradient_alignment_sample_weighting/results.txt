@@ -1,0 +1,12 @@
+Mode: Baseline
+  Best Params: {'lr': 0.003930517606176115}
+  Final Test Accuracy: 0.5962
+--------------------
+Mode: GASW
+  Best Params: {'lr': 0.0045346429678236174, 'gamma': 2.0935336943279097}
+  Final Test Accuracy: 0.6112
+--------------------
+Mode: GDSW
+  Best Params: {'lr': 0.006031824907091458, 'gamma': 2.1134347961315383}
+  Final Test Accuracy: 0.5938
+--------------------
