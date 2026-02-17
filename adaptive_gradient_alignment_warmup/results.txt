@@ -1,0 +1,11 @@
+Mode: Baseline
+  Best Config: {'lr': 0.004700772823017888}
+  Test Accuracy: 0.6800
+
+Mode: Warmup
+  Best Config: {'lr': 0.0049361684311143746, 'warmup_steps': 159}
+  Test Accuracy: 0.6750
+
+Mode: AGAW
+  Best Config: {'lr': 0.004640764035057265, 'gamma': 1.695027834703846, 'warmup_steps_nominal': 107}
+  Test Accuracy: 0.6890
