@@ -1,0 +1,15 @@
+=== CLEAN DATA ===
+Mode: Baseline
+  Best Params: {'lr': 0.003478366583492946}
+  Final Test Accuracy: 0.5938
+Mode: PC-Adam
+  Best Params: {'lr': 0.00559571979717405}
+  Final Test Accuracy: 0.4650
+
+=== NOISY DATA (20%) ===
+Mode: Baseline
+  Best Params: {'lr': 0.003907305620461311}
+  Final Test Accuracy: 0.4375
+Mode: PC-Adam
+  Best Params: {'lr': 0.00453835550106422}
+  Final Test Accuracy: 0.4650
