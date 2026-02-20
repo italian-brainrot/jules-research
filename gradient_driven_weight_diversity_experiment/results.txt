@@ -1,0 +1,9 @@
+baseline Best Params: {'lr': 0.0052039515385597, 'weight_decay': 0.08712241487516913}
+baseline Test Acc: 0.6760
+baseline Best Val Acc: 0.7050
+decorr Best Params: {'lr': 0.003561168217655079, 'weight_decay': 0.0629300142360969, 'alpha': 1.3418799075408372}
+decorr Test Acc: 0.6660
+decorr Best Val Acc: 0.7025
+gwd Best Params: {'lr': 0.00562011501473492, 'weight_decay': 0.0011865413561948197, 'alpha': 9.58560558961666, 'gamma': 0.6156281325183194}
+gwd Test Acc: 0.6860
+gwd Best Val Acc: 0.7125
