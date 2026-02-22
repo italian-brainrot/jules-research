@@ -1,0 +1,143 @@
+Using device: cpu
+
+--- Tuning Baseline ---
+[I 2026-02-22 07:45:56,146] A new study created in memory with name: no-name-3e85c0fe-fa03-400c-a378-433b91dd3567
+[I 2026-02-22 07:45:58,113] Trial 0 finished with value: 0.3499999940395355 and parameters: {'lr': 0.0003850348579440936}. Best is trial 0 with value: 0.3499999940395355.
+[I 2026-02-22 07:45:58,514] Trial 1 finished with value: 0.4480000138282776 and parameters: {'lr': 0.0007714874748156359}. Best is trial 1 with value: 0.4480000138282776.
+[I 2026-02-22 07:45:58,931] Trial 2 finished with value: 0.5519999861717224 and parameters: {'lr': 0.00238675813482736}. Best is trial 2 with value: 0.5519999861717224.
+[I 2026-02-22 07:45:59,343] Trial 3 finished with value: 0.39399999380111694 and parameters: {'lr': 0.0004410146960043943}. Best is trial 2 with value: 0.5519999861717224.
+[I 2026-02-22 07:45:59,742] Trial 4 finished with value: 0.5699999928474426 and parameters: {'lr': 0.009457950754826663}. Best is trial 4 with value: 0.5699999928474426.
+Best params for Baseline: {'lr': 0.009457950754826663}
+Final training for Baseline (3 seeds)...
+Mode Baseline Seed 0 - Epoch 1/20 - Loss: 1.8305 - Test Acc: 0.3288
+Mode Baseline Seed 0 - Epoch 2/20 - Loss: 1.5295 - Test Acc: 0.4038
+Mode Baseline Seed 0 - Epoch 3/20 - Loss: 1.3145 - Test Acc: 0.4275
+Mode Baseline Seed 0 - Epoch 4/20 - Loss: 1.2401 - Test Acc: 0.4575
+Mode Baseline Seed 0 - Epoch 5/20 - Loss: 1.0946 - Test Acc: 0.5000
+Mode Baseline Seed 0 - Epoch 6/20 - Loss: 0.9263 - Test Acc: 0.5312
+Mode Baseline Seed 0 - Epoch 7/20 - Loss: 0.8018 - Test Acc: 0.5188
+Mode Baseline Seed 0 - Epoch 8/20 - Loss: 0.6723 - Test Acc: 0.5562
+Mode Baseline Seed 0 - Epoch 9/20 - Loss: 0.6180 - Test Acc: 0.5550
+Mode Baseline Seed 0 - Epoch 10/20 - Loss: 0.6030 - Test Acc: 0.5688
+Mode Baseline Seed 0 - Epoch 11/20 - Loss: 0.6191 - Test Acc: 0.5688
+Mode Baseline Seed 0 - Epoch 12/20 - Loss: 0.5190 - Test Acc: 0.5925
+Mode Baseline Seed 0 - Epoch 13/20 - Loss: 0.3944 - Test Acc: 0.5925
+Mode Baseline Seed 0 - Epoch 14/20 - Loss: 0.3062 - Test Acc: 0.5913
+Mode Baseline Seed 0 - Epoch 15/20 - Loss: 0.2466 - Test Acc: 0.5925
+Mode Baseline Seed 0 - Epoch 16/20 - Loss: 0.4470 - Test Acc: 0.5875
+Mode Baseline Seed 0 - Epoch 17/20 - Loss: 0.2830 - Test Acc: 0.5938
+Mode Baseline Seed 0 - Epoch 18/20 - Loss: 0.2275 - Test Acc: 0.6087
+Mode Baseline Seed 0 - Epoch 19/20 - Loss: 0.1745 - Test Acc: 0.6012
+Mode Baseline Seed 0 - Epoch 20/20 - Loss: 0.1425 - Test Acc: 0.6162
+Mode Baseline Seed 1 - Epoch 1/20 - Loss: 1.8299 - Test Acc: 0.3025
+Mode Baseline Seed 1 - Epoch 2/20 - Loss: 1.4820 - Test Acc: 0.3338
+Mode Baseline Seed 1 - Epoch 3/20 - Loss: 1.3653 - Test Acc: 0.4100
+Mode Baseline Seed 1 - Epoch 4/20 - Loss: 1.1897 - Test Acc: 0.5113
+Mode Baseline Seed 1 - Epoch 5/20 - Loss: 1.0554 - Test Acc: 0.5125
+Mode Baseline Seed 1 - Epoch 6/20 - Loss: 0.9433 - Test Acc: 0.5362
+Mode Baseline Seed 1 - Epoch 7/20 - Loss: 0.7642 - Test Acc: 0.5562
+Mode Baseline Seed 1 - Epoch 8/20 - Loss: 0.6559 - Test Acc: 0.5500
+Mode Baseline Seed 1 - Epoch 9/20 - Loss: 0.6365 - Test Acc: 0.5487
+Mode Baseline Seed 1 - Epoch 10/20 - Loss: 0.5633 - Test Acc: 0.5663
+Mode Baseline Seed 1 - Epoch 11/20 - Loss: 0.4376 - Test Acc: 0.5612
+Mode Baseline Seed 1 - Epoch 12/20 - Loss: 0.3797 - Test Acc: 0.5950
+Mode Baseline Seed 1 - Epoch 13/20 - Loss: 0.2626 - Test Acc: 0.5850
+Mode Baseline Seed 1 - Epoch 14/20 - Loss: 0.2399 - Test Acc: 0.5738
+Mode Baseline Seed 1 - Epoch 15/20 - Loss: 0.2842 - Test Acc: 0.5825
+Mode Baseline Seed 1 - Epoch 16/20 - Loss: 0.2730 - Test Acc: 0.5750
+Mode Baseline Seed 1 - Epoch 17/20 - Loss: 0.1899 - Test Acc: 0.6062
+Mode Baseline Seed 1 - Epoch 18/20 - Loss: 0.1826 - Test Acc: 0.5750
+Mode Baseline Seed 1 - Epoch 19/20 - Loss: 0.1504 - Test Acc: 0.6100
+Mode Baseline Seed 1 - Epoch 20/20 - Loss: 0.0908 - Test Acc: 0.6025
+Mode Baseline Seed 2 - Epoch 1/20 - Loss: 1.8569 - Test Acc: 0.3050
+Mode Baseline Seed 2 - Epoch 2/20 - Loss: 1.5294 - Test Acc: 0.4363
+Mode Baseline Seed 2 - Epoch 3/20 - Loss: 1.3050 - Test Acc: 0.4538
+Mode Baseline Seed 2 - Epoch 4/20 - Loss: 1.1319 - Test Acc: 0.5125
+Mode Baseline Seed 2 - Epoch 5/20 - Loss: 0.9587 - Test Acc: 0.5025
+Mode Baseline Seed 2 - Epoch 6/20 - Loss: 0.9512 - Test Acc: 0.5038
+Mode Baseline Seed 2 - Epoch 7/20 - Loss: 0.8222 - Test Acc: 0.5550
+Mode Baseline Seed 2 - Epoch 8/20 - Loss: 0.6951 - Test Acc: 0.5675
+Mode Baseline Seed 2 - Epoch 9/20 - Loss: 0.6337 - Test Acc: 0.5387
+Mode Baseline Seed 2 - Epoch 10/20 - Loss: 0.5877 - Test Acc: 0.5763
+Mode Baseline Seed 2 - Epoch 11/20 - Loss: 0.4411 - Test Acc: 0.5950
+Mode Baseline Seed 2 - Epoch 12/20 - Loss: 0.3577 - Test Acc: 0.5700
+Mode Baseline Seed 2 - Epoch 13/20 - Loss: 0.3760 - Test Acc: 0.5888
+Mode Baseline Seed 2 - Epoch 14/20 - Loss: 0.2991 - Test Acc: 0.5913
+Mode Baseline Seed 2 - Epoch 15/20 - Loss: 0.2541 - Test Acc: 0.6037
+Mode Baseline Seed 2 - Epoch 16/20 - Loss: 0.2633 - Test Acc: 0.5638
+Mode Baseline Seed 2 - Epoch 17/20 - Loss: 0.1856 - Test Acc: 0.5962
+Mode Baseline Seed 2 - Epoch 18/20 - Loss: 0.1474 - Test Acc: 0.5763
+Mode Baseline Seed 2 - Epoch 19/20 - Loss: 0.1192 - Test Acc: 0.5863
+Mode Baseline Seed 2 - Epoch 20/20 - Loss: 0.1105 - Test Acc: 0.6000
+
+--- Tuning CCHW ---
+[I 2026-02-22 07:46:02,417] A new study created in memory with name: no-name-5e857ee5-e132-4b5d-b693-0bf7ca5aeb71
+[I 2026-02-22 07:46:14,243] Trial 0 finished with value: 0.43799999356269836 and parameters: {'lr': 0.0005919070173884643, 'beta': -1.6100201278363135}. Best is trial 0 with value: 0.43799999356269836.
+[I 2026-02-22 07:46:25,806] Trial 1 finished with value: 0.3779999911785126 and parameters: {'lr': 0.0004097926970222742, 'beta': -1.2311393103271118}. Best is trial 0 with value: 0.43799999356269836.
+[I 2026-02-22 07:46:37,783] Trial 2 finished with value: 0.2680000066757202 and parameters: {'lr': 0.00015042041540319406, 'beta': 0.347464508154836}. Best is trial 0 with value: 0.43799999356269836.
+[I 2026-02-22 07:46:49,652] Trial 3 finished with value: 0.2980000078678131 and parameters: {'lr': 0.0002726945408578215, 'beta': 1.9724337248254558}. Best is trial 0 with value: 0.43799999356269836.
+[I 2026-02-22 07:47:04,884] Trial 4 finished with value: 0.3499999940395355 and parameters: {'lr': 0.0004522247050485477, 'beta': 1.8118489587850255}. Best is trial 0 with value: 0.43799999356269836.
+Best params for CCHW: {'lr': 0.0005919070173884643, 'beta': -1.6100201278363135}
+Final training for CCHW (3 seeds)...
+Mode CCHW Seed 0 - Epoch 1/20 - Loss: 2.1518 - Test Acc: 0.1813
+Mode CCHW Seed 0 - Epoch 2/20 - Loss: 1.8441 - Test Acc: 0.2537
+Mode CCHW Seed 0 - Epoch 3/20 - Loss: 1.6981 - Test Acc: 0.2875
+Mode CCHW Seed 0 - Epoch 4/20 - Loss: 1.6393 - Test Acc: 0.3288
+Mode CCHW Seed 0 - Epoch 5/20 - Loss: 1.5716 - Test Acc: 0.3512
+Mode CCHW Seed 0 - Epoch 6/20 - Loss: 1.5128 - Test Acc: 0.3700
+Mode CCHW Seed 0 - Epoch 7/20 - Loss: 1.4435 - Test Acc: 0.3963
+Mode CCHW Seed 0 - Epoch 8/20 - Loss: 1.3853 - Test Acc: 0.4288
+Mode CCHW Seed 0 - Epoch 9/20 - Loss: 1.3224 - Test Acc: 0.4525
+Mode CCHW Seed 0 - Epoch 10/20 - Loss: 1.2693 - Test Acc: 0.4462
+Mode CCHW Seed 0 - Epoch 11/20 - Loss: 1.2054 - Test Acc: 0.4550
+Mode CCHW Seed 0 - Epoch 12/20 - Loss: 1.1641 - Test Acc: 0.4787
+Mode CCHW Seed 0 - Epoch 13/20 - Loss: 1.1246 - Test Acc: 0.4913
+Mode CCHW Seed 0 - Epoch 14/20 - Loss: 1.0789 - Test Acc: 0.4837
+Mode CCHW Seed 0 - Epoch 15/20 - Loss: 1.0582 - Test Acc: 0.4863
+Mode CCHW Seed 0 - Epoch 16/20 - Loss: 1.0207 - Test Acc: 0.5013
+Mode CCHW Seed 0 - Epoch 17/20 - Loss: 0.9751 - Test Acc: 0.5025
+Mode CCHW Seed 0 - Epoch 18/20 - Loss: 0.9334 - Test Acc: 0.5113
+Mode CCHW Seed 0 - Epoch 19/20 - Loss: 0.9157 - Test Acc: 0.5200
+Mode CCHW Seed 0 - Epoch 20/20 - Loss: 0.9007 - Test Acc: 0.5125
+Mode CCHW Seed 1 - Epoch 1/20 - Loss: 2.1488 - Test Acc: 0.1850
+Mode CCHW Seed 1 - Epoch 2/20 - Loss: 1.8239 - Test Acc: 0.2700
+Mode CCHW Seed 1 - Epoch 3/20 - Loss: 1.6979 - Test Acc: 0.3125
+Mode CCHW Seed 1 - Epoch 4/20 - Loss: 1.6354 - Test Acc: 0.3038
+Mode CCHW Seed 1 - Epoch 5/20 - Loss: 1.6029 - Test Acc: 0.3537
+Mode CCHW Seed 1 - Epoch 6/20 - Loss: 1.5263 - Test Acc: 0.3875
+Mode CCHW Seed 1 - Epoch 7/20 - Loss: 1.4576 - Test Acc: 0.4212
+Mode CCHW Seed 1 - Epoch 8/20 - Loss: 1.4001 - Test Acc: 0.4263
+Mode CCHW Seed 1 - Epoch 9/20 - Loss: 1.3205 - Test Acc: 0.4288
+Mode CCHW Seed 1 - Epoch 10/20 - Loss: 1.2545 - Test Acc: 0.4712
+Mode CCHW Seed 1 - Epoch 11/20 - Loss: 1.2287 - Test Acc: 0.4800
+Mode CCHW Seed 1 - Epoch 12/20 - Loss: 1.1596 - Test Acc: 0.4538
+Mode CCHW Seed 1 - Epoch 13/20 - Loss: 1.1413 - Test Acc: 0.4588
+Mode CCHW Seed 1 - Epoch 14/20 - Loss: 1.0858 - Test Acc: 0.4863
+Mode CCHW Seed 1 - Epoch 15/20 - Loss: 1.0343 - Test Acc: 0.4938
+Mode CCHW Seed 1 - Epoch 16/20 - Loss: 0.9946 - Test Acc: 0.5113
+Mode CCHW Seed 1 - Epoch 17/20 - Loss: 0.9906 - Test Acc: 0.5175
+Mode CCHW Seed 1 - Epoch 18/20 - Loss: 0.9387 - Test Acc: 0.5225
+Mode CCHW Seed 1 - Epoch 19/20 - Loss: 0.9052 - Test Acc: 0.5213
+Mode CCHW Seed 1 - Epoch 20/20 - Loss: 0.8771 - Test Acc: 0.5100
+Mode CCHW Seed 2 - Epoch 1/20 - Loss: 2.1698 - Test Acc: 0.1813
+Mode CCHW Seed 2 - Epoch 2/20 - Loss: 1.8747 - Test Acc: 0.2488
+Mode CCHW Seed 2 - Epoch 3/20 - Loss: 1.6918 - Test Acc: 0.2763
+Mode CCHW Seed 2 - Epoch 4/20 - Loss: 1.6209 - Test Acc: 0.3187
+Mode CCHW Seed 2 - Epoch 5/20 - Loss: 1.5527 - Test Acc: 0.3512
+Mode CCHW Seed 2 - Epoch 6/20 - Loss: 1.4893 - Test Acc: 0.3938
+Mode CCHW Seed 2 - Epoch 7/20 - Loss: 1.4268 - Test Acc: 0.4300
+Mode CCHW Seed 2 - Epoch 8/20 - Loss: 1.3501 - Test Acc: 0.4363
+Mode CCHW Seed 2 - Epoch 9/20 - Loss: 1.3047 - Test Acc: 0.4650
+Mode CCHW Seed 2 - Epoch 10/20 - Loss: 1.2235 - Test Acc: 0.4787
+Mode CCHW Seed 2 - Epoch 11/20 - Loss: 1.1740 - Test Acc: 0.4850
+Mode CCHW Seed 2 - Epoch 12/20 - Loss: 1.1384 - Test Acc: 0.4900
+Mode CCHW Seed 2 - Epoch 13/20 - Loss: 1.1073 - Test Acc: 0.5050
+Mode CCHW Seed 2 - Epoch 14/20 - Loss: 1.0479 - Test Acc: 0.4800
+Mode CCHW Seed 2 - Epoch 15/20 - Loss: 1.0278 - Test Acc: 0.5088
+Mode CCHW Seed 2 - Epoch 16/20 - Loss: 0.9955 - Test Acc: 0.5100
+Mode CCHW Seed 2 - Epoch 17/20 - Loss: 0.9570 - Test Acc: 0.5050
+Mode CCHW Seed 2 - Epoch 18/20 - Loss: 0.9236 - Test Acc: 0.5163
+Mode CCHW Seed 2 - Epoch 19/20 - Loss: 0.9189 - Test Acc: 0.5188
+Mode CCHW Seed 2 - Epoch 20/20 - Loss: 0.8632 - Test Acc: 0.5250
+
+Experiment complete. Results saved in cross_class_helpfulness_weighting/
