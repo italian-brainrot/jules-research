@@ -1,0 +1,8 @@
+Mode: Baseline
+  Test Accuracies: [0.60875, 0.58375, 0.6025]
+  Mean: 0.5983, Std: 0.0106
+--------------------
+Mode: GDCR
+  Test Accuracies: [0.5975, 0.57875, 0.5875]
+  Mean: 0.5879, Std: 0.0077
+--------------------
