@@ -1,0 +1,4 @@
+Baseline (AdamW) Mean Test Acc: 0.6263
+MASW-AdamW Mean Test Acc: 0.6263
+Best Baseline Params: {'lr': 0.005498225733873362, 'weight_decay': 2.619341080597459e-06}
+Best MASW Params: {'lr': 0.00438790799282955, 'weight_decay': 0.00019869826830895402, 'gamma': 0.6453309514457192}
