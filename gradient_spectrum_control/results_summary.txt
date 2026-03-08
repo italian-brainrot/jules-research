@@ -1,0 +1,12 @@
+Mode: Baseline
+Mean Test Acc: 0.3917 ± 0.0176
+Best Params: {'lr': 0.0008271703935802808, 'weight_decay': 0.0023780641643684646}
+--------------------
+Mode: GSCR_Consensus
+Mean Test Acc: 0.5067 ± 0.0051
+Best Params: {'lr': 0.0063408521961399586, 'weight_decay': 1.728867299131014e-06, 'lambda_reg': 0.21615111128796022}
+--------------------
+Mode: GSCR_Diversity
+Mean Test Acc: 0.5225 ± 0.0195
+Best Params: {'lr': 0.007441810202706433, 'weight_decay': 3.9286564279017436e-05, 'lambda_reg': 0.0031770012333599508}
+--------------------
