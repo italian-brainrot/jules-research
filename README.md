@@ -28,7 +28,7 @@ for inputs, targets in dl_train:
 - When comparing training routines, it is important to compare them fairly by tuning the learning rate. Use grid search for expensive routines and optuna for ones that are fast to evaluate.
 
 ### Important
-The following experiment types are now BANNED, because you've made too many of almost the same experiments:
+The following experiment types are now BANNED, because you've performed too many nearly identical experiments related to those:
 - usage of alignment of gradients between two consecutive steps (based on signs or cosine similarity)
 - usage of alignment of gradients between samples in the mini-batch
 
