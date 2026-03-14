@@ -32,4 +32,19 @@ The following experiment types are now BANNED, because you've performed too many
 - usage of alignment of gradients between two consecutive steps (based on signs or cosine similarity)
 - usage of alignment of gradients between samples in the mini-batch
 
-Please try to explore new areas in your experiments.
+Please try to explore new areas in your experiments. The following areas are underrepresented as of me writing this:
+- New tabular classification/regression algorithms
+- New linear algebra algorithms, solvers, and their applications
+- New neural network architectures and layers
+- New loss functions
+- New ways to preprocess or generate features for tabular data
+- New strategies for ensembling, stacking
+- New strategies for AutoML
+- New global optimization algorithms (that potentially use gradients) with their application to ML
+- New hyperparameter optimization algorithms
+- New solvers for exact minimization, such as solvers used for logistic regression (note that they should generally be tuning-free), as well as new ways to generally speed up ML algorithms
+- New gradient-free optimization algorithms, for example for directly optimizing accuracy, or an exact solution maximizing particular hard to optimize metric
+- New differentiable approximations or derivation of a useful descent direction for non-differentiable functions
+- New parameter-efficient fine-tuning methods
+- New neural network architectures designed to have a computable exact minimization solution or an efficient solver which can find the exact solution
+- New neural network architectures with easily computable exact hessian, gauss-newton matrix or fisher information matrix, or their factorizations
