@@ -1,0 +1,2 @@
+Final Baseline Accuracy: 0.8085 +/- 0.0257
+Final LLIN Accuracy: 0.6148 +/- 0.0031
