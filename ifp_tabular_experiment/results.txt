@@ -1,0 +1,4 @@
+Best LR Baseline: 0.003599512021423361
+Best LR RIFP: 0.004533688805097924
+Final Test Accuracy (Baseline): 0.7957 +/- 0.0037
+Final Test Accuracy (RIFP): 0.8377 +/- 0.0057
