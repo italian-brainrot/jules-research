@@ -1,0 +1,4 @@
+Best LR ResidualSoftBinMLP: 0.006590905282559583
+Best LR BaselineMLP: 0.0035739404118753197
+ResidualSoftBinMLP Final Accuracy: 75.43% +/- 1.49%
+BaselineMLP Final Accuracy: 78.68% +/- 0.61%
