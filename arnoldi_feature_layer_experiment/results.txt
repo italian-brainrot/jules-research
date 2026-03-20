@@ -1,0 +1,4 @@
+Best LR Baseline: 0.006034
+Best LR Arnoldi: 0.007343
+Final Accuracy Baseline: 0.7458 +/- 0.0023
+Final Accuracy Arnoldi: 0.7702 +/- 0.0028
