@@ -1,0 +1,10 @@
+Model: baseline
+  Clean: 0.7797 +/- 0.0019
+  Noisy: 0.7012 +/- 0.0066
+  Best params: {'lr': 0.0024818185244035087, 'weight_decay': 7.060414243665742e-06}
+
+Model: dawt
+  Clean: 0.7678 +/- 0.0078
+  Noisy: 0.6900 +/- 0.0092
+  Best params: {'lr': 0.006846241412848873, 'weight_decay': 4.074006550597502e-06, 'levels': 1}
+  Mean learned thresholds: [0.18457615]
