@@ -1,0 +1,4 @@
+baseline: 69.57% +/- 0.92%
+Parameters: 7434
+householder: 68.33% +/- 0.80%
+Parameters: 7498
