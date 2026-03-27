@@ -1,0 +1,4 @@
+Baseline Accuracy: 0.6897 +/- 0.0049
+Nystrom Accuracy: 0.5568 +/- 0.0147
+Baseline Params: {'lr': 0.004211356320515971, 'hidden_dim': 255}
+Nystrom Params: {'lr': 0.00245135500492773, 'hidden_dim': 171, 'num_landmarks': 122, 'gamma': 0.002326770333638153}
