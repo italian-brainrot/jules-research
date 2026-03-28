@@ -1,0 +1,4 @@
+Best LR Baseline: 0.005556358430505002
+Best LR Gabor: 0.0019019342349246833
+Final Test Accuracy (Baseline): 0.8363 +/- 0.0006
+Final Test Accuracy (Gabor): 0.7842 +/- 0.0093
