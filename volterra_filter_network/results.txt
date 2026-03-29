@@ -1,0 +1,2 @@
+VolterraMLP Final Accuracy: 0.7239 ± 0.0063
+BaselineMLP Final Accuracy: 0.7572 ± 0.0065
