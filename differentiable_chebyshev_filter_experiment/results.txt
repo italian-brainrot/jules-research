@@ -1,0 +1,4 @@
+Baseline Accuracy: 0.6860 +/- 0.0360
+Chebyshev Accuracy: 0.7920 +/- 0.0024
+Baseline Accs: [0.7335, 0.6465, 0.678]
+Chebyshev Accs: [0.789, 0.792, 0.795]
