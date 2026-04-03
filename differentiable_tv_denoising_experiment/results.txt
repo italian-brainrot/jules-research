@@ -1,0 +1,4 @@
+baseline_noise_0.0: 0.7590000033378601
+tv_denoising_noise_0.0: 0.777999997138977
+baseline_noise_0.2: 0.7210000157356262
+tv_denoising_noise_0.2: 0.734499990940094
