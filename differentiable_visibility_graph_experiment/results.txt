@@ -1,0 +1,8 @@
+Baseline: 0.5550 ± 0.0040
+Best Params: {'lr': 0.004077605472801411}
+
+DVGMLP: 0.4650 ± 0.0120
+Best Params: {'lr': 0.006956214442927032, 'initial_scale': 8.620716949264045}
+
+DVGGNN: 0.3460 ± 0.0210
+Best Params: {'lr': 0.0003802821074920717, 'initial_scale': 22.65594672823823}
