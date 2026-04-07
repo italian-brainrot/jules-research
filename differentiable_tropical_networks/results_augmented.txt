@@ -1,0 +1,2 @@
+Best Value: 0.6455
+Best Params: {'lr': 0.0019289802789621924, 'weight_decay': 0.0005049971959425274, 'hidden_dim': 128, 'num_layers': 2, 'init_beta': 3.981862074663071}
