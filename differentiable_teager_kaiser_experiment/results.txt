@@ -1,0 +1,6 @@
+Best LR Baseline: 0.0047507951568101295
+Best LR TKEO: 0.00207790497795623
+Baseline Accuracy: 0.7885 +/- 0.0078
+TKEO Accuracy: 0.8920 +/- 0.0027
+Baseline Accs: [0.7835, 0.7825, 0.7995]
+TKEO Accs: [0.8955, 0.889, 0.8915]
