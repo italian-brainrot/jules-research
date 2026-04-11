@@ -1,0 +1,6 @@
+Baseline Accuracy: 0.8053 +/- 0.0045
+Hilbert Accuracy: 0.7980 +/- 0.0048
+Baseline Accs: [0.805, 0.811, 0.8]
+Hilbert Accs: [0.7995, 0.803, 0.7915]
+Best LR Baseline: 0.00414189080879956
+Best LR Hilbert: 0.0048385219509044074
