@@ -1,0 +1,4 @@
+Baseline Results: [0.73, 0.7525, 0.7555], Mean: 0.7460, Std: 0.0114
+DLEP Results: [0.935, 0.9315, 0.9465], Mean: 0.9377, Std: 0.0064
+Best LR Baseline: 0.009116990331988654
+Best LR DLEP: 0.0031713843449044108
