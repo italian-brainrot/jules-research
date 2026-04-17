@@ -1,0 +1,2 @@
+cnn1d: Mean 0.9708, Std 0.0032, Best LR 2.813671e-03
+gaf: Mean 0.5405, Std 0.0035, Best LR 6.264217e-03
