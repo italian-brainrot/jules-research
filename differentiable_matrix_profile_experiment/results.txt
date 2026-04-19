@@ -1,0 +1,4 @@
+Best Baseline Acc: 0.7875
+Best Baseline Params: {'lr': 0.003373150002516279, 'hidden_dim': 203}
+Best MP Acc: 0.773
+Best MP Params: {'lr': 0.007004090960143592, 'hidden_dim': 243, 'window_size': 5, 'temperature': 0.022177557967879274}
