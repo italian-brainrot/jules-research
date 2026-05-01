@@ -1,0 +1,56 @@
+[I 2026-05-01 07:49:09,513] A new study created in memory with name: no-name-16ddcb84-3796-4546-aed4-51664c400b6b
+[I 2026-05-01 07:49:16,613] Trial 0 finished with value: 0.7625 and parameters: {'lr': 0.008374139819641305}. Best is trial 0 with value: 0.7625.
+[I 2026-05-01 07:49:21,125] Trial 1 finished with value: 0.633 and parameters: {'lr': 0.00011563663476903954}. Best is trial 0 with value: 0.7625.
+[I 2026-05-01 07:49:26,358] Trial 2 finished with value: 0.775 and parameters: {'lr': 0.009778434190328396}. Best is trial 2 with value: 0.775.
+[I 2026-05-01 07:49:30,842] Trial 3 finished with value: 0.7715 and parameters: {'lr': 0.0027828957872269734}. Best is trial 2 with value: 0.775.
+[I 2026-05-01 07:49:35,931] Trial 4 finished with value: 0.6665 and parameters: {'lr': 0.00016935529509530984}. Best is trial 2 with value: 0.775.
+[I 2026-05-01 07:50:35,102] A new study created in memory with name: no-name-3a9dbf9f-c674-4e63-9f0a-1ba331409612
+[I 2026-05-01 07:50:43,792] Trial 0 finished with value: 0.7605 and parameters: {'lr': 0.00023654898967708033}. Best is trial 0 with value: 0.7605.
+[I 2026-05-01 07:50:54,118] Trial 1 finished with value: 0.7115 and parameters: {'lr': 0.0001049113626589467}. Best is trial 0 with value: 0.7605.
+[I 2026-05-01 07:51:03,104] Trial 2 finished with value: 0.7805 and parameters: {'lr': 0.003175911677522703}. Best is trial 2 with value: 0.7805.
+[I 2026-05-01 07:51:11,588] Trial 3 finished with value: 0.793 and parameters: {'lr': 0.001848366451223261}. Best is trial 3 with value: 0.793.
+[I 2026-05-01 07:51:21,102] Trial 4 finished with value: 0.802 and parameters: {'lr': 0.0008796872744636074}. Best is trial 4 with value: 0.802.
+[I 2026-05-01 07:53:09,891] A new study created in memory with name: no-name-c6356bb3-938b-4b10-960d-35d85bc22520
+[I 2026-05-01 07:53:26,499] Trial 0 finished with value: 0.866 and parameters: {'lr': 0.003694063046756242}. Best is trial 0 with value: 0.866.
+[I 2026-05-01 07:53:42,803] Trial 1 finished with value: 0.8815 and parameters: {'lr': 0.001188274884652052}. Best is trial 1 with value: 0.8815.
+[I 2026-05-01 07:53:57,634] Trial 2 finished with value: 0.8955 and parameters: {'lr': 0.00021901240183646746}. Best is trial 2 with value: 0.8955.
+[I 2026-05-01 07:54:12,712] Trial 3 finished with value: 0.8895 and parameters: {'lr': 0.0005159856921179261}. Best is trial 2 with value: 0.8955.
+[I 2026-05-01 07:54:28,064] Trial 4 finished with value: 0.8755 and parameters: {'lr': 0.004707496964858765}. Best is trial 2 with value: 0.8955.
+[I 2026-05-01 07:57:52,226] A new study created in memory with name: no-name-85d0a5ad-d8be-4bb2-a12e-dcdcd8739e51
+[I 2026-05-01 07:58:08,205] Trial 0 finished with value: 0.566 and parameters: {'lr': 0.00018195154993107477}. Best is trial 0 with value: 0.566.
+[I 2026-05-01 07:58:25,256] Trial 1 finished with value: 0.555 and parameters: {'lr': 0.003493939899886113}. Best is trial 0 with value: 0.566.
+[I 2026-05-01 07:58:42,004] Trial 2 finished with value: 0.562 and parameters: {'lr': 0.00123922940699036}. Best is trial 0 with value: 0.566.
+[I 2026-05-01 07:58:57,976] Trial 3 finished with value: 0.538 and parameters: {'lr': 0.008507622806400411}. Best is trial 0 with value: 0.566.
+[I 2026-05-01 07:59:14,504] Trial 4 finished with value: 0.5555 and parameters: {'lr': 0.002939284643136207}. Best is trial 0 with value: 0.566.
+Optimizing Baseline...
+Best LR for Baseline: 0.009778434190328396
+Seed 0 accuracy: 0.7865
+Seed 1 accuracy: 0.7910
+Seed 2 accuracy: 0.7965
+Seed 3 accuracy: 0.7955
+Seed 4 accuracy: 0.8010
+Baseline final results: 0.7941 +/- 0.0050
+Optimizing BaselineWide...
+Best LR for BaselineWide: 0.0008796872744636074
+Seed 0 accuracy: 0.8170
+Seed 1 accuracy: 0.8220
+Seed 2 accuracy: 0.8165
+Seed 3 accuracy: 0.8170
+Seed 4 accuracy: 0.8110
+BaselineWide final results: 0.8167 +/- 0.0035
+Optimizing STAug...
+Best LR for STAug: 0.00021901240183646746
+Seed 0 accuracy: 0.9035
+Seed 1 accuracy: 0.9135
+Seed 2 accuracy: 0.8550
+Seed 3 accuracy: 0.9155
+Seed 4 accuracy: 0.9170
+STAug final results: 0.9009 +/- 0.0234
+Optimizing ST...
+Best LR for ST: 0.00018195154993107477
+Seed 0 accuracy: 0.5805
+Seed 1 accuracy: 0.5825
+Seed 2 accuracy: 0.5725
+Seed 3 accuracy: 0.5930
+Seed 4 accuracy: 0.5745
+ST final results: 0.5806 +/- 0.0072
