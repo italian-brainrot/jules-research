@@ -31,6 +31,7 @@ for inputs, targets in dl_train:
 The following experiment types are now BANNED, because you've performed too many nearly identical experiments related to those:
 - usage of alignment of gradients between two consecutive steps (based on signs or cosine similarity)
 - usage of alignment of gradients between samples in the mini-batch
+- New differentiable approximations or derivation of a useful descent direction for non-differentiable functions
 
 Please try to explore new areas in your experiments. The following areas are underrepresented as of me writing this:
 - New tabular classification/regression algorithms
@@ -44,7 +45,6 @@ Please try to explore new areas in your experiments. The following areas are und
 - New hyperparameter optimization algorithms
 - New solvers for exact minimization, such as solvers used for logistic regression (note that they should generally be tuning-free), as well as new ways to generally speed up ML algorithms
 - New gradient-free optimization algorithms, for example for directly optimizing accuracy, or an exact solution maximizing particular hard to optimize metric
-- New differentiable approximations or derivation of a useful descent direction for non-differentiable functions
 - New parameter-efficient fine-tuning methods
 - New neural network architectures designed to have a computable exact minimization solution or an efficient solver which can find the exact solution
 - New neural network architectures with easily computable exact hessian, gauss-newton matrix or fisher information matrix, or their factorizations
