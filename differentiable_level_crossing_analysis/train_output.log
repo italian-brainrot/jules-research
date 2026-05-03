@@ -1,0 +1,81 @@
+[I 2026-04-27 07:43:06,987] A new study created in memory with name: no-name-b94f3c2b-d02d-43a3-b56c-01d11bc3febe
+[I 2026-04-27 07:43:12,472] Trial 0 finished with value: 0.4970000088214874 and parameters: {'lr': 0.00023758993291947365}. Best is trial 0 with value: 0.4970000088214874.
+[I 2026-04-27 07:43:15,435] Trial 1 finished with value: 0.5164999961853027 and parameters: {'lr': 0.0003084825593423637}. Best is trial 1 with value: 0.5164999961853027.
+[I 2026-04-27 07:43:18,264] Trial 2 finished with value: 0.5789999961853027 and parameters: {'lr': 0.00840924660729312}. Best is trial 2 with value: 0.5789999961853027.
+[I 2026-04-27 07:43:20,823] Trial 3 finished with value: 0.5490000247955322 and parameters: {'lr': 0.0005194449887929145}. Best is trial 2 with value: 0.5789999961853027.
+[I 2026-04-27 07:43:23,637] Trial 4 finished with value: 0.4519999921321869 and parameters: {'lr': 0.0001347096694348606}. Best is trial 2 with value: 0.5789999961853027.
+[I 2026-04-27 07:43:26,085] Trial 5 finished with value: 0.5494999885559082 and parameters: {'lr': 0.0022678282599017632}. Best is trial 2 with value: 0.5789999961853027.
+[I 2026-04-27 07:43:28,096] Trial 6 finished with value: 0.4724999964237213 and parameters: {'lr': 0.00013488510438800365}. Best is trial 2 with value: 0.5789999961853027.
+[I 2026-04-27 07:43:30,894] Trial 7 finished with value: 0.5055000185966492 and parameters: {'lr': 0.00023298375782200624}. Best is trial 2 with value: 0.5789999961853027.
+[I 2026-04-27 07:43:33,642] Trial 8 finished with value: 0.5214999914169312 and parameters: {'lr': 0.00028643115077345565}. Best is trial 2 with value: 0.5789999961853027.
+[I 2026-04-27 07:43:36,219] Trial 9 finished with value: 0.5429999828338623 and parameters: {'lr': 0.0011744869673130562}. Best is trial 2 with value: 0.5789999961853027.
+[I 2026-04-27 07:43:37,925] Trial 10 finished with value: 0.5824999809265137 and parameters: {'lr': 0.008428096823987876}. Best is trial 10 with value: 0.5824999809265137.
+[I 2026-04-27 07:43:40,723] Trial 11 finished with value: 0.5764999985694885 and parameters: {'lr': 0.009601092192496693}. Best is trial 10 with value: 0.5824999809265137.
+[I 2026-04-27 07:43:43,776] Trial 12 finished with value: 0.5720000267028809 and parameters: {'lr': 0.009767768345223752}. Best is trial 10 with value: 0.5824999809265137.
+[I 2026-04-27 07:43:46,589] Trial 13 finished with value: 0.5490000247955322 and parameters: {'lr': 0.003212749597975874}. Best is trial 10 with value: 0.5824999809265137.
+[I 2026-04-27 07:43:49,034] Trial 14 finished with value: 0.5640000104904175 and parameters: {'lr': 0.0056164924214264075}. Best is trial 10 with value: 0.5824999809265137.
+[I 2026-04-27 07:43:52,248] Trial 15 finished with value: 0.5584999918937683 and parameters: {'lr': 0.003342908758766599}. Best is trial 10 with value: 0.5824999809265137.
+[I 2026-04-27 07:43:54,992] Trial 16 finished with value: 0.5444999933242798 and parameters: {'lr': 0.001383010705547428}. Best is trial 10 with value: 0.5824999809265137.
+[I 2026-04-27 07:43:57,333] Trial 17 finished with value: 0.578000009059906 and parameters: {'lr': 0.005880324394569224}. Best is trial 10 with value: 0.5824999809265137.
+[I 2026-04-27 07:44:00,387] Trial 18 finished with value: 0.5584999918937683 and parameters: {'lr': 0.005482186901898975}. Best is trial 10 with value: 0.5824999809265137.
+[I 2026-04-27 07:44:02,979] Trial 19 finished with value: 0.5339999794960022 and parameters: {'lr': 0.0006148641059638297}. Best is trial 10 with value: 0.5824999809265137.
+[I 2026-04-27 07:45:20,806] A new study created in memory with name: no-name-7b26d786-8eb8-4b3a-8ca5-978d230c36d3
+[I 2026-04-27 07:45:24,738] Trial 0 finished with value: 0.35749998688697815 and parameters: {'lr': 0.00045857354361342325}. Best is trial 0 with value: 0.35749998688697815.
+[I 2026-04-27 07:45:30,055] Trial 1 finished with value: 0.43299999833106995 and parameters: {'lr': 0.0009138780494467843}. Best is trial 1 with value: 0.43299999833106995.
+[I 2026-04-27 07:45:33,865] Trial 2 finished with value: 0.503000020980835 and parameters: {'lr': 0.005481190009008409}. Best is trial 2 with value: 0.503000020980835.
+[I 2026-04-27 07:45:38,260] Trial 3 finished with value: 0.48899999260902405 and parameters: {'lr': 0.006740231057851511}. Best is trial 2 with value: 0.503000020980835.
+[I 2026-04-27 07:45:42,861] Trial 4 finished with value: 0.3959999978542328 and parameters: {'lr': 0.0006748523951192923}. Best is trial 2 with value: 0.503000020980835.
+[I 2026-04-27 07:45:47,547] Trial 5 finished with value: 0.4684999883174896 and parameters: {'lr': 0.0011449042021605435}. Best is trial 2 with value: 0.503000020980835.
+[I 2026-04-27 07:45:50,502] Trial 6 finished with value: 0.4959999918937683 and parameters: {'lr': 0.00265753052787157}. Best is trial 2 with value: 0.503000020980835.
+[I 2026-04-27 07:45:55,766] Trial 7 finished with value: 0.46050000190734863 and parameters: {'lr': 0.0013032563051391765}. Best is trial 2 with value: 0.503000020980835.
+[I 2026-04-27 07:46:00,529] Trial 8 finished with value: 0.27950000762939453 and parameters: {'lr': 0.00011909925324563249}. Best is trial 2 with value: 0.503000020980835.
+[I 2026-04-27 07:46:06,399] Trial 9 finished with value: 0.44850000739097595 and parameters: {'lr': 0.0011034253262533016}. Best is trial 2 with value: 0.503000020980835.
+[I 2026-04-27 07:46:10,563] Trial 10 finished with value: 0.5080000162124634 and parameters: {'lr': 0.009018898297375951}. Best is trial 10 with value: 0.5080000162124634.
+[I 2026-04-27 07:46:13,564] Trial 11 finished with value: 0.49149999022483826 and parameters: {'lr': 0.008295852701749982}. Best is trial 10 with value: 0.5080000162124634.
+[I 2026-04-27 07:46:17,351] Trial 12 finished with value: 0.49950000643730164 and parameters: {'lr': 0.003265947968828379}. Best is trial 10 with value: 0.5080000162124634.
+[I 2026-04-27 07:46:22,564] Trial 13 finished with value: 0.49050000309944153 and parameters: {'lr': 0.003935059248371801}. Best is trial 10 with value: 0.5080000162124634.
+[I 2026-04-27 07:46:26,911] Trial 14 finished with value: 0.5040000081062317 and parameters: {'lr': 0.00881442069918036}. Best is trial 10 with value: 0.5080000162124634.
+[I 2026-04-27 07:46:32,006] Trial 15 finished with value: 0.5049999952316284 and parameters: {'lr': 0.00987208011140991}. Best is trial 10 with value: 0.5080000162124634.
+[I 2026-04-27 07:46:36,721] Trial 16 finished with value: 0.4779999852180481 and parameters: {'lr': 0.002191104939428497}. Best is trial 10 with value: 0.5080000162124634.
+[I 2026-04-27 07:46:41,196] Trial 17 finished with value: 0.3075000047683716 and parameters: {'lr': 0.00023937814207649878}. Best is trial 10 with value: 0.5080000162124634.
+[I 2026-04-27 07:46:48,293] Trial 18 finished with value: 0.5009999871253967 and parameters: {'lr': 0.0049992009091549515}. Best is trial 10 with value: 0.5080000162124634.
+[I 2026-04-27 07:46:53,146] Trial 19 finished with value: 0.4754999876022339 and parameters: {'lr': 0.002107096545453172}. Best is trial 10 with value: 0.5080000162124634.
+[I 2026-04-27 07:48:59,361] A new study created in memory with name: no-name-0d6c44cf-a45a-435f-85bf-771017ad18a6
+[I 2026-04-27 07:49:03,167] Trial 0 finished with value: 0.5295000076293945 and parameters: {'lr': 0.00018898009520998957}. Best is trial 0 with value: 0.5295000076293945.
+[I 2026-04-27 07:49:08,636] Trial 1 finished with value: 0.5565000176429749 and parameters: {'lr': 0.0002945053410989961}. Best is trial 1 with value: 0.5565000176429749.
+[I 2026-04-27 07:49:13,363] Trial 2 finished with value: 0.5370000004768372 and parameters: {'lr': 0.00022599737068411486}. Best is trial 1 with value: 0.5565000176429749.
+[I 2026-04-27 07:49:18,264] Trial 3 finished with value: 0.6175000071525574 and parameters: {'lr': 0.009973286822339682}. Best is trial 3 with value: 0.6175000071525574.
+[I 2026-04-27 07:49:24,824] Trial 4 finished with value: 0.6069999933242798 and parameters: {'lr': 0.008348104284430615}. Best is trial 3 with value: 0.6175000071525574.
+[I 2026-04-27 07:49:32,044] Trial 5 finished with value: 0.5095000267028809 and parameters: {'lr': 0.00012243780816208793}. Best is trial 3 with value: 0.6175000071525574.
+[I 2026-04-27 07:49:36,332] Trial 6 finished with value: 0.5659999847412109 and parameters: {'lr': 0.0014280960861270658}. Best is trial 3 with value: 0.6175000071525574.
+[I 2026-04-27 07:49:40,916] Trial 7 finished with value: 0.5814999938011169 and parameters: {'lr': 0.0029583801555214824}. Best is trial 3 with value: 0.6175000071525574.
+[I 2026-04-27 07:49:46,064] Trial 8 finished with value: 0.6129999756813049 and parameters: {'lr': 0.00691316536726507}. Best is trial 3 with value: 0.6175000071525574.
+[I 2026-04-27 07:49:50,622] Trial 9 finished with value: 0.5609999895095825 and parameters: {'lr': 0.0006319461405201524}. Best is trial 3 with value: 0.6175000071525574.
+[I 2026-04-27 07:49:55,548] Trial 10 finished with value: 0.5835000276565552 and parameters: {'lr': 0.0030996780223261884}. Best is trial 3 with value: 0.6175000071525574.
+[I 2026-04-27 07:50:00,685] Trial 11 finished with value: 0.6159999966621399 and parameters: {'lr': 0.009277099964598327}. Best is trial 3 with value: 0.6175000071525574.
+[I 2026-04-27 07:50:05,539] Trial 12 finished with value: 0.590499997138977 and parameters: {'lr': 0.009588941290997889}. Best is trial 3 with value: 0.6175000071525574.
+[I 2026-04-27 07:50:11,398] Trial 13 finished with value: 0.5705000162124634 and parameters: {'lr': 0.0037105364855982096}. Best is trial 3 with value: 0.6175000071525574.
+[I 2026-04-27 07:50:15,714] Trial 14 finished with value: 0.5580000281333923 and parameters: {'lr': 0.0013590649431090968}. Best is trial 3 with value: 0.6175000071525574.
+[I 2026-04-27 07:50:20,353] Trial 15 finished with value: 0.5860000252723694 and parameters: {'lr': 0.00502199332842192}. Best is trial 3 with value: 0.6175000071525574.
+[I 2026-04-27 07:50:25,631] Trial 16 finished with value: 0.5575000047683716 and parameters: {'lr': 0.0023299788190504086}. Best is trial 3 with value: 0.6175000071525574.
+[I 2026-04-27 07:50:29,457] Trial 17 finished with value: 0.550000011920929 and parameters: {'lr': 0.000609432382984569}. Best is trial 3 with value: 0.6175000071525574.
+[I 2026-04-27 07:50:34,671] Trial 18 finished with value: 0.5889999866485596 and parameters: {'lr': 0.005041230195099254}. Best is trial 3 with value: 0.6175000071525574.
+[I 2026-04-27 07:50:38,450] Trial 19 finished with value: 0.5715000033378601 and parameters: {'lr': 0.0018387252113321215}. Best is trial 3 with value: 0.6175000071525574.
+Tuning BaselineMLP...
+Best LR for BaselineMLP: 0.008428096823987876
+Seed 0 accuracy: 0.7415
+Seed 1 accuracy: 0.7825
+Seed 2 accuracy: 0.7785
+BaselineMLP mean accuracy: 0.7675 +/- 0.0185
+Tuning DLCAMLP...
+Best LR for DLCAMLP: 0.009018898297375951
+Seed 0 accuracy: 0.6230
+Seed 1 accuracy: 0.6345
+Seed 2 accuracy: 0.6415
+DLCAMLP mean accuracy: 0.6330 +/- 0.0076
+Tuning DLCAAugmentedMLP...
+Best LR for DLCAAugmentedMLP: 0.009973286822339682
+Seed 0 accuracy: 0.6995
+Seed 1 accuracy: 0.6970
+Seed 2 accuracy: 0.7095
+DLCAAugmentedMLP mean accuracy: 0.7020 +/- 0.0054
