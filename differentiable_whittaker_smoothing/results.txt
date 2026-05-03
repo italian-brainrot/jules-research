@@ -1,0 +1,4 @@
+Noisy Results (std=0.2):
+baseline: 0.7195 +/- 0.0000 (LR: 0.003778)
+whittaker: 0.6730 +/- 0.0000 (LR: 0.006613)
+augmented: 0.7160 +/- 0.0000 (LR: 0.005586)
