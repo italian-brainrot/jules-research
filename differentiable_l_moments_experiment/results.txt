@@ -1,0 +1,6 @@
+Best LR Baseline: 0.0039111027319465915
+Best LR L-Moment: 0.00199902817020596
+Baseline Accuracies: [0.788, 0.7855, 0.7945, 0.792, 0.798]
+Baseline Mean Accuracy: 0.7916 +/- 0.0045
+L-Moment Accuracies: [0.812, 0.813, 0.8215, 0.8135, 0.8175]
+L-Moment Mean Accuracy: 0.8155 +/- 0.0035
