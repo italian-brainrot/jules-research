@@ -1,0 +1,18 @@
+# Differentiable Learnable Delay Embedding Experiment
+
+This experiment investigates making the delay parameter $\tau$ in delay embedding a learnable parameter using linear interpolation.
+
+## Results
+
+
+DLDE Accuracy: 0.7562 +/- 0.0082
+
+Baseline Accuracy: 0.7891 +/- 0.0140
+
+Learned Taus: [1.0000284910202026, 1.0050709247589111, 1.0018730163574219, 0.9870938062667847, 0.9987289309501648]
+
+Mean Learned Tau: 0.9986
+
+
+## Visualization
+![Learned Taus](learned_taus.png)
