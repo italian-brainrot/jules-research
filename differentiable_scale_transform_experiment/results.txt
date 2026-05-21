@@ -1,0 +1,4 @@
+BaselineMLP: Mean Accuracy = 0.6787 +/- 0.0087, Best LR = 0.005686
+ScaleTransformMLP: Mean Accuracy = 0.2157 +/- 0.0152, Best LR = 0.003286
+ScaleTransformAugmentedMLP: Mean Accuracy = 0.4360 +/- 0.0134, Best LR = 0.003775
+FourierMellinMLP: Mean Accuracy = 0.2290 +/- 0.0104, Best LR = 0.001694
