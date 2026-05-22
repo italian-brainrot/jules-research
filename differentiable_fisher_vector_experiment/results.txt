@@ -1,0 +1,6 @@
+Final Test Accuracy (baseline): 0.7672 +/- 0.0051
+Best LR (baseline): 0.00272934529149299
+Final Test Accuracy (dfv): 0.9160 +/- 0.0040
+Best LR (dfv): 0.00537468977830958
+Final Test Accuracy (dfv_augmented): 0.8883 +/- 0.0065
+Best LR (dfv_augmented): 0.007278203109840367
