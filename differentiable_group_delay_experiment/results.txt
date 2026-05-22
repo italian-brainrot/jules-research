@@ -1,0 +1,3 @@
+BaselineMLP: 78.08% +/- 0.16% (Best LR: 0.0070621765190455)
+GroupDelayAugmentedMLP: 47.33% +/- 0.95% (Best LR: 0.0011527445859429255)
+GroupDelayMLP: 18.57% +/- 0.37% (Best LR: 0.008934095656002306)
