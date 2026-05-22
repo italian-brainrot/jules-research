@@ -1,0 +1,3 @@
+baseline: 78.30%
+prsa: 96.85%
+augmented: 93.90%
