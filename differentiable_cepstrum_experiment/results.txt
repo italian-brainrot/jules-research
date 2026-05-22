@@ -1,0 +1,12 @@
+Model: Baseline
+Best LR: 0.001277
+Best Test Accuracy: 0.6955
+--------------------
+Model: Cepstrum
+Best LR: 0.002174
+Best Test Accuracy: 0.4075
+--------------------
+Model: CepstrumAugmented
+Best LR: 0.008873
+Best Test Accuracy: 0.7255
+--------------------
