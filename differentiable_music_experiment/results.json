@@ -1,0 +1,25 @@
+{
+    "results": {
+        "baseline": 0.6414999961853027,
+        "music": 0.382999986410141,
+        "music_augmented": 0.6790000200271606
+    },
+    "best_params": {
+        "baseline": {
+            "lr": 0.004987001075035889,
+            "hidden_dim": 128
+        },
+        "music": {
+            "lr": 0.0026512595501676285,
+            "hidden_dim": 256,
+            "window_size": 7,
+            "num_freqs": 64
+        },
+        "music_augmented": {
+            "lr": 0.004806024741245251,
+            "hidden_dim": 128,
+            "window_size": 7,
+            "num_freqs": 32
+        }
+    }
+}
