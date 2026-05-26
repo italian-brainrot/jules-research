@@ -1,0 +1,3 @@
+baseline: 0.7640 +/- 0.0128 (Best LR: 0.005163)
+glcm: 0.6317 +/- 0.0100 (Best LR: 0.014302)
+glcm_augmented: 0.7357 +/- 0.0090 (Best LR: 0.002563)
