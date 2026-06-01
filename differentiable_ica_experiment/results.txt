@@ -1,0 +1,7 @@
+Differentiable ICA Experiment Results (Enhanced)
+================================================
+baseline: 73.52% +/- 1.67% (Best LR: 0.008253)
+pca: 38.76% +/- 1.05% (Best LR: 0.002178)
+ica: 18.33% +/- 0.49% (Best LR: 0.000725)
+pca_aug: 72.75% +/- 0.55% (Best LR: 0.007898)
+ica_aug: 73.10% +/- 0.63% (Best LR: 0.007878)
