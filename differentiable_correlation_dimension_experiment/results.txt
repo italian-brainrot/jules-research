@@ -1,0 +1,6 @@
+baseline: 0.7658 +/- 0.0052
+Best LR baseline: 0.005752912647199476
+dcd_standalone: 0.1412 +/- 0.0028
+Best LR dcd_standalone: 0.006081573050992421
+dcd_augmented: 0.7658 +/- 0.0027
+Best LR dcd_augmented: 0.00484414787574605
