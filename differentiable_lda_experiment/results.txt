@@ -1,0 +1,7 @@
+Differentiable LDA Regularization Results
+=========================================
+baseline: 74.68% +/- 1.25%
+Best Params: {'lr': 0.009859632991214132, 'weight_decay': 2.7197973991293857e-06}
+
+lda: 67.37% +/- 0.74%
+Best Params: {'lr': 0.0005077885482846017, 'weight_decay': 0.0005669092230928974, 'lambda_lda': 0.0014286017875624168}
