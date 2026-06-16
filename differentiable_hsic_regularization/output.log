@@ -1,0 +1,31 @@
+[I 2026-06-16 07:44:04,552] A new study created in memory with name: no-name-2016ae57-e0f3-41f4-8e0c-13c512a4b422
+[I 2026-06-16 07:44:16,096] Trial 0 finished with value: 0.577 and parameters: {'lr': 0.00015959008140141882, 'weight_decay': 0.0002652559764160856}. Best is trial 0 with value: 0.577.
+[I 2026-06-16 07:44:25,925] Trial 1 finished with value: 0.6035 and parameters: {'lr': 0.0002739375723619944, 'weight_decay': 3.8639993527803045e-06}. Best is trial 1 with value: 0.6035.
+[I 2026-06-16 07:44:35,182] Trial 2 finished with value: 0.5725 and parameters: {'lr': 0.00015733713758228626, 'weight_decay': 0.0004073445886640121}. Best is trial 1 with value: 0.6035.
+[I 2026-06-16 07:44:44,853] Trial 3 finished with value: 0.6725 and parameters: {'lr': 0.0007312227185208294, 'weight_decay': 1.670312949829303e-05}. Best is trial 3 with value: 0.6725.
+[I 2026-06-16 07:44:54,499] Trial 4 finished with value: 0.633 and parameters: {'lr': 0.0005114357072869597, 'weight_decay': 0.00044420569938408985}. Best is trial 3 with value: 0.6725.
+[I 2026-06-16 07:45:04,319] Trial 5 finished with value: 0.772 and parameters: {'lr': 0.0056764192371611, 'weight_decay': 0.0008198916965710643}. Best is trial 5 with value: 0.772.
+[I 2026-06-16 07:45:13,050] Trial 6 finished with value: 0.7495 and parameters: {'lr': 0.0032670144801133765, 'weight_decay': 2.285923441717146e-06}. Best is trial 5 with value: 0.772.
+[I 2026-06-16 07:45:21,835] Trial 7 finished with value: 0.643 and parameters: {'lr': 0.0005234066894673651, 'weight_decay': 1.9098867951742995e-05}. Best is trial 5 with value: 0.772.
+[I 2026-06-16 07:45:33,150] Trial 8 finished with value: 0.76 and parameters: {'lr': 0.004218875495456318, 'weight_decay': 0.00022875302927867779}. Best is trial 5 with value: 0.772.
+[I 2026-06-16 07:45:42,374] Trial 9 finished with value: 0.7155 and parameters: {'lr': 0.0014098585590905988, 'weight_decay': 0.0003731892747016716}. Best is trial 5 with value: 0.772.
+[I 2026-06-16 07:45:42,374] A new study created in memory with name: no-name-7a591faf-9dd9-4c69-a466-3806a8de5775
+[I 2026-06-16 07:46:09,998] Trial 0 finished with value: 0.648 and parameters: {'lr': 0.0005784214668167047, 'weight_decay': 8.724096758956188e-05, 'weight_in': 0.7830701200365184, 'weight_out': 0.04355709271720255, 'hsic_type': 'standard'}. Best is trial 0 with value: 0.648.
+[I 2026-06-16 07:46:37,888] Trial 1 finished with value: 0.766 and parameters: {'lr': 0.009779538292270198, 'weight_decay': 7.541379867823587e-06, 'weight_in': 0.014078975713259332, 'weight_out': 0.0065342279748792165, 'hsic_type': 'standard'}. Best is trial 1 with value: 0.766.
+[I 2026-06-16 07:47:05,643] Trial 2 finished with value: 0.7545 and parameters: {'lr': 0.003985772205233382, 'weight_decay': 4.769986770907365e-06, 'weight_in': 0.00014702409291562232, 'weight_out': 0.22090727892127932, 'hsic_type': 'standard'}. Best is trial 1 with value: 0.766.
+[I 2026-06-16 07:47:34,391] Trial 3 finished with value: 0.7515 and parameters: {'lr': 0.004322092442165395, 'weight_decay': 1.5448030637648549e-06, 'weight_in': 0.08962544844390241, 'weight_out': 0.0010663928645532291, 'hsic_type': 'standard'}. Best is trial 1 with value: 0.766.
+[I 2026-06-16 07:48:06,416] Trial 4 finished with value: 0.618 and parameters: {'lr': 0.00030599155991151253, 'weight_decay': 0.0001862337848740897, 'weight_in': 0.00025767445709585075, 'weight_out': 0.0052348546911676844, 'hsic_type': 'normalized'}. Best is trial 1 with value: 0.766.
+[I 2026-06-16 07:48:34,813] Trial 5 finished with value: 0.6265 and parameters: {'lr': 0.0004246991114322233, 'weight_decay': 8.406999374289727e-06, 'weight_in': 0.0003137355372587193, 'weight_out': 0.0008363308889075337, 'hsic_type': 'normalized'}. Best is trial 1 with value: 0.766.
+[I 2026-06-16 07:49:04,098] Trial 6 finished with value: 0.5655 and parameters: {'lr': 0.00016103661731212992, 'weight_decay': 1.7748099739472935e-06, 'weight_in': 0.005388528248548649, 'weight_out': 0.005184808584775081, 'hsic_type': 'standard'}. Best is trial 1 with value: 0.766.
+[I 2026-06-16 07:49:33,042] Trial 7 finished with value: 0.742 and parameters: {'lr': 0.0027855737922852252, 'weight_decay': 0.0003814164140670365, 'weight_in': 0.0003137970339651391, 'weight_out': 0.0007246957563430941, 'hsic_type': 'standard'}. Best is trial 1 with value: 0.766.
+[I 2026-06-16 07:50:04,886] Trial 8 finished with value: 0.7775 and parameters: {'lr': 0.008952141350397158, 'weight_decay': 4.774428117463379e-05, 'weight_in': 0.022186517168891882, 'weight_out': 0.2068625449987422, 'hsic_type': 'standard'}. Best is trial 8 with value: 0.7775.
+[I 2026-06-16 07:50:35,316] Trial 9 finished with value: 0.5815 and parameters: {'lr': 0.0001977790749187475, 'weight_decay': 6.902488848163453e-05, 'weight_in': 0.9097318914464397, 'weight_out': 0.0068452511772323955, 'hsic_type': 'normalized'}. Best is trial 8 with value: 0.7775.
+Tuning Baseline...
+Tuning HSIC...
+Best Baseline Acc: 0.772
+Best HSIC Acc: 0.7775
+Best HSIC Params: {'lr': 0.008952141350397158, 'weight_decay': 4.774428117463379e-05, 'weight_in': 0.022186517168891882, 'weight_out': 0.2068625449987422, 'hsic_type': 'standard'}
+Evaluating Baseline with best parameters...
+Evaluating HSIC with best parameters...
+Baseline: 0.7803 +/- 0.0023
+HSIC: 0.7860 +/- 0.0055

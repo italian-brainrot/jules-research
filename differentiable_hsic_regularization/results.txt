@@ -1,0 +1,6 @@
+Best Baseline Params: {'lr': 0.0056764192371611, 'weight_decay': 0.0008198916965710643}
+Best HSIC Params: {'lr': 0.008952141350397158, 'weight_decay': 4.774428117463379e-05, 'weight_in': 0.022186517168891882, 'weight_out': 0.2068625449987422, 'hsic_type': 'standard'}
+Baseline: 0.7803 +/- 0.0023
+HSIC: 0.7860 +/- 0.0055
+Baseline raw: [0.7845, 0.78, 0.7805, 0.7775, 0.779]
+HSIC raw: [0.79, 0.7825, 0.7785, 0.794, 0.785]
