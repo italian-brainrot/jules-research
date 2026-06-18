@@ -1,0 +1,4 @@
+Baseline Accuracy: 0.7388 +/- 0.0076
+NCA Regularized Accuracy: 0.7360 +/- 0.0079
+Best Baseline Params: {'lr': 0.00305320426506788}
+Best NCA Params: {'lr': 0.008238134086825683, 'nca_weight': 0.03209217123114686, 'nca_temp': 3.006237560666556}
