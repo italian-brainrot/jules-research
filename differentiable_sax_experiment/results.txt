@@ -1,0 +1,6 @@
+Baseline: 0.7685 +/- 0.0036
+Best params: {'lr': 0.0060385847679202045, 'hidden_dim': 220}
+SAX Net: 0.5305 +/- 0.0020
+Best params: {'lr': 0.0023334581203904967, 'hidden_dim': 247, 'num_segments': 20, 'alphabet_size': 5}
+SAX Augmented: 0.6975 +/- 0.0045
+Best params: {'lr': 0.005676062411878864, 'hidden_dim': 118, 'num_segments': 18, 'alphabet_size': 5}
