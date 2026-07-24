@@ -1,0 +1,4 @@
+Best LR ChaosAugmentedMLP: 0.004789846417684082
+Best LR BaselineMLP: 0.006208090249240336
+ChaosAugmentedMLP Final Accuracy: 77.67% +/- 0.93%
+BaselineMLP Final Accuracy: 75.73% +/- 1.04%
