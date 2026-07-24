@@ -1,0 +1,4 @@
+Baseline Accuracy: 0.7739 +/- 0.0066
+Copula Augmented Accuracy: 0.7647 +/- 0.0085
+Best LR Baseline: 0.00352759249504898
+Best LR Copula: 0.008535537645115828
